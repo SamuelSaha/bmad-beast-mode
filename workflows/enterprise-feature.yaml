@@ -1,0 +1,197 @@
+# Beast Mode: Enterprise Feature Workflow
+# For: Critical features, compliance-required, high-risk changes
+# Time to Start: < 30 minutes
+
+id: enterprise-feature
+name: "🏢 Enterprise Feature Flow"
+description: "Full governance workflow for critical, compliance-required changes."
+estimated_time: "1-4 weeks"
+
+trigger_conditions:
+  - Security-sensitive features
+  - Payment/billing changes
+  - GDPR/compliance requirements
+  - Major architectural changes
+  - Public API changes
+
+phases:
+  # === ANALYSIS PHASE ===
+  - phase: Analyze
+    agent: analyst
+    command: "*analyze-problem context: '{issue}'"
+    artifact: "docs/bmad/{slug}/01-analysis.md"
+    required: true
+    gates:
+      - Business case documented
+      - Risk assessment complete
+      - Stakeholders sign-off
+
+  - phase: Value Validation
+    agent: value-advocate
+    command: "*sanity-check source: 'docs/bmad/{slug}/01-analysis.md'"
+    artifact: "docs/bmad/{slug}/growth-01-value-validation.md"
+    required: true
+    gates:
+      - JTBD identified
+      - Value proposition clear
+      - Go/No-Go decision
+
+  # === PLANNING PHASE ===
+  - phase: PRD
+    agent: pm
+    command: "*create-prd source: 'docs/bmad/{slug}/01-analysis.md'"
+    artifact: "docs/bmad/{slug}/01b-prd.md"
+    required: true
+    gates:
+      - Compliance requirements listed
+      - NFRs defined (security, performance)
+      - Success metrics measurable
+
+  - phase: UX Design
+    agent: ux
+    command: "*define-ux source: 'docs/bmad/{slug}/01b-prd.md'"
+    artifact: "docs/bmad/{slug}/01c-ux-flows.md"
+    required: true
+    gates:
+      - All states documented
+      - A11y requirements noted
+      - Error handling defined
+
+  - phase: Data Tracking
+    agent: data
+    command: "*define-metrics source: 'docs/bmad/{slug}/01b-prd.md'"
+    artifact: "docs/bmad/{slug}/data-01-tracking-plan.md"
+    required: true
+    gates:
+      - Events defined
+      - Properties documented
+      - No PII in analytics
+
+  # === SECURITY REVIEW ===
+  - phase: Privacy Impact
+    agent: dpo
+    command: "*privacy-check source: 'docs/bmad/{slug}/01b-prd.md'"
+    artifact: "docs/bmad/{slug}/sec-03-privacy-impact.md"
+    required: true
+    gates:
+      - PII flow documented
+      - Retention policy defined
+      - User consent verified
+
+  # === SOLUTIONING PHASE ===
+  - phase: Architecture
+    agent: architect
+    command: "*define-contract source: 'docs/bmad/{slug}/01b-prd.md'"
+    artifact: "docs/bmad/{slug}/02-technical-spec.md"
+    required: true
+    gates:
+      - ADR documented
+      - Backward compatibility verified
+      - Migration plan included
+
+  - phase: Threat Model
+    agent: sec-ops
+    command: "*threat-model source: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/sec-01-threat-model.md"
+    required: true
+    gates:
+      - STRIDE analysis complete
+      - Countermeasures defined
+      - Residual risks accepted
+
+  - phase: User Stories
+    agent: sm
+    command: "*create-stories source: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/02b-user-stories.md"
+    required: true
+    gates:
+      - Security stories included
+      - Test stories included
+      - Dependencies mapped
+
+  - phase: Deployment Plan
+    agent: devops
+    command: "*deployment-plan source: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/ops-01-deployment-spec.md"
+    required: true
+    gates:
+      - Rollback plan defined
+      - Feature flags configured
+      - Monitoring ready
+
+  # === IMPLEMENTATION PHASE ===
+  - phase: Implement
+    agent: dev
+    command: "*implement-fix spec: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/03-implementation.md"
+    required: true
+    gates:
+      - All stories complete
+      - Security controls implemented
+      - Tests comprehensive
+
+  - phase: Security Scan
+    agent: appsec-bot
+    command: "*scan-code source: 'src/'"
+    artifact: "docs/bmad/{slug}/sec-04-auto-scan.md"
+    required: true
+    gates:
+      - No critical CVEs
+      - No secrets in code
+      - SAST findings triaged
+
+  - phase: Penetration Test
+    agent: pentester
+    command: "*abuse-test source: 'docs/bmad/{slug}/03-implementation.md'"
+    artifact: "docs/bmad/{slug}/sec-02-attack-plan.md"
+    required: true
+    gates:
+      - No critical vulnerabilities
+      - Access control verified
+      - Injection attempts blocked
+
+  - phase: Code Review
+    agent: reviewer
+    command: "*review-code source: 'docs/bmad/{slug}/03-implementation.md'"
+    artifact: "docs/bmad/{slug}/polish-01-code-review.md"
+    required: true
+    gates:
+      - Security review pass
+      - No critical issues
+      - Major issues resolved
+
+  - phase: Documentation
+    agent: tech-writer
+    command: "*write-docs source: 'docs/bmad/{slug}/03-implementation.md'"
+    artifact: "docs/bmad/{slug}/polish-02-documentation.md"
+    required: true
+    gates:
+      - API docs complete
+      - README updated
+      - Changelog drafted
+
+  - phase: QA
+    agent: qa
+    command: "*review-feature spec: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/04-qa-report.md"
+    required: true
+    gates:
+      - All acceptance criteria pass
+      - Security tests pass
+      - Performance verified
+      - Compliance verified
+
+  - phase: Support Readiness
+    agent: support
+    command: "*support-audit source: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/growth-05-support-readiness.md"
+    required: true
+    gates:
+      - FAQ prepared
+      - Known issues documented
+      - Internal team briefed
+
+sign_off_required:
+  - Security Lead
+  - Product Owner
+  - Engineering Manager

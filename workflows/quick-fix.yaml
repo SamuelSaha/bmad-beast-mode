@@ -1,0 +1,58 @@
+# Beast Mode: Quick Fix Workflow
+# For: Bug fixes, small features, hotfixes
+# Time to Start: < 5 minutes
+
+id: quick-fix
+name: "⚡ Quick Fix Flow"
+description: "Minimal viable workflow for bug fixes and small changes."
+estimated_time: "30 minutes - 2 hours"
+
+trigger_conditions:
+  - Bug fix with known reproduction steps
+  - Small UI adjustment
+  - Configuration change
+  - Copy/text update
+
+phases:
+  - phase: Analyze
+    agent: analyst
+    command: "*analyze-problem context: '{issue}'"
+    artifact: "docs/bmad/{slug}/01-analysis.md"
+    required: true
+    gates:
+      - Root cause identified
+      - Files to change listed
+      - Success criteria defined
+
+  - phase: Architect
+    agent: architect
+    command: "*define-contract source: 'docs/bmad/{slug}/01-analysis.md'"
+    artifact: "docs/bmad/{slug}/02-technical-spec.md"
+    required: true
+    gates:
+      - Scope limited to affected files
+      - No new dependencies
+      - Constraints defined
+
+  - phase: Implement
+    agent: dev
+    command: "*implement-fix spec: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/03-implementation.md"
+    required: true
+    gates:
+      - Code matches spec
+      - Tests pass
+
+  - phase: Verify
+    agent: qa
+    command: "*review-feature spec: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/04-qa-report.md"
+    required: true
+    gates:
+      - All test scenarios pass
+      - No regressions
+
+stop_rules:
+  - If analysis reveals scope creep, escalate to Standard Flow
+  - If new dependencies required, escalate to Standard Flow
+  - If security-sensitive, add Security squad

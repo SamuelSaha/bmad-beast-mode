@@ -1,0 +1,112 @@
+# Beast Mode: Standard Feature Workflow
+# For: Features, Medium-sized changes, Refactors
+# Time to Start: < 15 minutes
+
+id: standard-feature
+name: "📋 Standard Feature Flow"
+description: "Full planning workflow for features and medium changes."
+estimated_time: "1 day - 1 week"
+
+trigger_conditions:
+  - New feature with business logic
+  - UI/UX changes
+  - API changes
+  - Refactoring with scope
+
+phases:
+  # === ANALYSIS PHASE ===
+  - phase: Analyze
+    agent: analyst
+    command: "*analyze-problem context: '{issue}'"
+    artifact: "docs/bmad/{slug}/01-analysis.md"
+    required: true
+    gates:
+      - Problem clearly defined
+      - Stakeholders identified
+      - Success criteria measurable
+
+  # === PLANNING PHASE ===
+  - phase: PRD
+    agent: pm
+    command: "*create-prd source: 'docs/bmad/{slug}/01-analysis.md'"
+    artifact: "docs/bmad/{slug}/01b-prd.md"
+    required: true
+    gates:
+      - Requirements are testable
+      - Out of scope defined
+      - Success metrics defined
+
+  - phase: UX Design
+    agent: ux
+    command: "*define-ux source: 'docs/bmad/{slug}/01b-prd.md'"
+    artifact: "docs/bmad/{slug}/01c-ux-flows.md"
+    required: false
+    condition: "UI changes required"
+    gates:
+      - User flows complete
+      - States defined (loading, empty, error)
+      - Mobile considered
+
+  # === SOLUTIONING PHASE ===
+  - phase: Architecture
+    agent: architect
+    command: "*define-contract source: 'docs/bmad/{slug}/01b-prd.md'"
+    artifact: "docs/bmad/{slug}/02-technical-spec.md"
+    required: true
+    gates:
+      - No new dependencies without justification
+      - Patterns consistent with codebase
+      - API contracts defined
+
+  - phase: User Stories
+    agent: sm
+    command: "*create-stories source: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/02b-user-stories.md"
+    required: true
+    gates:
+      - Stories follow INVEST
+      - Acceptance criteria defined
+      - Dependencies mapped
+
+  # === IMPLEMENTATION PHASE ===
+  - phase: Implement
+    agent: dev
+    command: "*implement-fix spec: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/03-implementation.md"
+    required: true
+    gates:
+      - All stories implemented
+      - Tests written
+      - No spec deviations
+
+  - phase: Code Review
+    agent: reviewer
+    command: "*review-code source: 'docs/bmad/{slug}/03-implementation.md'"
+    artifact: "docs/bmad/{slug}/polish-01-code-review.md"
+    required: true
+    gates:
+      - No critical issues
+      - Major issues addressed
+
+  - phase: QA
+    agent: qa
+    command: "*review-feature spec: 'docs/bmad/{slug}/02-technical-spec.md'"
+    artifact: "docs/bmad/{slug}/04-qa-report.md"
+    required: true
+    gates:
+      - All acceptance criteria pass
+      - Edge cases verified
+      - No regressions
+
+optional_squads:
+  security:
+    trigger: "Auth, payments, PII, file uploads"
+    agents: [sec-ops, dpo, pentester]
+  
+  growth:
+    trigger: "Pricing, onboarding, retention"
+    agents: [pricing, retention, entitlements]
+  
+  ops:
+    trigger: "New services, infrastructure, database"
+    agents: [devops, dba, sre]

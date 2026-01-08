@@ -1,0 +1,84 @@
+id: beast-mode
+name: "Beast Mode Squad Roster"
+description: |
+  A 31-agent specialized engineering organization for high-scale development.
+  6 specialized squads covering the entire development lifecycle:
+  - Core: Essential development workflow (8 agents)
+  - Security: Security, privacy, and compliance (4 agents)
+  - Growth: Product growth and monetization (6 agents)
+  - Ops: Infrastructure and reliability (4 agents)
+  - Polish: Code quality and documentation (5 agents)
+  - AI-Eco: AI/ML feature development (4 agents)
+  Plus: 1 Orchestrator for workflow routing.
+
+version: "1.0.0"
+author: "Samuel Saha"
+repository: "https://github.com/samuelsaha/bmad-beast-mode"
+type: unitary
+license: MIT
+
+tags:
+  - agents
+  - enterprise
+  - security
+  - ops
+  - growth
+  - polish
+  - ai
+  - workflows
+  - templates
+
+dependencies:
+  - bmm-bmad-method
+
+structure:
+  agents:
+    - agents/orchestrator.md
+    - agents/core/*.md
+    - agents/security/*.md
+    - agents/growth/*.md
+    - agents/ops/*.md
+    - agents/polish/*.md
+    - agents/ai-eco/*.md
+  
+  workflows:
+    - workflows/quick-fix.yaml
+    - workflows/standard-feature.yaml
+    - workflows/enterprise-feature.yaml
+    - workflows/ai-feature.yaml
+  
+  templates:
+    - templates/*.tmpl.md
+  
+  config:
+    - config/squads.yaml
+    - config/commands.yaml
+
+agent_count: 31
+workflow_count: 4
+template_count: 5
+
+squads:
+  - name: core
+    count: 8
+    description: "Essential development workflow agents"
+  
+  - name: security
+    count: 4
+    description: "Security, privacy, and compliance specialists"
+  
+  - name: growth
+    count: 6
+    description: "Product growth and monetization specialists"
+  
+  - name: ops
+    count: 4
+    description: "Infrastructure and reliability specialists"
+  
+  - name: polish
+    count: 5
+    description: "Code quality and documentation specialists"
+  
+  - name: ai-eco
+    count: 4
+    description: "AI/ML feature development specialists"

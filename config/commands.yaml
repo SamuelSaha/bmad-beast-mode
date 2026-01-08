@@ -1,0 +1,171 @@
+# Beast Mode Command Registry
+# All available commands across all agents
+
+version: "1.0.0"
+generated: "2026-01-08"
+
+commands:
+  # === ORCHESTRATOR ===
+  orchestrator:
+    - name: "*start"
+      agent: orchestrator
+      description: "Initialize Beast Mode session"
+    - name: "*workflow-init"
+      agent: orchestrator
+      description: "Analyze request and recommend workflow"
+    - name: "*validate-context"
+      agent: orchestrator
+      description: "Ensure request has sufficient context"
+    - name: "*activate-squad"
+      agent: orchestrator
+      description: "Bring in a specialized squad"
+    - name: "*gate-check"
+      agent: orchestrator
+      description: "Verify phase completion"
+    - name: "*status"
+      agent: orchestrator
+      description: "Show current workflow progress"
+    - name: "*help"
+      agent: orchestrator
+      description: "Show available commands"
+
+  # === CORE SQUAD ===
+  core:
+    - name: "*analyze-problem"
+      agent: analyst
+      artifact: "docs/bmad/{slug}/01-analysis.md"
+    - name: "*create-prd"
+      agent: pm
+      artifact: "docs/bmad/{slug}/01b-prd.md"
+    - name: "*define-ux"
+      agent: ux
+      artifact: "docs/bmad/{slug}/01c-ux-flows.md"
+    - name: "*define-contract"
+      agent: architect
+      artifact: "docs/bmad/{slug}/02-technical-spec.md"
+    - name: "*create-stories"
+      agent: sm
+      artifact: "docs/bmad/{slug}/02b-user-stories.md"
+    - name: "*implement-fix"
+      agent: dev
+      artifact: "docs/bmad/{slug}/03-implementation.md"
+    - name: "*review-feature"
+      agent: qa
+      artifact: "docs/bmad/{slug}/04-qa-report.md"
+    - name: "*define-metrics"
+      agent: data
+      artifact: "docs/bmad/{slug}/data-01-tracking-plan.md"
+
+  # === SECURITY SQUAD ===
+  security:
+    - name: "*threat-model"
+      agent: sec-ops
+      artifact: "docs/bmad/{slug}/sec-01-threat-model.md"
+    - name: "*abuse-test"
+      agent: pentester
+      artifact: "docs/bmad/{slug}/sec-02-attack-plan.md"
+    - name: "*privacy-check"
+      agent: dpo
+      artifact: "docs/bmad/{slug}/sec-03-privacy-impact.md"
+    - name: "*scan-code"
+      agent: appsec-bot
+      artifact: "docs/bmad/{slug}/sec-04-auto-scan.md"
+
+  # === GROWTH SQUAD ===
+  growth:
+    - name: "*sanity-check"
+      agent: value-advocate
+      artifact: "docs/bmad/{slug}/growth-01-value-validation.md"
+    - name: "*audit-pricing"
+      agent: pricing
+      artifact: "docs/bmad/{slug}/growth-02-pricing-fit.md"
+    - name: "*plan-experiment"
+      agent: growth
+      artifact: "docs/bmad/{slug}/growth-03-experiment-design.md"
+    - name: "*churn-risk"
+      agent: retention
+      artifact: "docs/bmad/{slug}/growth-04-retention-impact.md"
+    - name: "*support-audit"
+      agent: support
+      artifact: "docs/bmad/{slug}/growth-05-support-readiness.md"
+    - name: "*audit-entitlements"
+      agent: entitlements
+      artifact: "docs/bmad/{slug}/growth-06-entitlements-check.md"
+
+  # === OPS SQUAD ===
+  ops:
+    - name: "*deployment-plan"
+      agent: devops
+      artifact: "docs/bmad/{slug}/ops-01-deployment-spec.md"
+    - name: "*infra-check"
+      agent: devops
+      artifact: "docs/bmad/{slug}/ops-02-infra-audit.md"
+    - name: "*schema-design"
+      agent: dba
+      artifact: "docs/bmad/{slug}/ops-03-db-migration.md"
+    - name: "*query-audit"
+      agent: dba
+      artifact: "docs/bmad/{slug}/ops-04-query-audit.md"
+    - name: "*define-slo"
+      agent: sre
+      artifact: "docs/bmad/{slug}/ops-05-observability.md"
+    - name: "*incident-prep"
+      agent: sre
+      artifact: "docs/bmad/{slug}/ops-06-runbook.md"
+    - name: "*perf-audit"
+      agent: perf
+      artifact: "docs/bmad/{slug}/ops-07-perf-audit.md"
+    - name: "*load-plan"
+      agent: perf
+      artifact: "docs/bmad/{slug}/ops-08-load-test-plan.md"
+
+  # === POLISH SQUAD ===
+  polish:
+    - name: "*review-code"
+      agent: reviewer
+      artifact: "docs/bmad/{slug}/polish-01-code-review.md"
+    - name: "*write-docs"
+      agent: tech-writer
+      artifact: "docs/bmad/{slug}/polish-02-documentation.md"
+    - name: "*api-docs"
+      agent: tech-writer
+      artifact: "docs/bmad/{slug}/polish-03-api-docs.md"
+    - name: "*a11y-audit"
+      agent: a11y
+      artifact: "docs/bmad/{slug}/polish-04-a11y-audit.md"
+    - name: "*i18n-audit"
+      agent: i18n
+      artifact: "docs/bmad/{slug}/polish-05-i18n-audit.md"
+    - name: "*plan-refactor"
+      agent: refactor
+      artifact: "docs/bmad/{slug}/polish-06-refactor-plan.md"
+    - name: "*dead-code-scan"
+      agent: refactor
+      artifact: "docs/bmad/{slug}/polish-07-dead-code.md"
+
+  # === AI-ECO SQUAD ===
+  ai-eco:
+    - name: "*design-prompt"
+      agent: prompt-eng
+      artifact: "docs/bmad/{slug}/ai-01-prompt-spec.md"
+    - name: "*prompt-eval"
+      agent: prompt-eng
+      artifact: "docs/bmad/{slug}/ai-02-prompt-eval.md"
+    - name: "*safety-audit"
+      agent: ai-safety
+      artifact: "docs/bmad/{slug}/ai-03-safety-audit.md"
+    - name: "*bias-check"
+      agent: ai-safety
+      artifact: "docs/bmad/{slug}/ai-04-bias-report.md"
+    - name: "*cost-analysis"
+      agent: ai-cost
+      artifact: "docs/bmad/{slug}/ai-05-cost-analysis.md"
+    - name: "*optimize-tokens"
+      agent: ai-cost
+      artifact: "docs/bmad/{slug}/ai-06-token-optimization.md"
+    - name: "*design-integration"
+      agent: ai-arch
+      artifact: "docs/bmad/{slug}/ai-07-integration-spec.md"
+    - name: "*eval-pipeline"
+      agent: ai-arch
+      artifact: "docs/bmad/{slug}/ai-08-eval-pipeline.md"
