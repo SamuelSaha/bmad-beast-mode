@@ -15,21 +15,42 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: '20'
+          python-version: '3.11'
 
-      - name: Install YAML validator
-        run: npm install -g yaml-lint ajv-cli
+      - name: Install dependencies
+        run: pip install pyyaml
 
       - name: Validate YAML files
         run: |
           echo "Validating YAML files..."
-          find . -name "*.yaml" -o -name "*.yml" | while read file; do
-            echo "Checking: $file"
-            yamllint "$file" || exit 1
-          done
+          python3 << 'EOF'
+          import yaml
+          import sys
+          from pathlib import Path
+          
+          errors = []
+          yaml_files = list(Path('.').rglob('*.yaml')) + list(Path('.').rglob('*.yml'))
+          
+          for f in yaml_files:
+              if '.git' in str(f):
+                  continue
+              try:
+                  with open(f) as file:
+                      yaml.safe_load(file)
+                  print(f"✅ {f}")
+              except yaml.YAMLError as e:
+                  print(f"❌ {f}: {e}")
+                  errors.append(str(f))
+          
+          if errors:
+              print(f"\n❌ {len(errors)} YAML file(s) have errors")
+              sys.exit(1)
+          
+          print(f"\n✅ All {len(yaml_files)} YAML files valid")
+          EOF
 
       - name: Validate module.yaml structure
         run: |
@@ -49,6 +70,8 @@ jobs:
               sys.exit(1)
           
           print("✅ module.yaml is valid")
+          print(f"   Version: {module.get('version')}")
+          print(f"   Name: {module.get('name')}")
           EOF
 
       - name: Check agent files exist
@@ -129,7 +152,7 @@ jobs:
         run: |
           echo "Scanning for secrets..."
           # Check for common secret patterns
-          if grep -rE "(sk_live_|sk_test_|AKIA[0-9A-Z]{16}|ghp_|xox[baprs]-)" --include="*.md" --include="*.yaml" --include="*.txt" .; then
+          if grep -rE "(sk_live_|sk_test_|AKIA[0-9A-Z]{16}|ghp_|xox[baprs]-)" --include="*.md" --include="*.yaml" --include="*.txt" . 2>/dev/null; then
             echo "❌ Potential secrets found!"
             exit 1
           fi
@@ -151,24 +174,37 @@ jobs:
     needs: validate
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
         
       - name: Get version
         id: version
         run: |
-          VERSION=$(grep '^version:' module.yaml | cut -d'"' -f2)
+          VERSION=$(python3 -c "import yaml; print(yaml.safe_load(open('module.yaml'))['version'])")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: $VERSION"
           
       - name: Check if release exists
         id: check_release
         run: |
           if gh release view "v${{ steps.version.outputs.version }}" > /dev/null 2>&1; then
             echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Release v${{ steps.version.outputs.version }} already exists"
           else
             echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Release v${{ steps.version.outputs.version }} does not exist"
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
