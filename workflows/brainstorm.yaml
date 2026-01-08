@@ -11,19 +11,19 @@ description: |
 estimated_time: "30-60 minutes"
 
 trigger_conditions:
-  - New product idea
-  - Feature ideation
-  - User problem exploration
-  - "What if" scenarios
-  - Innovation sprint
+  - "New product idea"
+  - "Feature ideation"
+  - "User problem exploration"
+  - "What if scenarios"
+  - "Innovation sprint"
 
 trigger_keywords:
-  - ideation
-  - brainstorm
+  - "ideation"
+  - "brainstorm"
   - "what if"
-  - new feature
-  - explore
-  - innovate
+  - "new feature"
+  - "explore"
+  - "innovate"
 
 phases:
   # === PHASE 1: EMPATHIZE ===
