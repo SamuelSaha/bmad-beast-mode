@@ -11,7 +11,7 @@ description: |
   - AI-Eco: AI/ML feature development (4 agents)
   Plus: 1 Orchestrator for workflow routing.
 
-version: "1.0.0"
+version: "2.0.0"
 author: "Samuel Saha"
 repository: "https://github.com/samuelsaha/bmad-beast-mode"
 type: unitary
