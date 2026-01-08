@@ -10,10 +10,17 @@ description: |
   - Polish: Code quality and documentation (5 agents)
   - AI-Eco: AI/ML feature development (4 agents)
   Plus: 1 Orchestrator for workflow routing.
+  
+  Enterprise Features:
+  - Context Sharding for 90% token savings
+  - Party Mode for multi-agent escalation
+  - Test Automation (TEA Agent) with Playwright
+  - Brainstorming & Brownfield Discovery workflows
+  - Full BMAD v6 compatibility
 
-version: "2.0.0"
+version: "2.1.0"
 author: "Samuel Saha"
-repository: "https://github.com/samuelsaha/bmad-beast-mode"
+repository: "https://github.com/SamuelSaha/bmad-beast-mode"
 type: unitary
 license: MIT
 
@@ -27,6 +34,11 @@ tags:
   - ai
   - workflows
   - templates
+  - testing
+  - automation
+  - brainstorming
+  - brownfield
+  - sharding
 
 dependencies:
   - bmm-bmad-method
@@ -46,6 +58,8 @@ structure:
     - workflows/standard-feature.yaml
     - workflows/enterprise-feature.yaml
     - workflows/ai-feature.yaml
+    - workflows/brainstorm.yaml
+    - workflows/brownfield-discovery.yaml
   
   templates:
     - templates/*.tmpl.md
@@ -53,32 +67,115 @@ structure:
   config:
     - config/squads.yaml
     - config/commands.yaml
+    - config/sharding.yaml
+    - config/party-protocol.yaml
+    - config/output-paths.yaml
+  
+  docs:
+    - docs/INTEGRATION_GUIDE.md
+    - docs/TRIGGER_MATRIX.md
+  
+  scripts:
+    - scripts/integrate.sh
+  
+  ci:
+    - .github/workflows/validate.yml
 
 agent_count: 31
-workflow_count: 4
+workflow_count: 6
 template_count: 5
+config_count: 5
 
 squads:
   - name: core
     count: 8
     description: "Essential development workflow agents"
+    agents:
+      - analyst
+      - pm
+      - ux-designer
+      - architect
+      - sm
+      - dev
+      - qa (TEA)
+      - data-analyst
   
   - name: security
     count: 4
     description: "Security, privacy, and compliance specialists"
+    agents:
+      - sec-ops
+      - dpo
+      - pentester
+      - appsec-automation
   
   - name: growth
     count: 6
     description: "Product growth and monetization specialists"
+    agents:
+      - user-value
+      - pricing
+      - growth
+      - retention
+      - support
+      - entitlements
   
   - name: ops
     count: 4
     description: "Infrastructure and reliability specialists"
+    agents:
+      - devops
+      - dba
+      - sre
+      - perf
   
   - name: polish
     count: 5
     description: "Code quality and documentation specialists"
+    agents:
+      - code-reviewer
+      - tech-writer
+      - a11y
+      - i18n
+      - refactor
   
   - name: ai-eco
     count: 4
     description: "AI/ML feature development specialists"
+    agents:
+      - prompt-engineer
+      - ai-safety
+      - ai-cost
+      - ai-architect
+
+enterprise_features:
+  context_sharding:
+    enabled: true
+    config: "config/sharding.yaml"
+    description: "90% token savings for large codebases"
+  
+  party_mode:
+    enabled: true
+    config: "config/party-protocol.yaml"
+    description: "Multi-agent escalation for deadlocks"
+  
+  test_automation:
+    agent: "agents/core/qa.md"
+    framework: "playwright"
+    description: "TEA agent with Page Object Model"
+  
+  brainstorming:
+    workflow: "workflows/brainstorm.yaml"
+    description: "Creative Intelligence Suite (CIS)"
+  
+  brownfield:
+    workflow: "workflows/brownfield-discovery.yaml"
+    description: "Legacy codebase mapping"
+  
+  llm_bundle:
+    file: "llms-full.txt"
+    description: "Single-file context for any LLM"
+  
+  ci_validation:
+    config: ".github/workflows/validate.yml"
+    description: "Automated module validation"

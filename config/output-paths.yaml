@@ -1,0 +1,105 @@
+# Beast Mode Output Configuration
+# Controls where artifacts are written
+
+version: "1.0.0"
+
+# ============================================================================
+# OUTPUT PATHS
+# ============================================================================
+
+paths:
+  # Primary output location (your preference)
+  primary: "docs/bmad/{slug}/"
+  
+  # BMAD v6 compatible output (for standard tooling)
+  bmad_compatible: "_bmad-output/beast-mode/{slug}/"
+  
+  # Enable dual-write for maximum compatibility
+  dual_write: true
+
+# ============================================================================
+# ARTIFACT NAMING
+# ============================================================================
+
+artifacts:
+  # Brainstorming Phase (00-series)
+  product_brief: "00-product-brief.md"
+  user_problem: "00a-user-problem.md"
+  divergent_ideas: "00b-divergent-ideas.md"
+  idea_evaluation: "00c-idea-evaluation.md"
+  concept_sketch: "00d-concept-sketch.md"
+  validation: "00e-validation.md"
+  
+  # Analysis Phase (01-series)
+  analysis: "01-analysis.md"
+  prd: "01b-prd.md"
+  ux_flows: "01c-ux-flows.md"
+  
+  # Architecture Phase (02-series)
+  technical_spec: "02-technical-spec.md"
+  user_stories: "02b-user-stories.md"
+  
+  # Implementation Phase (03-series)
+  implementation: "03-implementation.md"
+  
+  # Verification Phase (04-series)
+  qa_report: "04-qa-report.md"
+  test_automation: "04-test-automation.md"
+  
+  # Security Phase (sec-series)
+  threat_model: "sec-01-threat-model.md"
+  attack_plan: "sec-02-attack-plan.md"
+  privacy_impact: "sec-03-privacy-impact.md"
+  security_scan: "sec-04-auto-scan.md"
+  
+  # AI Phase (ai-series)
+  prompt_spec: "ai-01-prompt-spec.md"
+  ai_safety_audit: "ai-03-safety-audit.md"
+  ai_cost_analysis: "ai-05-cost-analysis.md"
+  ai_integration: "ai-07-integration-spec.md"
+  
+  # Ops Phase (ops-series)
+  deployment_spec: "ops-01-deployment-spec.md"
+  db_migration: "ops-03-db-migration.md"
+  observability: "ops-05-observability.md"
+  perf_audit: "ops-07-perf-audit.md"
+  
+  # Data Phase (data-series)
+  tracking_plan: "data-01-tracking-plan.md"
+  
+  # Discovery/Brownfield
+  discovery_structure: "discovery/01-structure.md"
+  discovery_architecture: "discovery/02-architecture.md"
+  discovery_state: "discovery/03-state.md"
+  discovery_patterns: "discovery/04-patterns.md"
+  discovery_debt: "discovery/05-tech-debt.md"
+  discovery_security: "discovery/06-security.md"
+  discovery_roadmap: "discovery/07-roadmap.md"
+
+# ============================================================================
+# SLUG CONVENTIONS
+# ============================================================================
+
+slug:
+  format: "kebab-case"
+  max_length: 50
+  reserved:
+    - "legacy"
+    - "discovery"
+    - "shared"
+  examples:
+    - "apple-pay-integration"
+    - "user-auth-revamp"
+    - "ai-chatbot-v2"
+
+# ============================================================================
+# CLEANUP RULES
+# ============================================================================
+
+cleanup:
+  # Auto-archive completed features
+  archive_after_days: 30
+  archive_path: "docs/bmad/_archive/"
+  
+  # Keep discovery docs longer
+  discovery_retention_days: 90

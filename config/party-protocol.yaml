@@ -1,0 +1,237 @@
+# Beast Mode Party Protocol
+# Multi-Agent Escalation for Deadlocks
+# From BMAD v6: "Party option for 2-3 agent review when stuck"
+
+version: "1.0.0"
+
+description: |
+  The Party Protocol is triggered when a single agent cannot make progress.
+  It brings together multiple agents for a facilitated debate to resolve
+  uncertainty, conflicts, or complex decisions.
+
+# ============================================================================
+# TRIGGER CONDITIONS
+# ============================================================================
+
+triggers:
+  # Automatic triggers
+  auto:
+    - condition: "uncertainty_persists_after_1_pass"
+      description: "Agent expresses uncertainty twice in a row"
+    - condition: "conflicting_requirements"
+      description: "Spec has contradictory requirements"
+    - condition: "blocked_by_missing_context"
+      description: "Context Fuel insufficient for 2+ attempts"
+    - condition: "scope_creep_detected"
+      description: "Estimated scope exceeds 2x original"
+  
+  # Manual triggers
+  manual:
+    command: "*party"
+    usage: "*party topic: '{DECISION_TOPIC}'"
+
+# ============================================================================
+# PARTY CONFIGURATIONS
+# ============================================================================
+
+parties:
+  # Technical Decision Party
+  technical:
+    participants:
+      - role: "Architect"
+        agent: "agents/core/architect.md"
+        perspective: "System design, patterns, maintainability"
+      - role: "Developer"
+        agent: "agents/core/dev.md"
+        perspective: "Implementation feasibility, effort"
+      - role: "QA"
+        agent: "agents/core/qa.md"
+        perspective: "Testability, edge cases"
+    facilitator: "PM"
+    use_when:
+      - "Architecture decision"
+      - "Technology choice"
+      - "Pattern selection"
+    
+  # Product Decision Party
+  product:
+    participants:
+      - role: "PM"
+        agent: "agents/core/pm.md"
+        perspective: "Business value, user impact"
+      - role: "UX"
+        agent: "agents/core/ux-designer.md"
+        perspective: "User experience, usability"
+      - role: "Data"
+        agent: "agents/core/data-analyst.md"
+        perspective: "Metrics, measurability"
+    facilitator: "Analyst"
+    use_when:
+      - "Feature prioritization"
+      - "Scope decision"
+      - "User flow design"
+  
+  # Security Party
+  security:
+    participants:
+      - role: "SecOps"
+        agent: "agents/security/sec-ops.md"
+        perspective: "Threat modeling, vulnerabilities"
+      - role: "DPO"
+        agent: "agents/security/dpo.md"
+        perspective: "Privacy, compliance"
+      - role: "Pentester"
+        agent: "agents/security/pentester.md"
+        perspective: "Exploitability, attack vectors"
+    facilitator: "Architect"
+    use_when:
+      - "Security architecture"
+      - "Data handling decision"
+      - "Auth implementation"
+  
+  # Ops Party
+  ops:
+    participants:
+      - role: "DevOps"
+        agent: "agents/ops/devops.md"
+        perspective: "Deployment, reliability"
+      - role: "SRE"
+        agent: "agents/ops/sre.md"
+        perspective: "SLOs, monitoring"
+      - role: "DBA"
+        agent: "agents/ops/dba.md"
+        perspective: "Data, performance"
+    facilitator: "Architect"
+    use_when:
+      - "Infrastructure decision"
+      - "Scaling strategy"
+      - "Database design"
+  
+  # AI Party
+  ai:
+    participants:
+      - role: "Prompt Engineer"
+        agent: "agents/ai-eco/prompt-engineer.md"
+        perspective: "Prompt design, quality"
+      - role: "AI Safety"
+        agent: "agents/ai-eco/ai-safety.md"
+        perspective: "Safety, ethics, bias"
+      - role: "AI Cost"
+        agent: "agents/ai-eco/ai-cost.md"
+        perspective: "Cost optimization, efficiency"
+    facilitator: "AI Architect"
+    use_when:
+      - "AI feature design"
+      - "Model selection"
+      - "Prompt strategy"
+
+# ============================================================================
+# PARTY PROTOCOL
+# ============================================================================
+
+protocol:
+  steps:
+    1:
+      name: "Frame the Question"
+      action: |
+        The facilitator clearly states:
+        - What decision needs to be made
+        - What constraints exist
+        - What's at stake
+    
+    2:
+      name: "Individual Perspectives"
+      action: |
+        Each participant provides their perspective:
+        - Their recommendation
+        - Their reasoning
+        - Their concerns
+      format: |
+        ## {Role} Perspective
+        
+        **Recommendation:** {A/B/Other}
+        **Reasoning:** {Why}
+        **Concerns:** {What could go wrong}
+        **Conditions:** {What would change my mind}
+    
+    3:
+      name: "Debate Round"
+      action: |
+        Participants respond to each other:
+        - Challenge assumptions
+        - Identify overlaps
+        - Surface new information
+      max_rounds: 2
+    
+    4:
+      name: "Synthesis"
+      action: |
+        Facilitator synthesizes:
+        - Points of agreement
+        - Remaining disagreements
+        - Proposed resolution
+    
+    5:
+      name: "Decision"
+      action: |
+        Final decision with:
+        - Clear choice
+        - Rationale
+        - Accepted trade-offs
+        - Dissenting opinions noted
+
+# ============================================================================
+# OUTPUT FORMAT
+# ============================================================================
+
+output:
+  artifact: "docs/bmad/{slug}/party-{topic}.md"
+  template: |
+    # Party Decision: {topic}
+    
+    **Date:** {date}
+    **Participants:** {list}
+    **Facilitator:** {name}
+    
+    ## Context
+    {what triggered the party}
+    
+    ## Perspectives
+    
+    ### {Participant 1}
+    {perspective}
+    
+    ### {Participant 2}
+    {perspective}
+    
+    ### {Participant 3}
+    {perspective}
+    
+    ## Debate Summary
+    {key points from debate}
+    
+    ## Decision
+    **Choice:** {decision}
+    **Rationale:** {why}
+    **Trade-offs Accepted:** {what we gave up}
+    
+    ## Dissenting Opinions
+    {any remaining disagreements}
+    
+    ## Next Steps
+    {actions to take}
+
+# ============================================================================
+# ESCALATION
+# ============================================================================
+
+escalation:
+  if_no_consensus:
+    - "Escalate to human decision maker"
+    - "Time-box and force choice by majority"
+    - "Split test (A/B) both options"
+  
+  deadlock_breaker:
+    - "Default to lower risk option"
+    - "Default to more reversible option"
+    - "Default to simpler option"

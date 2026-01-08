@@ -156,7 +156,72 @@ AI/ML feature development specialists.
 *workflow-init context: "Add AI-powered recommendations"
 ```
 
+### 💡 Brainstorming Flow (NEW in v2.1)
+**For:** Ideation, design thinking, feature discovery  
+**Time:** 30-60 minutes  
+**Agents:** Analyst → ValueAdvocate → PM → UX → Validation
+
+```
+*brainstorm topic: "How might we improve user onboarding?"
+```
+
+### 🗺️ Brownfield Discovery Flow (NEW in v2.1)
+**For:** Mapping existing codebases before work  
+**Time:** 1-2 hours  
+**Agents:** Architect → Reviewer → Refactor → SecOps
+
+```
+*scan-legacy
+```
+
 ---
+
+## 🏭 Advanced Capabilities (v2.1)
+
+### 📊 Context Sharding
+**90% token savings** for large codebases. Configure in `config/sharding.yaml`.
+
+- File-type specific strategies (interface-only, split-by-header, summary, ignore)
+- Automatic token management
+- Priority ordering for context windows
+
+### 🧪 Test Architect (TEA)
+The upgraded QA agent is now a **full Test Automation Engineer**:
+
+```
+*automate-test source: "docs/bmad/{slug}/03-implementation.md"
+*framework stack: "playwright"
+*trace source: "docs/bmad/{slug}/01b-prd.md"
+```
+
+- Playwright integration with Page Object Model
+- Test data factories
+- CI/CD templates
+- Requirements traceability
+
+### 🎉 Party Mode
+When stuck, invoke **multi-agent escalation**:
+
+```
+*party topic: "Architecture decision"
+```
+
+Available parties:
+- **Technical**: Architect + Dev + QA
+- **Product**: PM + UX + Data
+- **Security**: SecOps + DPO + Pentester
+- **Ops**: DevOps + SRE + DBA
+- **AI**: PromptEng + AISafety + AICost
+
+### 📄 LLM Bundle
+Single-file context for **any LLM**. Copy-paste `llms-full.txt` for instant Beast Mode in any chat.
+
+### ✅ CI Validation
+Automatic module validation on every push:
+- YAML syntax checking
+- Agent file verification
+- Secret scanning
+- Versioned releases
 
 ## 📁 Artifact Structure
 

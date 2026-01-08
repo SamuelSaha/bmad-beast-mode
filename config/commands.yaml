@@ -1,8 +1,63 @@
 # Beast Mode Command Registry
 # All available commands across all agents
 
-version: "1.0.0"
+version: "2.1.0"
 generated: "2026-01-08"
+
+# ============================================================================
+# ENTERPRISE COMMANDS (New in v2.1)
+# ============================================================================
+
+enterprise:
+  # Test Automation (TEA)
+  - name: "*automate-test"
+    agent: qa
+    description: "Generate Playwright E2E tests with POM"
+    artifact: "tests/e2e/{slug}.spec.ts"
+  - name: "*framework"
+    agent: qa
+    description: "Scaffold test automation framework"
+  - name: "*trace"
+    agent: qa
+    description: "Create requirements traceability matrix"
+  
+  # Brainstorming (CIS)
+  - name: "*brainstorm"
+    workflow: brainstorm
+    description: "Creative Intelligence Suite - ideation workflow"
+    artifact: "docs/bmad/{slug}/00-product-brief.md"
+  - name: "*ideate"
+    workflow: brainstorm
+    description: "Alias for brainstorm"
+  
+  # Brownfield Discovery
+  - name: "*scan-legacy"
+    workflow: brownfield-discovery
+    description: "Map existing codebase before starting work"
+    artifact: "docs/bmad/discovery/"
+  - name: "*brownfield"
+    workflow: brownfield-discovery
+    description: "Alias for scan-legacy"
+  
+  # Party Mode (Multi-Agent Escalation)
+  - name: "*party"
+    config: party-protocol
+    description: "Trigger multi-agent debate for deadlock resolution"
+    parties:
+      - technical: "Architect + Dev + QA"
+      - product: "PM + UX + Data"
+      - security: "SecOps + DPO + Pentester"
+      - ops: "DevOps + SRE + DBA"
+      - ai: "PromptEng + AISafety + AICost"
+  
+  # Context Sharding
+  - name: "*shard"
+    config: sharding
+    description: "Apply context sharding to reduce tokens"
+
+# ============================================================================
+# STANDARD COMMANDS
+# ============================================================================
 
 commands:
   # === ORCHESTRATOR ===

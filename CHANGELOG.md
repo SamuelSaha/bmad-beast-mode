@@ -5,6 +5,78 @@ All notable changes to Beast Mode Squad Roster will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-01-08
+
+### 🏭 Enterprise Features Release
+
+This release adds BMAD v6 official enterprise capabilities.
+
+### Added
+
+#### Context Sharding (`config/sharding.yaml`)
+- 90% token savings for large codebases
+- File-type specific strategies (interface-only, split-by-header, summary, ignore)
+- Configurable token limits per pattern
+- Priority ordering for context window management
+
+#### Test Architect (TEA) - Upgraded QA Agent
+- Full test automation with Playwright
+- Page Object Model (POM) scaffold
+- Test data factories
+- CI integration templates
+- Flakiness prevention strategies
+- Requirements traceability matrix
+- Commands: `*automate-test`, `*framework`, `*trace`
+
+#### Brainstorming Workflow (`workflows/brainstorm.yaml`)
+- Creative Intelligence Suite (CIS)
+- SCAMPER ideation technique
+- Diverge → Converge → Prototype → Validate flow
+- Product Brief artifact output
+- Commands: `*brainstorm`, `*ideate`
+
+#### Brownfield Discovery (`workflows/brownfield-discovery.yaml`)
+- Legacy codebase mapping
+- Architecture diagram generation
+- Tech debt audit
+- Pattern inventory
+- Security scan
+- Improvement roadmap
+- Commands: `*scan-legacy`, `*brownfield`
+
+#### Party Mode (`config/party-protocol.yaml`)
+- Multi-agent escalation for deadlocks
+- Preconfigured parties: Technical, Product, Security, Ops, AI
+- Facilitated debate protocol
+- Consensus synthesis
+- Command: `*party topic: '{topic}'`
+
+#### Output Path Configuration (`config/output-paths.yaml`)
+- BMAD v6 compatible output (`_bmad-output/`)
+- Dual-write mode for compatibility
+- Artifact naming conventions
+
+#### LLM Bundle (`llms-full.txt`)
+- Single-file context for any LLM
+- Copy-paste full Beast Mode capabilities
+- Command reference
+- Workflow overview
+
+#### CI Validation (`.github/workflows/validate.yml`)
+- Automated YAML validation
+- Agent file existence checks
+- Workflow validation
+- Secret scanning
+- Versioned releases
+
+### Changed
+- QA agent renamed to TEA (Test Architect) with enhanced automation
+- Module version bumped to 2.1.0
+- Added 2 new workflows (total: 6)
+- Added 3 new config files (total: 5)
+
+---
+
 ## [2.0.0] - 2026-01-08
 
 ### 🔥 MAJOR: 10x Agent Capabilities Upgrade
@@ -47,10 +119,6 @@ Every agent has been significantly enhanced with:
 - **AI Safety**: Added `bias-check`, `prevent-hallucination`, `ensure-transparency`, `design-content-filter`, `design-oversight`, `plan-ai-incident`, `design-ai-audit`
 - **AI Cost**: Added `analyze-tokens`, `project-volume`, `compare-models`, `optimize-tokens`, `design-cache`, `design-limits`, `monitor-costs`
 - **AI Architect**: Added `design-client`, `design-retry`, `design-streaming`, `design-fallbacks`, `design-observability`, `eval-pipeline`, `secure-ai-integration`
-
-### Breaking Changes
-- Agent file formats significantly expanded
-- Some command names changed for consistency
 
 ---
 
@@ -95,7 +163,7 @@ Every agent has been significantly enhanced with:
 
 ### Planned
 - Web bundle for ChatGPT/Claude Projects
-- Additional templates (UX Flows, Security Reports)
+- Workflow override/vendoring system
 - Integration tests for workflows
-- Squad-specific checklists
 - IDE plugin support
+- Additional ideation techniques in CIS

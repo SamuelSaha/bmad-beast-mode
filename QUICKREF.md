@@ -1,4 +1,4 @@
-# Beast Mode: Quick Reference Card
+# Beast Mode: Quick Reference Card v2.1
 
 ## 🚀 Getting Started
 ```
@@ -9,12 +9,24 @@
 
 ## ⚡ Workflow Selection
 
-| Workflow | Use For | Time |
-|----------|---------|------|
-| Quick Fix | Bug fixes, small changes | < 2h |
-| Standard | Features, refactors | 1d-1w |
-| Enterprise | Critical, compliance | 1-4w |
-| AI Feature | LLM/ML integration | 1-2w |
+| Workflow | Use For | Time | Command |
+|----------|---------|------|---------|
+| Quick Fix | Bug fixes, small changes | < 2h | `*start` |
+| Standard | Features, refactors | 1d-1w | `*start` |
+| Enterprise | Critical, compliance | 1-4w | `*start` |
+| AI Feature | LLM/ML integration | 1-2w | `*start` |
+| **Brainstorm** | Ideation, design thinking | 30-60m | `*brainstorm` |
+| **Brownfield** | Map existing code | 1-2h | `*scan-legacy` |
+
+## 🏭 Enterprise Commands (v2.1)
+```
+*brainstorm topic: "{IDEA}"           # Creative Intelligence workflow
+*scan-legacy                           # Brownfield discovery
+*party topic: "{DECISION}"             # Multi-agent escalation
+*automate-test source: "{spec}"        # Generate Playwright tests
+*framework stack: "playwright"          # Scaffold test framework
+*trace source: "{prd}"                  # Traceability matrix
+```
 
 ## 🔵 Core Commands
 ```
@@ -81,6 +93,20 @@
 *eval-pipeline source: "docs/bmad/{slug}/ai-01-prompt-spec.md"
 ```
 
+## 🎉 Party Mode (Multi-Agent Escalation)
+When stuck, invoke party mode:
+```
+*party topic: "Architecture decision"
+*party topic: "Security vs UX tradeoff"
+```
+
+Available parties:
+- **Technical**: Architect + Dev + QA
+- **Product**: PM + UX + Data
+- **Security**: SecOps + DPO + Pentester
+- **Ops**: DevOps + SRE + DBA
+- **AI**: PromptEng + AISafety + AICost
+
 ## 📋 Context Fuel Template
 ```
 Current behavior: [What happens now]
@@ -95,8 +121,27 @@ Environment: [Stack, libs, relevant files]
 *status
 ```
 
+## 📊 LLM Quick Load
+For any LLM, paste the contents of:
+```
+llms-full.txt
+```
+
 ## 🚫 Hard Constraints (Default)
 - ⛔ ZERO new package.json dependencies
 - ⛔ NO changes outside spec-listed files
 - ⛔ NO breaking API changes
 - ⛔ NO implementation without artifact chain
+
+## 📁 Artifact Locations
+| Phase | File |
+|-------|------|
+| Product Brief | `docs/bmad/{slug}/00-product-brief.md` |
+| Analysis | `docs/bmad/{slug}/01-analysis.md` |
+| PRD | `docs/bmad/{slug}/01b-prd.md` |
+| UX Flows | `docs/bmad/{slug}/01c-ux-flows.md` |
+| Tech Spec | `docs/bmad/{slug}/02-technical-spec.md` |
+| Stories | `docs/bmad/{slug}/02b-user-stories.md` |
+| Implementation | `docs/bmad/{slug}/03-implementation.md` |
+| QA Report | `docs/bmad/{slug}/04-qa-report.md` |
+| Test Automation | `tests/e2e/{slug}.spec.ts` |

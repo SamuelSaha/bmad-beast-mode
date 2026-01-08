@@ -1,0 +1,219 @@
+# Beast Mode Context Sharding Strategy
+# Purpose: Prevents context window overflow by summarizing large directories.
+# From BMAD v6: "Document Sharding - 90% token savings for large projects."
+
+version: "1.0.0"
+
+# ============================================================================
+# SHARDING RULES
+# Define how different file types should be processed to save tokens
+# ============================================================================
+
+rules:
+  # 1. Source Code: Interface-only extraction
+  - pattern: "src/**/*.{ts,tsx}"
+    strategy: "interface-only"
+    max_tokens: 600
+    instructions: |
+      Extract only:
+      - Exported functions (signature only)
+      - Exported types/interfaces
+      - Class definitions (methods signatures only)
+      - Import statements for dependencies
+      Ignore: Implementation details, private methods, inline comments
+
+  - pattern: "src/**/*.{js,jsx}"
+    strategy: "interface-only"
+    max_tokens: 500
+    instructions: |
+      Extract only:
+      - Exported functions (signature + JSDoc if present)
+      - Module exports
+      - PropTypes definitions
+      Ignore: Implementation details
+
+  - pattern: "src/**/*.{py}"
+    strategy: "interface-only"
+    max_tokens: 600
+    instructions: |
+      Extract only:
+      - Function signatures with docstrings
+      - Class definitions with __init__ signature
+      - Type hints
+      Ignore: Function bodies
+
+  - pattern: "src/**/*.{go}"
+    strategy: "interface-only"
+    max_tokens: 500
+    instructions: |
+      Extract only:
+      - Public functions (capitalized)
+      - Struct definitions
+      - Interface definitions
+      Ignore: Private functions, implementation
+
+  # 2. Documentation: Split by header
+  - pattern: "docs/**/*.md"
+    strategy: "split-by-header"
+    header_level: 2
+    max_tokens: 2000
+    instructions: |
+      Split into chunks by H2 headers.
+      Each chunk is independently queryable.
+      Preserve header hierarchy for context.
+
+  - pattern: "README.md"
+    strategy: "full"
+    max_tokens: 3000
+
+  - pattern: "CHANGELOG.md"
+    strategy: "summary"
+    max_tokens: 500
+    instructions: "Extract only the latest 3 versions."
+
+  # 3. Configuration Files: Full read (usually small)
+  - pattern: "*.{json,yaml,yml,toml}"
+    strategy: "full"
+    max_tokens: 1000
+    exceptions:
+      - "package-lock.json"
+      - "yarn.lock"
+      - "pnpm-lock.yaml"
+
+  # 4. Tests: Summarize intent
+  - pattern: "tests/**/*"
+    strategy: "summary"
+    max_tokens: 300
+    instructions: |
+      Extract:
+      - Test suite names (describe blocks)
+      - Test case names (it/test blocks)
+      - Setup/teardown patterns
+      Ignore: Test implementation details
+
+  - pattern: "**/*.test.{ts,tsx,js,jsx}"
+    strategy: "summary"
+    max_tokens: 200
+
+  - pattern: "**/*.spec.{ts,tsx,js,jsx}"
+    strategy: "summary"
+    max_tokens: 200
+
+  # 5. API/Schema Definitions: Full read (critical)
+  - pattern: "**/*.graphql"
+    strategy: "full"
+    max_tokens: 2000
+
+  - pattern: "**/openapi.{yaml,yml,json}"
+    strategy: "full"
+    max_tokens: 3000
+
+  - pattern: "**/schema.prisma"
+    strategy: "full"
+    max_tokens: 2000
+
+  # 6. Database Migrations: Summary only
+  - pattern: "**/migrations/**/*"
+    strategy: "summary"
+    max_tokens: 300
+    instructions: "List migration names and their purpose (from filename/comment)."
+
+  # 7. Assets: Ignore completely
+  - pattern: "**/*.{png,jpg,jpeg,gif,svg,ico,webp}"
+    strategy: "ignore"
+
+  - pattern: "**/*.{mp3,mp4,wav,mov}"
+    strategy: "ignore"
+
+  - pattern: "**/*.{woff,woff2,ttf,eot}"
+    strategy: "ignore"
+
+  # 8. Dependency Lock Files: Ignore
+  - pattern: "{package-lock.json,yarn.lock,pnpm-lock.yaml,Gemfile.lock,poetry.lock,Cargo.lock}"
+    strategy: "ignore"
+
+  # 9. Build Output: Ignore
+  - pattern: "{node_modules,dist,build,coverage,.next,out,target}/**/*"
+    strategy: "ignore"
+
+  # 10. IDE/Editor: Ignore
+  - pattern: "{.idea,.vscode,.cursor}/**/*"
+    strategy: "ignore"
+
+  # 11. Git: Ignore
+  - pattern: ".git/**/*"
+    strategy: "ignore"
+
+# ============================================================================
+# SHARDING STRATEGIES
+# ============================================================================
+
+strategies:
+  full:
+    description: "Read entire file content"
+    token_limit_behavior: "truncate_with_warning"
+
+  interface-only:
+    description: "Extract only public API surface"
+    extraction_rules:
+      - "exported_functions"
+      - "exported_types"
+      - "class_signatures"
+      - "import_statements"
+
+  summary:
+    description: "Generate a brief summary of the file"
+    output_format: |
+      ## {filename}
+      **Purpose:** {one-line description}
+      **Key Elements:** {bullet list}
+      **Dependencies:** {list of imports}
+
+  split-by-header:
+    description: "Split markdown by headers into chunks"
+    output_format: |
+      Each chunk contains:
+      - Header path (e.g., "# Doc > ## Section > ### Subsection")
+      - Content under that header
+      - Stable anchor ID for reference
+
+  ignore:
+    description: "Skip entirely, do not process"
+
+# ============================================================================
+# BEHAVIOR CONFIGURATION
+# ============================================================================
+
+behavior:
+  # How to handle files exceeding max_tokens
+  large_file_handling: "chunk_and_summarize"
+  
+  # How to handle unknown file types
+  unknown_file_strategy: "summary"
+  unknown_file_max_tokens: 500
+  
+  # Reserve capacity for agent response
+  context_window_reserve: 0.20  # 20%
+  
+  # Maximum total context before sharding kicks in
+  total_context_threshold: 50000  # tokens
+  
+  # Priority order when context is limited
+  priority_order:
+    1: "docs/bmad/**/*"           # BMAD artifacts first
+    2: "src/**/{index,main}.*"    # Entry points
+    3: "**/*.{schema,types}.*"    # Type definitions
+    4: "src/**/*"                 # Other source
+    5: "tests/**/*"               # Tests last
+
+# ============================================================================
+# CACHING
+# ============================================================================
+
+caching:
+  enabled: true
+  ttl: 3600  # 1 hour
+  invalidate_on:
+    - "file_modified"
+    - "git_commit"
+  storage: ".bmad-cache/"
