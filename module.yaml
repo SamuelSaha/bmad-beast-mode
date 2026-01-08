@@ -74,9 +74,15 @@ structure:
   docs:
     - docs/INTEGRATION_GUIDE.md
     - docs/TRIGGER_MATRIX.md
+    - docs/sharding.md
+    - docs/overrides.md
+    - docs/brownfield-fast-lane.md
+    - docs/party-mode.md
+    - docs/workflow-vendoring.md
   
   scripts:
     - scripts/integrate.sh
+    - scripts/shard.sh
   
   ci:
     - .github/workflows/validate.yml
