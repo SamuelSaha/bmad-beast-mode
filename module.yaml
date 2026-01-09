@@ -1,88 +1,77 @@
 # Beast Mode Custom Module for BMAD Method v6
-# Install via: npx bmad-method@alpha install -> "Install local module? y" -> path to this folder
+# Top 1% Industry Authority Agents with No-Clash Namespacing
 
 code: beast-mode
 name: "Beast Mode Squad Roster"
-header: "Beast Mode™: High-Speed Specialized Agent Roster"
-subheader: "31 specialized agents + Protocol Enforcer for enterprise-grade development"
+header: "Beast Mode™: Top 1% Specialized Agent Roster"
+subheader: "33 Principal/Staff-level agents that don't clash with standard BMAD"
 unitary: true
 
+# All agents inherit from agents/meta/beast-base.md
+# This ensures consistent "Top 1%" behavior across all specialists
+
 # ============================================================================
-# EXPORTS - Maps Protocol Enforcer names to file paths
-# This is the "Beast Bridge" that ensures V4 compatibility
+# EXPORTS - Namespaced to avoid clash with official BMAD agents
+# Use: /load beast-analyst (not /load analyst)
 # ============================================================================
 exports:
   agents:
     # === CORE SQUAD (9 agents) ===
-    brainstormer: agents/core/brainstormer.md
-    analyst: agents/core/analyst.md
-    pm: agents/core/pm.md
-    architect: agents/core/architect.md
-    dev: agents/core/dev.md
-    developer: agents/core/dev.md  # V4 alias
-    qa: agents/core/qa.md
-    data-analyst: agents/core/data-analyst.md
-    ux-designer: agents/core/ux-designer.md
-    sm: agents/core/sm.md
-    scrum-master: agents/core/sm.md  # V4 alias
+    beast-brainstormer: agents/core/brainstormer.md
+    beast-analyst: agents/core/analyst.md
+    beast-pm: agents/core/pm.md
+    beast-architect: agents/core/architect.md
+    beast-dev: agents/core/dev.md
+    beast-qa: agents/core/qa.md
+    beast-data: agents/core/data-analyst.md
+    beast-ux: agents/core/ux-designer.md
+    beast-sm: agents/core/sm.md
     
     # === SECURITY SQUAD (3 agents) ===
-    sec-ops: agents/security/sec-ops.md
-    security: agents/security/sec-ops.md  # V4 alias
-    pentester: agents/security/pentester.md
-    dpo: agents/security/dpo.md
-    data-governance: agents/security/dpo.md  # V4 alias
-    privacy: agents/security/dpo.md  # V4 alias
+    beast-sec: agents/security/sec-ops.md
+    beast-pentest: agents/security/pentester.md
+    beast-dpo: agents/security/dpo.md
     
     # === GROWTH SQUAD (5 agents) ===
-    user-value: agents/growth/user-value.md
-    value-advocate: agents/growth/user-value.md  # V4 alias
-    pricing: agents/growth/pricing.md
-    growth: agents/growth/growth.md
-    retention: agents/growth/retention.md
-    support: agents/growth/support.md
-    support-liaison: agents/growth/support.md  # V4 alias
+    beast-value: agents/growth/user-value.md
+    beast-pricing: agents/growth/pricing.md
+    beast-growth: agents/growth/growth.md
+    beast-retention: agents/growth/retention.md
+    beast-support: agents/growth/support.md
     
     # === OPS SQUAD (6 agents) ===
-    sre: agents/ops/sre.md
-    devops: agents/ops/devops.md
-    o11y: agents/ops/o11y.md
-    observability: agents/ops/o11y.md  # V4 alias
-    finops: agents/ops/finops.md
-    perf: agents/ops/perf.md
-    performance: agents/ops/perf.md  # V4 alias
-    incident: agents/ops/incident.md
-    commander: agents/ops/incident.md  # V4 alias
+    beast-sre: agents/ops/sre.md
+    beast-devops: agents/ops/devops.md
+    beast-o11y: agents/ops/o11y.md
+    beast-finops: agents/ops/finops.md
+    beast-perf: agents/ops/perf.md
+    beast-incident: agents/ops/incident.md
     
     # === POLISH SQUAD (5 agents) ===
-    copywriter: agents/polish/copywriter.md
-    ux-writer: agents/polish/copywriter.md  # V4 alias
-    a11y: agents/polish/a11y.md
-    accessibility: agents/polish/a11y.md  # V4 alias
-    i18n: agents/polish/i18n.md
-    localization: agents/polish/i18n.md  # V4 alias
-    seo: agents/polish/seo.md
-    tech-writer: agents/polish/tech-writer.md
+    beast-copy: agents/polish/copywriter.md
+    beast-a11y: agents/polish/a11y.md
+    beast-i18n: agents/polish/i18n.md
+    beast-seo: agents/polish/seo.md
+    beast-docs: agents/polish/tech-writer.md
     
     # === AI-ECO SQUAD (3 agents) ===
-    ai-eval: agents/ai-eco/ai-eval.md
-    ai-red-team: agents/ai-eco/ai-red-team.md
-    red-team: agents/ai-eco/ai-red-team.md  # V4 alias
-    integrations: agents/ai-eco/integrations.md
-    integration-lead: agents/ai-eco/integrations.md  # V4 alias
+    beast-eval: agents/ai-eco/ai-eval.md
+    beast-red: agents/ai-eco/ai-red-team.md
+    beast-integration: agents/ai-eco/integrations.md
     
     # === META AGENTS ===
-    orchestrator: agents/orchestrator.md
-    enforcer: agents/meta/enforcer.md
+    beast-enforcer: agents/meta/enforcer.md
+    beast-orch: agents/orchestrator.md
+    beast-base: agents/meta/beast-base.md
 
   workflows:
-    quick-fix: workflows/quick-fix.yaml
-    micro-fix: workflows/micro-fix.yaml
-    standard-feature: workflows/standard-feature.yaml
-    enterprise-feature: workflows/enterprise-feature.yaml
-    ai-feature: workflows/ai-feature.yaml
-    brainstorm: workflows/brainstorm.yaml
-    brownfield-discovery: workflows/brownfield-discovery.yaml
+    beast-quick-fix: workflows/quick-fix.yaml
+    beast-micro-fix: workflows/micro-fix.yaml
+    beast-standard: workflows/standard-feature.yaml
+    beast-enterprise: workflows/enterprise-feature.yaml
+    beast-ai: workflows/ai-feature.yaml
+    beast-brainstorm: workflows/brainstorm.yaml
+    beast-brownfield: workflows/brownfield-discovery.yaml
 
   templates:
     project-context: templates/00-project-context.tmpl.md
@@ -100,16 +89,21 @@ exports:
 # MODULE METADATA
 # ============================================================================
 description: |
-  A 31-agent specialized engineering organization for high-scale development.
-  Installs as a custom module alongside official BMAD Method.
+  Top 1% Industry Authority agents with Principal/Staff-level expertise.
   
-  Features:
-  - Protocol Enforcer for structured ticket processing
-  - Beast Bridge aliases for V4 compatibility
-  - 6 specialized squads covering the full dev lifecycle
-  - Brainstormer for divergent ideation before analysis
+  Key Features:
+  - All agents inherit from beast-base.md (cognitive architecture)
+  - Namespaced with "beast-" prefix to avoid BMAD clash
+  - First Principles thinking baked into every agent
+  - Reflexion loop for self-critique before output
+  - Hard constraints: No fluff, no hallucinations
+  
+  Usage:
+  - Standard BMAD: /load analyst
+  - Beast Mode: /load beast-analyst
 
-version: "3.1.0"
+version: "3.2.0"
 author: "Samuel Saha"
 repository: "https://github.com/SamuelSaha/bmad-beast-mode"
 license: MIT
+agent_count: 33
