@@ -1,7 +1,9 @@
-# 🔥 Beast Mode v3.1
+# 🔥 Beast Mode v3.2 — Top 1% Industry Authority
 
-> **31 Specialized AI Agents** for BMAD Method v6  
-> Install alongside official BMAD. No fork. No drift. Pure power.
+> **34 Principal-Level AI Agents** for BMAD Method v6  
+> Namespaced `beast-*` to avoid clash with standard BMAD. No fork. No drift. Pure power.
+> 
+> **Quick Setup:** See [`BMAD_BOOTSTRAP.md`](./BMAD_BOOTSTRAP.md) for <60 second install.
 
 ---
 
@@ -89,37 +91,46 @@ cat _bmad/beast-mode/agents/core/analyst.md | head -20
 
 ## 🎮 How to Use Beast Mode Agents
 
-### Method 1: Direct Agent Loading (Recommended)
+### Loading Agents (IDE Method)
 
-```bash
-# Start a BMAD session
-npx bmad session
+In your IDE (Antigravity, OpenCode, Cursor, etc.):
 
-# Load an agent
-> /load analyst
-
-# Use the agent's commands
-> *analyze-problem context: 'Describe your issue here'
+```
+/beast-analyst          # Load Beast Analyst
+/beast-architect        # Load Beast Architect  
+/beast-dev              # Load Beast Developer
+/bmad                   # List all available agents
 ```
 
-### Method 2: Through Workflows
+### Using Agent Commands
 
-```bash
-# Start session
-npx bmad session
+```
+# After loading beast-analyst:
+*beast-analyze context: 'Describe your issue here'
 
-# Initialize workflow (requires BMM module)
-> *workflow-init
+# After loading beast-architect:
+*beast-arch
 
-# Follow the guided process
+# After loading beast-enforcer:
+*beast-enforce context: '...'
 ```
 
-### Method 3: Protocol Enforcer (Structured Tickets)
+### Method 1: Quick Fix Flow
 
-```bash
-> /load enforcer
+```
+/beast-analyst
+*beast-analyze context: 'Button not working'
 
-> *enforce context: '
+/beast-dev  
+*beast-fix
+```
+
+### Method 2: Full Protocol (Structured Tickets)
+
+```
+/beast-enforcer
+
+*beast-enforce context: '
 Issue: Login button broken
 Current: Button renders but onClick fails
 Expected: User can authenticate
