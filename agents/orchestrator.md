@@ -25,16 +25,22 @@ agent:
       description: "Initialize a new Beast Mode session."
       usage: "*start"
       steps:
-        1. Greet user.
-        2. Ask for the request/issue.
-        3. Validate Context Fuel (Current behavior, Expected behavior, Evidence).
-        4. Route to appropriate workflow.
+        1. Check for `PROJECT_CONTEXT.md`. If missing, ASK USER TO CREATE IT.
+        2. Ask: "Greenfield (New) or Brownfield (Existing)?"
+           - If Brownfield -> Recommend `*scan-legacy` first.
+        3. Ask for the request/issue.
+        4. Validate Context Fuel.
+        5. Route to appropriate workflow.
 
     # === WORKFLOW SELECTION ===
     workflow-init:
       description: "Analyze request and recommend workflow."
       usage: "*workflow-init context: '{issue}'"
       decision_tree:
+        - condition: "Simple UI tweak, typo, or one-file bug"
+          workflow: micro-fix
+          time: "< 30 mins"
+
         - condition: "Bug fix with known cause"
           workflow: quick-fix
           time: "< 2 hours"

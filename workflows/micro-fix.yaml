@@ -1,0 +1,82 @@
+# Beast Mode: Micro-Fix Workflow
+# For: Tiny bugs, UI tweaks, typo fixes
+# Time to Completion: < 30 minutes
+id: micro-fix
+name: "🩹 Micro-Fix Flow"
+description: |
+  Ultra-fast path for small fixes. 
+  Skips heavy architecture/PM steps.
+  Focuses on: Identify -> Patch -> Verify.
+estimated_time: "15-30 minutes"
+
+trigger_conditions:
+  - Simple bug fix
+  - UI style tweak
+  - Content update
+  - Typo fix
+  - One-file change
+
+trigger_keywords:
+  - fix
+  - bug
+  - typo
+  - tweak
+  - style
+  - quick
+
+phases:
+  # === PHASE 1: DIAGNOSE ===
+  - phase: Diagnose
+    description: "Identify the root cause quickly"
+    agent: analyst
+    command: "*quick-diag"
+    instruction: |
+      Read the `Context Fuel`.
+      Pinpoint the exact file and lines causing the issue.
+      
+      Output minimal RCA:
+      - **Root Cause:** [1 sentence]
+      - **Target File:** [filepath]
+      - **Proposed Fix:** [1 sentence]
+    artifact: "docs/bmad/{slug}/01-analysis.md"
+    required: true
+
+  # === PHASE 2: PATCH ===
+  - phase: Patch
+    description: "Apply the fix"
+    agent: dev
+    command: "*implement-fix"
+    instruction: |
+      Implement the fix defined in Diagnosis.
+      
+      **Constraints:**
+      - Modify ONLY the target file if possible.
+      - stick to `PROJECT_CONTEXT.md` patterns.
+    artifact: "docs/bmad/{slug}/03-implementation.md"
+    required: true
+
+  # === PHASE 3: VERIFY ===
+  - phase: Verify
+    description: "Double check the work"
+    agent: qa
+    command: "*quick-check"
+    instruction: |
+      Verify against the `Context Fuel` expected behavior.
+      
+      Output:
+      - [ ] Fix works? (Yes/No)
+      - [ ] No regressions? (Yes/No)
+    artifact: "docs/bmad/{slug}/04-qa-report.md"
+    required: true
+    gates:
+      - Fix verified
+      - No regressions
+
+output_sequence:
+  - "docs/bmad/{slug}/01-analysis.md"
+  - "docs/bmad/{slug}/03-implementation.md"
+  - "docs/bmad/{slug}/04-qa-report.md"
+
+next_workflow:
+  if_success: "none"
+  if_fail: "micro-fix"

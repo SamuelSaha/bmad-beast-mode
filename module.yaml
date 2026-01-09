@@ -55,6 +55,7 @@ structure:
   
   workflows:
     - workflows/quick-fix.yaml
+    - workflows/micro-fix.yaml
     - workflows/standard-feature.yaml
     - workflows/enterprise-feature.yaml
     - workflows/ai-feature.yaml
@@ -72,6 +73,7 @@ structure:
     - config/output-paths.yaml
   
   docs:
+    - docs/START-HERE.md
     - docs/INTEGRATION_GUIDE.md
     - docs/TRIGGER_MATRIX.md
     - docs/sharding.md
@@ -88,8 +90,8 @@ structure:
     - .github/workflows/validate.yml
 
 agent_count: 31
-workflow_count: 6
-template_count: 5
+workflow_count: 7
+template_count: 8
 config_count: 5
 
 squads:

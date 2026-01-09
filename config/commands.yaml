@@ -68,6 +68,9 @@ commands:
     - name: "*workflow-init"
       agent: orchestrator
       description: "Analyze request and recommend workflow"
+    - name: "*micro-fix"
+      workflow: micro-fix
+      description: "Fast track workflow for < 30min fixes"
     - name: "*validate-context"
       agent: orchestrator
       description: "Ensure request has sufficient context"

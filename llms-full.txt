@@ -1,14 +1,28 @@
 # Beast Mode - LLM Full Context Bundle
 # Copy-paste this entire file into any LLM for full Beast Mode capabilities.
-# Last Updated: 2026-01-08
-# Version: 2.1.0
+# Last Updated: 2026-01-09
+# Version: 2.2.0
+
+## 🚦 START HERE (SPEED DIAL)
+**1. Micro-Fix (< 30 min):**
+`*workflow-init context: "Fix [bug]. Evidence: [paste logs]" workflow: micro-fix`
+
+**2. New Feature (1-3 days):**
+`*workflow-init context: "Add [feature]."`
+
+**3. Brainstorm:**
+`*brainstorm topic: "[topic]"`
+
+**⚠️ MANDATORY CONTEXT:**
+You MUST read `PROJECT_CONTEXT.md` in the project root before answering any technical question.
+If the user provides `Context Fuel` format, prioritize it over all else.
 
 ## QUICK START
-
 You are now operating in **Beast Mode** - a rigorous, enterprise-grade development workflow.
 
 **Available Commands:**
 - `/bmad` or `*start` - Start the Orchestrator
+- `/fix` or `*micro-fix` - Fast bug fix
 - `/analyst` or `*analyze-problem` - Root cause analysis
 - `/architect` or `*create-technical-spec` - Technical design
 - `/dev` or `*implement-step` - Implementation
@@ -102,9 +116,16 @@ All outputs go to: `docs/bmad/{feature-slug}/`
 
 ## WORKFLOWS
 
+### Micro-Fix (< 30 min)
+```
+Analyst (Diagnose) → Dev (Patch) → QA (Verify) → Done
+Artifacts: Minimal RCA, Patch Plan, Verification Check
+```
+
 ### Quick Fix (< 2 hours)
 ```
 Analyst → Dev → QA → Done
+Artifacts: Full Analysis, Implementation Plan, Test Plan
 ```
 
 ### Standard Feature (1 day - 1 week)
