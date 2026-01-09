@@ -89,7 +89,7 @@ structure:
   ci:
     - .github/workflows/validate.yml
 
-agent_count: 31
+agent_count: 30
 workflow_count: 7
 template_count: 8
 config_count: 5
@@ -101,60 +101,59 @@ squads:
     agents:
       - analyst
       - pm
-      - ux-designer
       - architect
-      - sm
       - dev
-      - qa (TEA)
-      - data-analyst
+      - qa
+      - data
+      - ux
+      - sm
   
   - name: security
-    count: 4
+    count: 3
     description: "Security, privacy, and compliance specialists"
     agents:
       - sec-ops
-      - dpo
       - pentester
-      - appsec-automation
+      - dpo
   
   - name: growth
-    count: 6
+    count: 5
     description: "Product growth and monetization specialists"
     agents:
-      - user-value
+      - value-advocate
       - pricing
       - growth
       - retention
       - support
-      - entitlements
   
   - name: ops
-    count: 4
-    description: "Infrastructure and reliability specialists"
+    count: 6
+    description: "Infrastructure, reliability, and cost specialists"
     agents:
-      - devops
-      - dba
       - sre
+      - devops
+      - o11y
+      - finops
       - perf
+      - commander
   
   - name: polish
     count: 5
-    description: "Code quality and documentation specialists"
+    description: "UX polish, accessibility, and documentation"
     agents:
-      - code-reviewer
-      - tech-writer
+      - copywriter
       - a11y
       - i18n
-      - refactor
+      - seo
+      - tech-writer
   
   - name: ai-eco
-    count: 4
-    description: "AI/ML feature development specialists"
+    count: 3
+    description: "AI evaluation, safety, and integration"
     agents:
-      - prompt-engineer
-      - ai-safety
-      - ai-cost
-      - ai-architect
+      - ai-eval
+      - red-team
+      - integration
 
 enterprise_features:
   context_sharding:

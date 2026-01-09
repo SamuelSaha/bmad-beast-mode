@@ -1,19 +1,12 @@
 # Beast Mode Command Registry
 # All available commands across all agents
-
-version: "2.1.0"
-generated: "2026-01-08"
-
-# ============================================================================
-# ENTERPRISE COMMANDS (New in v2.1)
-# ============================================================================
+# Version: 3.0.0
 
 enterprise:
   # Test Automation (TEA)
   - name: "*automate-test"
     agent: qa
     description: "Generate Playwright E2E tests with POM"
-    artifact: "tests/e2e/{slug}.spec.ts"
   - name: "*framework"
     agent: qa
     description: "Scaffold test automation framework"
@@ -25,39 +18,21 @@ enterprise:
   - name: "*brainstorm"
     workflow: brainstorm
     description: "Creative Intelligence Suite - ideation workflow"
-    artifact: "docs/bmad/{slug}/00-product-brief.md"
-  - name: "*ideate"
-    workflow: brainstorm
-    description: "Alias for brainstorm"
   
   # Brownfield Discovery
   - name: "*scan-legacy"
     workflow: brownfield-discovery
     description: "Map existing codebase before starting work"
-    artifact: "docs/bmad/discovery/"
-  - name: "*brownfield"
-    workflow: brownfield-discovery
-    description: "Alias for scan-legacy"
   
-  # Party Mode (Multi-Agent Escalation)
+  # Party Mode
   - name: "*party"
     config: party-protocol
-    description: "Trigger multi-agent debate for deadlock resolution"
-    parties:
-      - technical: "Architect + Dev + QA"
-      - product: "PM + UX + Data"
-      - security: "SecOps + DPO + Pentester"
-      - ops: "DevOps + SRE + DBA"
-      - ai: "PromptEng + AISafety + AICost"
+    description: "Multi-agent debate"
   
   # Context Sharding
   - name: "*shard"
     config: sharding
-    description: "Apply context sharding to reduce tokens"
-
-# ============================================================================
-# STANDARD COMMANDS
-# ============================================================================
+    description: "Apply context sharding"
 
 commands:
   # === ORCHESTRATOR ===
@@ -73,7 +48,7 @@ commands:
       description: "15-minute bug fix loop"
     - name: "*context-fuel"
       agent: orchestrator
-      description: "Mandatory input form (templates/00-context-fuel.tmpl.md)"
+      description: "Mandatory input form"
     - name: "*validate-context"
       agent: orchestrator
       description: "Ensure request has sufficient context"
@@ -86,147 +61,111 @@ commands:
     - name: "*status"
       agent: orchestrator
       description: "Show current workflow progress"
-    - name: "*help"
-      agent: orchestrator
-      description: "Show available commands"
 
   # === CORE SQUAD ===
   core:
     - name: "*analyze-problem"
       agent: analyst
-      artifact: "docs/bmad/{slug}/01-analysis.md"
+      description: "Root cause analysis"
     - name: "*create-prd"
       agent: pm
-      artifact: "docs/bmad/{slug}/01b-prd.md"
-    - name: "*define-ux"
-      agent: ux
-      artifact: "docs/bmad/{slug}/01c-ux-flows.md"
+      description: "Requirements definition"
     - name: "*define-contract"
       agent: architect
-      artifact: "docs/bmad/{slug}/02-technical-spec.md"
-    - name: "*create-stories"
-      agent: sm
-      artifact: "docs/bmad/{slug}/02b-user-stories.md"
+      description: "Technical architecture"
     - name: "*implement-fix"
       agent: dev
-      artifact: "docs/bmad/{slug}/03-implementation.md"
+      description: "Implementation"
     - name: "*review-feature"
       agent: qa
-      artifact: "docs/bmad/{slug}/04-qa-report.md"
+      description: "Verify implementation"
     - name: "*define-metrics"
       agent: data
-      artifact: "docs/bmad/{slug}/data-01-tracking-plan.md"
+      description: "Analytics tracking plan"
+    - name: "*define-ux"
+      agent: ux
+      description: "User flows and UI states"
+    - name: "*create-stories"
+      agent: sm
+      description: "User stories and tasks"
 
   # === SECURITY SQUAD ===
   security:
     - name: "*threat-model"
       agent: sec-ops
-      artifact: "docs/bmad/{slug}/sec-01-threat-model.md"
+      description: "STRIDE threat modeling"
     - name: "*abuse-test"
       agent: pentester
-      artifact: "docs/bmad/{slug}/sec-02-attack-plan.md"
+      description: "Attack plan / Red Teaming"
     - name: "*privacy-check"
       agent: dpo
-      artifact: "docs/bmad/{slug}/sec-03-privacy-impact.md"
-    - name: "*scan-code"
-      agent: appsec-bot
-      artifact: "docs/bmad/{slug}/sec-04-auto-scan.md"
+      description: "GDPR and privacy audit"
 
   # === GROWTH SQUAD ===
   growth:
     - name: "*sanity-check"
       agent: value-advocate
-      artifact: "docs/bmad/{slug}/growth-01-value-validation.md"
+      description: "Value validation (Go/No-Go)"
     - name: "*audit-pricing"
       agent: pricing
-      artifact: "docs/bmad/{slug}/growth-02-pricing-fit.md"
+      description: "Pricing model fit"
     - name: "*plan-experiment"
       agent: growth
-      artifact: "docs/bmad/{slug}/growth-03-experiment-design.md"
+      description: "A/B test design"
     - name: "*churn-risk"
       agent: retention
-      artifact: "docs/bmad/{slug}/growth-04-retention-impact.md"
+      description: "Retention impact analysis"
     - name: "*support-audit"
       agent: support
-      artifact: "docs/bmad/{slug}/growth-05-support-readiness.md"
-    - name: "*audit-entitlements"
-      agent: entitlements
-      artifact: "docs/bmad/{slug}/growth-06-entitlements-check.md"
+      description: "Support readiness check"
 
   # === OPS SQUAD ===
   ops:
-    - name: "*deployment-plan"
-      agent: devops
-      artifact: "docs/bmad/{slug}/ops-01-deployment-spec.md"
-    - name: "*infra-check"
-      agent: devops
-      artifact: "docs/bmad/{slug}/ops-02-infra-audit.md"
-    - name: "*schema-design"
-      agent: dba
-      artifact: "docs/bmad/{slug}/ops-03-db-migration.md"
-    - name: "*query-audit"
-      agent: dba
-      artifact: "docs/bmad/{slug}/ops-04-query-audit.md"
     - name: "*define-slo"
       agent: sre
-      artifact: "docs/bmad/{slug}/ops-05-observability.md"
-    - name: "*incident-prep"
-      agent: sre
-      artifact: "docs/bmad/{slug}/ops-06-runbook.md"
-    - name: "*perf-audit"
+      description: "Reliability targets (SLO/SLI)"
+    - name: "*check-deploy"
+      agent: devops
+      description: "Deployment strategy"
+    - name: "*plan-tracing"
+      agent: o11y
+      description: "Telemetry and tracing plan"
+    - name: "*cost-audit"
+      agent: finops
+      description: "Cloud cost analysis"
+    - name: "*load-test"
       agent: perf
-      artifact: "docs/bmad/{slug}/ops-07-perf-audit.md"
-    - name: "*load-plan"
-      agent: perf
-      artifact: "docs/bmad/{slug}/ops-08-load-test-plan.md"
+      description: "Load test strategy"
+    - name: "*runbook-prep"
+      agent: commander
+      description: "Incident runbook creation"
 
   # === POLISH SQUAD ===
   polish:
-    - name: "*review-code"
-      agent: reviewer
-      artifact: "docs/bmad/{slug}/polish-01-code-review.md"
-    - name: "*write-docs"
-      agent: tech-writer
-      artifact: "docs/bmad/{slug}/polish-02-documentation.md"
-    - name: "*api-docs"
-      agent: tech-writer
-      artifact: "docs/bmad/{slug}/polish-03-api-docs.md"
-    - name: "*a11y-audit"
+    - name: "*refine-copy"
+      agent: copywriter
+      description: "UX copy audit"
+    - name: "*verify-wcag"
       agent: a11y
-      artifact: "docs/bmad/{slug}/polish-04-a11y-audit.md"
-    - name: "*i18n-audit"
+      description: "Accessibility audit"
+    - name: "*check-l10n"
       agent: i18n
-      artifact: "docs/bmad/{slug}/polish-05-i18n-audit.md"
-    - name: "*plan-refactor"
-      agent: refactor
-      artifact: "docs/bmad/{slug}/polish-06-refactor-plan.md"
-    - name: "*dead-code-scan"
-      agent: refactor
-      artifact: "docs/bmad/{slug}/polish-07-dead-code.md"
+      description: "Localization audit"
+    - name: "*audit-seo"
+      agent: seo
+      description: "SEO technical audit"
+    - name: "*update-docs"
+      agent: tech-writer
+      description: "Technical documentation"
 
   # === AI-ECO SQUAD ===
   ai-eco:
-    - name: "*design-prompt"
-      agent: prompt-eng
-      artifact: "docs/bmad/{slug}/ai-01-prompt-spec.md"
-    - name: "*prompt-eval"
-      agent: prompt-eng
-      artifact: "docs/bmad/{slug}/ai-02-prompt-eval.md"
-    - name: "*safety-audit"
-      agent: ai-safety
-      artifact: "docs/bmad/{slug}/ai-03-safety-audit.md"
-    - name: "*bias-check"
-      agent: ai-safety
-      artifact: "docs/bmad/{slug}/ai-04-bias-report.md"
-    - name: "*cost-analysis"
-      agent: ai-cost
-      artifact: "docs/bmad/{slug}/ai-05-cost-analysis.md"
-    - name: "*optimize-tokens"
-      agent: ai-cost
-      artifact: "docs/bmad/{slug}/ai-06-token-optimization.md"
-    - name: "*design-integration"
-      agent: ai-arch
-      artifact: "docs/bmad/{slug}/ai-07-integration-spec.md"
-    - name: "*eval-pipeline"
-      agent: ai-arch
-      artifact: "docs/bmad/{slug}/ai-08-eval-pipeline.md"
+    - name: "*eval-model"
+      agent: ai-eval
+      description: "AI quality evaluation"
+    - name: "*jailbreak-test"
+      agent: red-team
+      description: "AI safety red teaming"
+    - name: "*audit-api"
+      agent: integration
+      description: "3rd party API integration check"

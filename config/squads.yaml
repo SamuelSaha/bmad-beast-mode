@@ -1,5 +1,6 @@
 # Beast Mode Squad Configuration
 # Maps agents to squads and defines activation triggers
+# Version: 3.0.0 (User Correction)
 
 squads:
   core:
@@ -9,18 +10,12 @@ squads:
       - id: analyst
         file: agents/core/analyst.md
         triggers: ["*analyze-problem"]
-      - id: architect
-        file: agents/core/architect.md
-        triggers: ["*define-contract"]
       - id: pm
         file: agents/core/pm.md
         triggers: ["*create-prd"]
-      - id: ux
-        file: agents/core/ux-designer.md
-        triggers: ["*define-ux"]
-      - id: sm
-        file: agents/core/sm.md
-        triggers: ["*create-stories"]
+      - id: architect
+        file: agents/core/architect.md
+        triggers: ["*define-contract"]
       - id: dev
         file: agents/core/dev.md
         triggers: ["*implement-fix"]
@@ -30,51 +25,32 @@ squads:
       - id: data
         file: agents/core/data-analyst.md
         triggers: ["*define-metrics"]
+      - id: ux
+        file: agents/core/ux-designer.md
+        triggers: ["*define-ux"]
+      - id: sm
+        file: agents/core/sm.md
+        triggers: ["*create-stories"]
 
   security:
     description: "Security, privacy, and compliance specialists"
     always_active: false
-    activation_keywords:
-      - auth
-      - authentication
-      - authorization
-      - payment
-      - billing
-      - pii
-      - gdpr
-      - privacy
-      - upload
-      - file
-      - secret
-      - token
+    activation_keywords: ["auth", "security", "payment", "pii", "gdpr", "hack", "exploit"]
     agents:
       - id: sec-ops
         file: agents/security/sec-ops.md
         triggers: ["*threat-model"]
-      - id: dpo
-        file: agents/security/dpo.md
-        triggers: ["*privacy-check"]
       - id: pentester
         file: agents/security/pentester.md
         triggers: ["*abuse-test"]
-      - id: appsec-bot
-        file: agents/security/appsec-automation.md
-        triggers: ["*scan-code"]
+      - id: dpo
+        file: agents/security/dpo.md
+        triggers: ["*privacy-check"]
 
   growth:
     description: "Product growth, monetization, and user value specialists"
     always_active: false
-    activation_keywords:
-      - pricing
-      - subscription
-      - upgrade
-      - paywall
-      - trial
-      - onboarding
-      - retention
-      - churn
-      - quota
-      - limit
+    activation_keywords: ["growth", "pricing", "money", "churn", "retention", "value", "support"]
     agents:
       - id: value-advocate
         file: agents/growth/user-value.md
@@ -91,91 +67,63 @@ squads:
       - id: support
         file: agents/growth/support.md
         triggers: ["*support-audit"]
-      - id: entitlements
-        file: agents/growth/entitlements.md
-        triggers: ["*audit-entitlements"]
 
   ops:
-    description: "Infrastructure, database, and reliability specialists"
+    description: "Infrastructure, reliability, and cost specialists"
     always_active: false
-    activation_keywords:
-      - deploy
-      - infrastructure
-      - database
-      - migration
-      - schema
-      - performance
-      - latency
-      - scale
-      - slo
-      - monitoring
+    activation_keywords: ["deploy", "ops", "cloud", "aws", "cost", "slow", "down", "crash"]
     agents:
-      - id: devops
-        file: agents/ops/devops.md
-        triggers: ["*deployment-plan", "*infra-check"]
-      - id: dba
-        file: agents/ops/dba.md
-        triggers: ["*schema-design", "*query-audit"]
       - id: sre
         file: agents/ops/sre.md
-        triggers: ["*define-slo", "*incident-prep"]
+        triggers: ["*define-slo"]
+      - id: devops
+        file: agents/ops/devops.md
+        triggers: ["*check-deploy"]
+      - id: o11y
+        file: agents/ops/o11y.md
+        triggers: ["*plan-tracing"]
+      - id: finops
+        file: agents/ops/finops.md
+        triggers: ["*cost-audit"]
       - id: perf
         file: agents/ops/perf.md
-        triggers: ["*perf-audit", "*load-plan"]
+        triggers: ["*load-test"]
+      - id: commander
+        file: agents/ops/incident.md
+        triggers: ["*runbook-prep"]
 
   polish:
-    description: "Code quality, documentation, and accessibility specialists"
+    description: "UX polish, accessibility, and documentation"
     always_active: false
-    activation_keywords:
-      - review
-      - documentation
-      - a11y
-      - accessibility
-      - i18n
-      - translation
-      - refactor
-      - cleanup
+    activation_keywords: ["polish", "copy", "text", "a11y", "accessibility", "translation", "seo"]
     agents:
-      - id: reviewer
-        file: agents/polish/code-reviewer.md
-        triggers: ["*review-code"]
-      - id: tech-writer
-        file: agents/polish/tech-writer.md
-        triggers: ["*write-docs", "*api-docs"]
+      - id: copywriter
+        file: agents/polish/copywriter.md
+        triggers: ["*refine-copy"]
       - id: a11y
         file: agents/polish/a11y.md
-        triggers: ["*a11y-audit"]
+        triggers: ["*verify-wcag"]
       - id: i18n
         file: agents/polish/i18n.md
-        triggers: ["*i18n-audit"]
-      - id: refactor
-        file: agents/polish/refactor.md
-        triggers: ["*plan-refactor", "*dead-code-scan"]
+        triggers: ["*check-l10n"]
+      - id: seo
+        file: agents/polish/seo.md
+        triggers: ["*audit-seo"]
+      - id: tech-writer
+        file: agents/polish/tech-writer.md
+        triggers: ["*update-docs"]
 
   ai-eco:
-    description: "AI/ML feature development specialists"
+    description: "AI evaluation, safety, and integration"
     always_active: false
-    activation_keywords:
-      - ai
-      - llm
-      - gpt
-      - claude
-      - prompt
-      - ml
-      - model
-      - chatbot
-      - assistant
-      - generation
+    activation_keywords: ["ai", "llm", "prompt", "rag", "hallucination", "api", "integration"]
     agents:
-      - id: prompt-eng
-        file: agents/ai-eco/prompt-engineer.md
-        triggers: ["*design-prompt", "*prompt-eval"]
-      - id: ai-safety
-        file: agents/ai-eco/ai-safety.md
-        triggers: ["*safety-audit", "*bias-check"]
-      - id: ai-cost
-        file: agents/ai-eco/ai-cost.md
-        triggers: ["*cost-analysis", "*optimize-tokens"]
-      - id: ai-arch
-        file: agents/ai-eco/ai-architect.md
-        triggers: ["*design-integration", "*eval-pipeline"]
+      - id: ai-eval
+        file: agents/ai-eco/ai-eval.md
+        triggers: ["*eval-model"]
+      - id: red-team
+        file: agents/ai-eco/ai-red-team.md
+        triggers: ["*jailbreak-test"]
+      - id: integration
+        file: agents/ai-eco/integrations.md
+        triggers: ["*audit-api"]
