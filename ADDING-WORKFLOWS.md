@@ -26,7 +26,7 @@ workflows/
 ### Step 1: Create the File
 
 ```bash
-cd ~/Library/BMAD/modules/bmad-beast-mode
+cd /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode
 touch workflows/my-workflow.yaml
 ```
 
@@ -164,7 +164,7 @@ exports:
 ### Step 4: Sync to Global Library
 
 ```bash
-cp -r ~/Desktop/BMAD-METHOD-SAMSAM/bmad-beast-mode/* ~/Library/BMAD/modules/bmad-beast-mode/
+cp -r /Users/samuelsaha/Desktop/BMAD-METHOD-SAMSAM/bmad-beast-mode/* /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/
 ```
 
 ### Step 5: Install to Your Project
@@ -176,8 +176,8 @@ cd ~/Desktop/your-project
 npx bmad-method@alpha install
 
 # Option B: Manual copy
-cp ~/Library/BMAD/modules/bmad-beast-mode/workflows/* _bmad/beast-mode/workflows/
-cp ~/Library/BMAD/modules/bmad-beast-mode/module.yaml _bmad/beast-mode/
+cp /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/workflows/* _bmad/beast-mode/workflows/
+cp /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/module.yaml _bmad/beast-mode/
 ```
 
 ### Step 6: Run Your Workflow
@@ -399,7 +399,7 @@ phases:
 vim ~/Desktop/my-project/_bmad/beast-mode/workflows/quick-fix.yaml
 
 # ✅ CORRECT
-vim ~/Library/BMAD/modules/bmad-beast-mode/workflows/quick-fix.yaml
+vim /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/workflows/quick-fix.yaml
 # Then reinstall
 ```
 
@@ -428,7 +428,7 @@ Before adding a workflow:
 ## 🆘 Troubleshooting
 
 ### Workflow not appearing in menu
-1. Check file exists: `ls ~/Library/BMAD/modules/bmad-beast-mode/workflows/my-workflow.yaml`
+1. Check file exists: `ls /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/workflows/my-workflow.yaml`
 2. Check module.yaml has the export
 3. Reinstall: `npx bmad-method@alpha install`
 

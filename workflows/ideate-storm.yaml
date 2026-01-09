@@ -1,0 +1,123 @@
+# Beast Mode: Ideation Storm
+# For: Feature brainstorming, naming, creative problem-solving
+# Time to Start: < 1 minute
+
+id: ideate-storm
+name: "⚡ Ideation Storm"
+description: "Rapidly generate 20+ concepts, ruthlessly filter to top 3 viable winners."
+estimated_time: "15-30 minutes"
+
+trigger_conditions:
+  - Need to name a product/feature/variable
+  - Stuck on a hard problem
+  - Exploring solution space before committing
+  - Quarterly roadmap planning
+  - Innovation sprint
+
+agents:
+  primary: brainstormer
+  support:
+    - pm
+    - ux-designer
+
+phases:
+  - phase: Explosion (Divergent)
+    agent: brainstormer
+    command: "*brainstorm context: '{problem_statement}' quantity: 20"
+    artifact: "docs/bmad/{slug}/ideation-raw.md"
+    required: true
+    rules:
+      - No judging - Wild ideas allowed
+      - Generate 20+ distinct concepts minimum
+      - Mix low-effort/high-impact, moonshots, pragmatic fixes
+      - Variety over quality at this stage
+    tasks:
+      - Generate concepts rapidly
+      - Don't self-censor
+      - Think from multiple perspectives
+      - Include obvious AND non-obvious ideas
+    gates:
+      - 20+ concepts generated
+      - Diverse range (tactical to strategic)
+      - No concept longer than 2 sentences
+
+  - phase: Filter (Convergent)
+    agent: pm
+    command: "*filter-concepts source: 'docs/bmad/{slug}/ideation-raw.md' criteria: 'feasibility,impact,excitement'"
+    artifact: "docs/bmad/{slug}/ideation-filtered.md"
+    required: true
+    criteria:
+      - Feasibility: Can we build this in <2 weeks?
+      - Impact: Does this actually move the needle?
+      - Excitement: Is this boring? (If yes, kill it)
+    tasks:
+      - Eliminate bottom 85% (17 out of 20)
+      - Be ruthless - "good" is the enemy of "great"
+      - Document why each was eliminated
+    gates:
+      - Exactly 3 finalists remain
+      - Elimination rationale documented
+      - All 3 meet feasibility threshold
+
+  - phase: Winners (Deep Dive)
+    agent: pm
+    command: "*detail-concepts source: 'docs/bmad/{slug}/ideation-filtered.md'"
+    artifact: "docs/bmad/{slug}/ideation-winners.md"
+    required: true
+    output_per_concept:
+      - Concept Name: [Catchy title]
+      - The Hook: [Why users care immediately]
+      - Secret Sauce: [Unique advantage/unfair edge]
+      - Execution Rating: 
+          - Difficulty: [1-10]
+          - Impact: [1-10]
+      - Next Step: [What to do if we pick this]
+    gates:
+      - All 3 winners fully detailed
+      - Hook is compelling (not generic)
+      - Secret sauce is defensible
+      - Next step is actionable
+
+  - phase: Recommendation (Optional)
+    agent: pm
+    command: "*recommend-winner source: 'docs/bmad/{slug}/ideation-winners.md'"
+    artifact: "docs/bmad/{slug}/ideation-recommendation.md"
+    required: false
+    tasks:
+      - Rank the 3 winners
+      - Provide reasoning for #1 choice
+      - Define success metrics
+      - Outline MVP scope
+    gates:
+      - Clear #1 pick identified
+      - Reasoning is data-driven
+      - MVP is achievable
+
+output_format:
+  raw_concepts:
+    - Numbered list of 20+ ideas
+    - 1-2 sentences each
+  
+  finalists:
+    - 3 detailed concepts
+    - Execution ratings
+    - Elimination rationale for others
+  
+  recommendation:
+    - Ranked finalists (#1, #2, #3)
+    - Decision framework used
+    - Next steps
+
+quality_gates:
+  blocking:
+    - Must generate 20+ ideas (quantity matters)
+    - Must eliminate to exactly 3 (not 4, not 5)
+    - Winners must have Hook + Secret Sauce defined
+  
+  warning:
+    - If all 3 finalists are low-impact (<5/10)
+    - If all 3 finalists are high-difficulty (>8/10)
+
+stop_rules:
+  - If no concepts meet feasibility bar, revisit problem statement
+  - If stakeholders can't agree, use PM to arbitrate based on data

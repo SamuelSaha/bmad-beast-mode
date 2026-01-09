@@ -1,0 +1,118 @@
+# Beast Mode: Bug Autopsy Protocol
+# For: Unknown bugs, complex errors, production incidents
+# Time to Start: < 2 minutes
+
+id: bug-autopsy
+name: "🔬 Bug Autopsy Protocol"
+description: "Analyze stack traces, explain root cause, and generate fix + regression test."
+estimated_time: "20 minutes - 1 hour"
+
+trigger_conditions:
+  - Unknown error with stack trace
+  - Production incident requiring postmortem
+  - Intermittent/hard-to-reproduce bugs
+  - Security vulnerability discovered
+  - Performance degradation without obvious cause
+
+agents:
+  primary: analyst
+  support:
+    - dev
+    - qa
+
+phases:
+  - phase: Investigation
+    agent: analyst
+    command: "*analyze-error context: '{stack_trace}' code: '{affected_files}'"
+    artifact: "docs/bmad/{slug}/autopsy-investigation.md"
+    required: true
+    tasks:
+      - Parse stack trace
+      - Identify error origin (line/file)
+      - Analyze execution path
+      - Determine root cause (not just symptoms)
+      - List contributing factors
+    gates:
+      - Root cause identified
+      - Reproduction steps documented
+      - Impact scope defined
+
+  - phase: Root Cause Analysis
+    agent: analyst
+    command: "*root-cause-why source: 'docs/bmad/{slug}/autopsy-investigation.md'"
+    artifact: "docs/bmad/{slug}/autopsy-root-cause.md"
+    required: true
+    tasks:
+      - Apply 5 Whys technique
+      - Identify why error occurred
+      - Explain why it wasn't caught earlier
+      - Determine prevention strategy
+    output:
+      - Why it happened (technical explanation)
+      - Why it wasn't caught (gap in tests/monitoring)
+      - Why users are affected (business impact)
+    gates:
+      - All "whys" answered with evidence
+      - Prevention strategy defined
+
+  - phase: Fix Implementation
+    agent: dev
+    command: "*implement-fix analysis: 'docs/bmad/{slug}/autopsy-root-cause.md'"
+    artifact: "docs/bmad/{slug}/autopsy-fix.md"
+    required: true
+    tasks:
+      - Write the fix
+      - Add defensive programming (guards)
+      - Improve error handling
+      - Add logging for debugging
+    gates:
+      - Fix addresses root cause
+      - Error handling improved
+      - Logging added for future debugging
+
+  - phase: Regression Prevention
+    agent: qa
+    command: "*create-regression-test bug: 'docs/bmad/{slug}/autopsy-root-cause.md'"
+    artifact: "docs/bmad/{slug}/autopsy-tests.md"
+    required: true
+    tasks:
+      - Write test that reproduces original bug
+      - Add edge case tests (prevent similar bugs)
+      - Update test coverage
+      - Define monitoring/alerting improvements
+    gates:
+      - Test fails on old code
+      - Test passes on new code
+      - Edge cases covered
+      - Monitoring gap closed
+
+output_format:
+  investigation:
+    - Error Type: [Exception name]
+    - Origin: [File:Line]
+    - Trigger: [What caused it]
+  
+  root_cause:
+    - Why #1-5: [5 Whys analysis]
+    - Contributing Factors: [List]
+    - Prevention Strategy: [How to avoid]
+  
+  solution:
+    - Fix code
+    - Regression test
+    - Monitoring improvements
+    - Documentation updates
+
+quality_gates:
+  blocking:
+    - Root cause must be evidence-based (not guessed)
+    - Fix must address root cause (not symptoms)
+    - Regression test must fail on old code, pass on new
+  
+  warning:
+    - If fix is a workaround (technical debt created)
+
+stop_rules:
+  - If security-critical, add Security squad before implementing fix
+  - If root cause unclear, gather more data before implementing fix
+  - If fix requires architecture changes, escalate to Architect

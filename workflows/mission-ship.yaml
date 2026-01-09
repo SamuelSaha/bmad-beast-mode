@@ -1,0 +1,153 @@
+# Beast Mode: Mission Iron Ship
+# For: Full feature delivery (PRD → Tested Code)
+# Time to Start: < 5 minutes
+
+id: mission-ship
+name: "🚀 Mission: Iron Ship (Feature Delivery)"
+description: "End-to-end mission protocol from PRD to tested, shippable code."
+estimated_time: "4-8 hours"
+
+trigger_conditions:
+  - New feature with clear requirements
+  - Greenfield implementation
+  - Feature with defined business value
+  - Sprint work with acceptance criteria
+
+agents:
+  squad:
+    - pm
+    - architect
+    - dev
+    - qa
+
+coordination: sequential_handoff
+
+phases:
+  - phase: Definition
+    agent: pm
+    command: "*create-prd context: '{feature_name}' focus: 'MVP constraints and User Value'"
+    artifact: "docs/bmad/{slug}/01-prd.md"
+    required: true
+    tasks:
+      - Define the "what" and "why"
+      - Identify target users
+      - Define success metrics
+      - Set scope boundaries (MVP only)
+      - List non-goals
+    gates:
+      - Problem statement is clear
+      - Success metrics are measurable
+      - MVP scope is ruthlessly limited
+      - Stakeholder alignment confirmed
+
+  - phase: Blueprint
+    agent: architect
+    command: "*define-architecture source: 'docs/bmad/{slug}/01-prd.md' constraint: 'fits existing stack'"
+    artifact: "docs/bmad/{slug}/02-architecture.md"
+    required: true
+    tasks:
+      - Review PRD for technical requirements
+      - Design system architecture
+      - Define file structure
+      - Create data contracts/schemas
+      - Identify integration points
+      - Ensure compatibility with existing stack
+    gates:
+      - Architecture aligns with PRD goals
+      - No new major dependencies
+      - Data contracts well-defined
+      - Performance targets achievable
+
+  - phase: Construction
+    agent: dev
+    command: "*implement-feature spec: 'docs/bmad/{slug}/02-architecture.md' style: 'clean, typed, documented'"
+    artifact: "docs/bmad/{slug}/03-implementation.md"
+    required: true
+    tasks:
+      - Implement architecture design
+      - Write clean, typed code
+      - Add inline documentation/docstrings
+      - Handle error cases
+      - Add logging for debugging
+    gates:
+      - Code matches architecture spec
+      - All functions have docstrings
+      - Error handling implemented
+      - No linter errors
+
+  - phase: Verification
+    agent: qa
+    command: "*test-feature spec: 'docs/bmad/{slug}/02-architecture.md' code: 'docs/bmad/{slug}/03-implementation.md'"
+    artifact: "docs/bmad/{slug}/04-test-report.md"
+    required: true
+    tasks:
+      - Write test plan (unit, integration, E2E)
+      - Identify 3+ edge cases
+      - Test happy path
+      - Test error scenarios
+      - Verify acceptance criteria
+      - Suggest improvements
+    gates:
+      - All acceptance criteria pass
+      - Edge cases covered
+      - No critical bugs
+      - Performance within targets
+
+handoff_protocol:
+  - from: pm
+    to: architect
+    context: "PRD document with clear requirements"
+    verification: "Architect confirms PRD understanding"
+  
+  - from: architect
+    to: dev
+    context: "Architecture spec with file structure and contracts"
+    verification: "Dev confirms technical feasibility"
+  
+  - from: dev
+    to: qa
+    context: "Implemented code with documentation"
+    verification: "QA confirms testability"
+
+output_format:
+  prd:
+    - Problem statement
+    - Target users
+    - Success metrics
+    - MVP scope
+    - Non-goals
+  
+  architecture:
+    - System design
+    - File structure
+    - Data contracts
+    - Integration points
+  
+  implementation:
+    - Clean code
+    - Documentation
+    - Error handling
+  
+  testing:
+    - Test plan
+    - Edge cases
+    - Test results
+    - Bug report (if any)
+
+quality_gates:
+  blocking:
+    - PRD must have measurable success metrics
+    - Architecture must fit existing stack
+    - Code must pass all tests
+    - No critical bugs
+  
+  warning:
+    - If scope expands beyond MVP
+    - If new dependencies added without approval
+    - If performance targets not met
+
+stop_rules:
+  - If PRD lacks clarity, don't proceed to architecture
+  - If architecture is incompatible, don't proceed to implementation
+  - If critical bugs found, don't ship - return to dev
+  - If security-sensitive, add Security squad review before shipping

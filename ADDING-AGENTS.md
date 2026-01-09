@@ -28,7 +28,7 @@ agents/
 ### Step 1: Create the File
 
 ```bash
-cd ~/Library/BMAD/modules/bmad-beast-mode
+cd /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode
 
 # Choose the right squad folder
 touch agents/core/my-agent.md
@@ -151,7 +151,7 @@ exports:
 
 ```bash
 # Copy changes to the global library
-cp -r ~/Desktop/BMAD-METHOD-SAMSAM/bmad-beast-mode/* ~/Library/BMAD/modules/bmad-beast-mode/
+cp -r /Users/samuelsaha/Desktop/BMAD-METHOD-SAMSAM/bmad-beast-mode/* /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/
 ```
 
 ### Step 5: Install to Your Project
@@ -163,8 +163,8 @@ cd ~/Desktop/your-project
 npx bmad-method@alpha install
 
 # Option B: Manual copy (faster)
-cp -R ~/Library/BMAD/modules/bmad-beast-mode/agents/ _bmad/beast-mode/agents/
-cp ~/Library/BMAD/modules/bmad-beast-mode/module.yaml _bmad/beast-mode/
+cp -R /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/agents/ _bmad/beast-mode/agents/
+cp /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/module.yaml _bmad/beast-mode/
 ```
 
 ### Step 6: Test Your Agent
@@ -238,7 +238,7 @@ techniques:
 vim ~/Desktop/my-project/_bmad/beast-mode/agents/core/analyst.md
 
 # ✅ CORRECT - Edit source, then reinstall
-vim ~/Library/BMAD/modules/bmad-beast-mode/agents/core/analyst.md
+vim /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/agents/core/analyst.md
 # Then reinstall
 ```
 
@@ -248,7 +248,7 @@ To add a new command to an existing agent:
 
 1. Open the source file:
    ```bash
-   vim ~/Library/BMAD/modules/bmad-beast-mode/agents/core/analyst.md
+   vim /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/agents/core/analyst.md
    ```
 
 2. Add your command in the `commands:` section:
@@ -287,7 +287,7 @@ To add a new command to an existing agent:
 ## 🆘 Troubleshooting
 
 ### Agent not appearing after install
-1. Check file exists: `ls ~/Library/BMAD/modules/bmad-beast-mode/agents/core/my-agent.md`
+1. Check file exists: `ls /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/agents/core/my-agent.md`
 2. Check module.yaml has the export
 3. Reinstall: `npx bmad-method@alpha install`
 

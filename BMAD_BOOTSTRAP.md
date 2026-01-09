@@ -3,7 +3,7 @@
 ## Install
 ```bash
 npx bmad-method@alpha install
-# Select: BMM + custom module → /Users/YOUR_NAME/Library/BMAD/modules/bmad-beast-mode
+# Select: BMM + custom module → /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode
 ```
 
 ## Verify
@@ -30,4 +30,4 @@ mkdir -p _bmad-output/planning-artifacts _bmad-output/implementation-artifacts d
 | Quick fixes only | BMB + Beast Mode |
 
 ## Source of Truth
-**Never edit `_bmad/`** → Edit `~/Library/BMAD/modules/bmad-beast-mode/` then reinstall.
+**Never edit `_bmad/`** → Edit `/Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode/` then reinstall.
