@@ -4,15 +4,97 @@
 code: beast-mode
 name: "Beast Mode Squad Roster"
 header: "Beast Mode™: High-Speed Specialized Agent Roster"
-subheader: "31 specialized agents for enterprise-grade development"
+subheader: "31 specialized agents + Protocol Enforcer for enterprise-grade development"
 unitary: true
 
-# No custom configuration required - uses Core settings
-# Variables from Core Config inserted:
-## user_name
-## communication_language
-## document_output_language
-## output_folder
+# ============================================================================
+# EXPORTS - Maps Protocol Enforcer names to file paths
+# This is the "Beast Bridge" that ensures V4 compatibility
+# ============================================================================
+exports:
+  agents:
+    # === CORE SQUAD (9 agents) ===
+    brainstormer: agents/core/brainstormer.md
+    analyst: agents/core/analyst.md
+    pm: agents/core/pm.md
+    architect: agents/core/architect.md
+    dev: agents/core/dev.md
+    developer: agents/core/dev.md  # V4 alias
+    qa: agents/core/qa.md
+    data-analyst: agents/core/data-analyst.md
+    ux-designer: agents/core/ux-designer.md
+    sm: agents/core/sm.md
+    scrum-master: agents/core/sm.md  # V4 alias
+    
+    # === SECURITY SQUAD (3 agents) ===
+    sec-ops: agents/security/sec-ops.md
+    security: agents/security/sec-ops.md  # V4 alias
+    pentester: agents/security/pentester.md
+    dpo: agents/security/dpo.md
+    data-governance: agents/security/dpo.md  # V4 alias
+    privacy: agents/security/dpo.md  # V4 alias
+    
+    # === GROWTH SQUAD (5 agents) ===
+    user-value: agents/growth/user-value.md
+    value-advocate: agents/growth/user-value.md  # V4 alias
+    pricing: agents/growth/pricing.md
+    growth: agents/growth/growth.md
+    retention: agents/growth/retention.md
+    support: agents/growth/support.md
+    support-liaison: agents/growth/support.md  # V4 alias
+    
+    # === OPS SQUAD (6 agents) ===
+    sre: agents/ops/sre.md
+    devops: agents/ops/devops.md
+    o11y: agents/ops/o11y.md
+    observability: agents/ops/o11y.md  # V4 alias
+    finops: agents/ops/finops.md
+    perf: agents/ops/perf.md
+    performance: agents/ops/perf.md  # V4 alias
+    incident: agents/ops/incident.md
+    commander: agents/ops/incident.md  # V4 alias
+    
+    # === POLISH SQUAD (5 agents) ===
+    copywriter: agents/polish/copywriter.md
+    ux-writer: agents/polish/copywriter.md  # V4 alias
+    a11y: agents/polish/a11y.md
+    accessibility: agents/polish/a11y.md  # V4 alias
+    i18n: agents/polish/i18n.md
+    localization: agents/polish/i18n.md  # V4 alias
+    seo: agents/polish/seo.md
+    tech-writer: agents/polish/tech-writer.md
+    
+    # === AI-ECO SQUAD (3 agents) ===
+    ai-eval: agents/ai-eco/ai-eval.md
+    ai-red-team: agents/ai-eco/ai-red-team.md
+    red-team: agents/ai-eco/ai-red-team.md  # V4 alias
+    integrations: agents/ai-eco/integrations.md
+    integration-lead: agents/ai-eco/integrations.md  # V4 alias
+    
+    # === META AGENTS ===
+    orchestrator: agents/orchestrator.md
+    enforcer: agents/meta/enforcer.md
+
+  workflows:
+    quick-fix: workflows/quick-fix.yaml
+    micro-fix: workflows/micro-fix.yaml
+    standard-feature: workflows/standard-feature.yaml
+    enterprise-feature: workflows/enterprise-feature.yaml
+    ai-feature: workflows/ai-feature.yaml
+    brainstorm: workflows/brainstorm.yaml
+    brownfield-discovery: workflows/brownfield-discovery.yaml
+
+  templates:
+    project-context: templates/00-project-context.tmpl.md
+    analysis: templates/01-analysis.tmpl.md
+    technical-spec: templates/02-technical-spec.tmpl.md
+
+  config:
+    squads: config/squads.yaml
+    commands: config/commands.yaml
+    sharding: config/sharding.yaml
+    party-protocol: config/party-protocol.yaml
+    output-paths: config/output-paths.yaml
 
 # ============================================================================
 # MODULE METADATA
@@ -21,15 +103,13 @@ description: |
   A 31-agent specialized engineering organization for high-scale development.
   Installs as a custom module alongside official BMAD Method.
   
-  6 specialized squads:
-  - Core: Brainstormer, Analyst, PM, Architect, Dev, QA, Data, UX, SM
-  - Security: SecOps, Pentester, DPO
-  - Growth: Value Advocate, Pricing, Growth, Retention, Support
-  - Ops: SRE, DevOps, O11y, FinOps, Perf, Incident Commander
-  - Polish: Copywriter, A11y, I18n, SEO, Tech Writer
-  - AI-Eco: AI Eval, AI Red Team, Integrations
+  Features:
+  - Protocol Enforcer for structured ticket processing
+  - Beast Bridge aliases for V4 compatibility
+  - 6 specialized squads covering the full dev lifecycle
+  - Brainstormer for divergent ideation before analysis
 
-version: "3.0.0"
+version: "3.1.0"
 author: "Samuel Saha"
 repository: "https://github.com/SamuelSaha/bmad-beast-mode"
 license: MIT
