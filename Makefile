@@ -1,35 +1,24 @@
-# Beast Mode Automation
-# Add this file to your project root!
-
-.PHONY: help update start plan code fix
+.PHONY: help start fix plan status
 
 help:
-	@echo "🔥 Beast Mode Available Commands:"
-	@echo "  make start   -> Initialize BMAD in this repo"
-	@echo "  make update  -> Update Beast Mode module"
-	@echo "  make plan    -> Run Analyst (Planning)"
-	@echo "  make code    -> Run Developer (Coding)"
-	@echo "  make fix     -> Micro-fix workflow"
+	@echo "🔥 Beast Mode Commands:"
+	@echo "  make start   -> Load the Orchestrator"
+	@echo "  make fix     -> Start a Micro-Fix (Bug)"
+	@echo "  make plan    -> Start a Feature Plan (PRD)"
+	@echo "  make status  -> Check workflow status"
 
 start:
-	npx bmad-method@alpha install
-
-update:
-	# Pulls the latest version of your custom module
-	# Adjust path if different
-	cd .bmad/modules/beast-mode && git pull origin main
-	@echo "✅ Agents updated."
-
-plan:
-	@echo "🧠 Loading Analyst..."
-	# Assumes 'opencode' or your IDE CLI is available
-	# Or just prints instruction
-	@echo "Run: *analyze-problem"
-
-code:
-	@echo "👨‍💻 Loading Dev..."
-	@echo "Run: *implement-fix"
+	# Simulating /bmad:start
+	@echo "Run: *start"
 
 fix:
-	@echo "🩹 Loading Micro-Fix..."
+	@echo "⛽ Loading Context Fuel..."
+	@cat templates/00-context-fuel.tmpl.md
+	@echo "--------------------------------"
 	@echo "Run: *workflow-init workflow: micro-fix"
+
+plan:
+	@echo "Run: *workflow-init workflow: standard-feature"
+
+status:
+	@echo "Run: *status"

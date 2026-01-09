@@ -1,31 +1,15 @@
-# ⛽ Context Fuel
-**Required before starting ANY workflow.**
+# Context Fuel ⛽
+*Fill this out to start. If fields are missing, the agent will stop.*
 
-## 1. The Situation
-**Current Behavior:**
-[What is happening now? Be specific.]
+### 1. Current State
+* **Behavior:** [What is happening now?]
+* **Evidence:** [Paste logs, error screenshot, or network response here]
+* **Location:** [File path or URL]
 
-**Expected Behavior:**
-[What should happen instead?]
+### 2. Desired State
+* **Goal:** [What should happen?]
+* **Success Criteria:** [e.g. "Error 500 is gone" or "Button is blue"]
 
-## 2. Evidence
-**Errors/Logs:**
-```text
-[Paste logs here]
-```
-
-**Reproduction:**
-1. [Step 1]
-2. [Step 2]
-
-**Screenshots/Links:**
-[Links or description of visual issue]
-
-## 3. Boundary
-**Scope:**
-[Which pages/files are affected?]
-
-**Constraints:**
-- [ ] No database schema changes
-- [ ] No new dependencies
-- [ ] Timebox: < 1 hour
+### 3. Constraints (Brownfield)
+* **Stack:** [e.g. Next.js / Python]
+* **Do Not Touch:** [e.g. "Don't change the database schema"]

@@ -1,81 +1,57 @@
 # Beast Mode: Micro-Fix Workflow
-# For: Tiny bugs, UI tweaks, typo fixes
-# Time to Completion: < 30 minutes
+# Rapid bug fix loop: Analyst -> Dev -> QA. < 30 mins.
+
 id: micro-fix
-name: "🩹 Micro-Fix Flow"
-description: |
-  Ultra-fast path for small fixes. 
-  Skips heavy architecture/PM steps.
-  Focuses on: Identify -> Patch -> Verify.
+name: "Micro-Fix"
+description: "Rapid bug fix loop: Analyst -> Dev -> QA. < 30 mins."
 estimated_time: "15-30 minutes"
 
 trigger_conditions:
-  - Simple bug fix
-  - UI style tweak
-  - Content update
-  - Typo fix
-  - One-file change
+  - "fix"
+  - "bug"
+  - "quick"
 
 trigger_keywords:
+  - limit
   - fix
-  - bug
-  - typo
-  - tweak
-  - style
-  - quick
+  - mistake
 
 phases:
-  # === PHASE 1: DIAGNOSE ===
-  - phase: Diagnose
-    description: "Identify the root cause quickly"
+  - phase: "Triaging"
     agent: analyst
     command: "*quick-diag"
     instruction: |
-      Read the `Context Fuel`.
-      Pinpoint the exact file and lines causing the issue.
-      
-      Output minimal RCA:
-      - **Root Cause:** [1 sentence]
-      - **Target File:** [filepath]
-      - **Proposed Fix:** [1 sentence]
-    artifact: "docs/bmad/{slug}/01-analysis.md"
+      Read `templates/00-context-fuel.tmpl.md`.
+      Identify the root cause in 3 sentences max.
+      Output: `docs/bmad/{slug}/01-micro-analysis.md`
+    artifact: "docs/bmad/{slug}/01-micro-analysis.md"
     required: true
 
-  # === PHASE 2: PATCH ===
-  - phase: Patch
-    description: "Apply the fix"
+  - phase: "Patching"
     agent: dev
     command: "*implement-fix"
     instruction: |
-      Implement the fix defined in Diagnosis.
-      
-      **Constraints:**
-      - Modify ONLY the target file if possible.
-      - stick to `PROJECT_CONTEXT.md` patterns.
-    artifact: "docs/bmad/{slug}/03-implementation.md"
+      Apply the fix.
+      Constraint: Touch ONLY the files listed in the analysis.
+      Output: `docs/bmad/{slug}/03-patch-notes.md`
+    artifact: "docs/bmad/{slug}/03-patch-notes.md"
     required: true
 
-  # === PHASE 3: VERIFY ===
-  - phase: Verify
-    description: "Double check the work"
-    agent: qa
+  - phase: "Verifying"
+    agent: qa (TEA)
     command: "*quick-check"
     instruction: |
-      Verify against the `Context Fuel` expected behavior.
-      
-      Output:
-      - [ ] Fix works? (Yes/No)
-      - [ ] No regressions? (Yes/No)
-    artifact: "docs/bmad/{slug}/04-qa-report.md"
+      Verify the fix against the 'Evidence' provided in Context Fuel.
+      Output: `docs/bmad/{slug}/04-verification.md` (Pass/Fail)
+    artifact: "docs/bmad/{slug}/04-verification.md"
     required: true
     gates:
-      - Fix verified
-      - No regressions
+      - "Fix verified"
 
 output_sequence:
-  - "docs/bmad/{slug}/01-analysis.md"
-  - "docs/bmad/{slug}/03-implementation.md"
-  - "docs/bmad/{slug}/04-qa-report.md"
+  - "docs/bmad/{slug}/01-micro-analysis.md"
+  - "docs/bmad/{slug}/03-patch-notes.md"
+  - "docs/bmad/{slug}/04-verification.md"
 
 next_workflow:
   if_success: "none"

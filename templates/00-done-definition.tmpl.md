@@ -1,23 +1,15 @@
-# ✅ Definition of Done
-**Required for QA Verification**
+# Definition of Done ✅
 
-## 1. Acceptance Criteria
-- [ ] [Criterion 1]
-- [ ] [Criterion 2]
-- [ ] [Criterion 3]
+## 1. Functional
+- [ ] Logic implemented as per spec.
+- [ ] Happy path verified.
+- [ ] 1 Edge case verified.
 
-## 2. Non-Regression Checks
-- [ ] [Critical Flow A] still works
-- [ ] [Critical Flow B] still works
+## 2. Quality
+- [ ] No new console errors / warnings.
+- [ ] No hardcoded secrets.
+- [ ] No new dependencies (unless approved).
 
-## 3. Technical Constraints
-- [ ] No new console warnings
-- [ ] TypeScript compiles with no errors
-- [ ] Tests passed (`npm test`)
-- [ ] Linting passed (`npm run lint`)
-
-## 4. UI/UX Polish
-- [ ] Responsive check (Mobile/Desktop)
-- [ ] Dark mode check (if applicable)
-- [ ] Loading states handled
-- [ ] Error states handled
+## 3. Hygiene
+- [ ] Unused code deleted (no commented-out blocks).
+- [ ] Artifacts saved to `docs/bmad/{slug}/`.
