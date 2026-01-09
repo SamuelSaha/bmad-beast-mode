@@ -1,28 +1,27 @@
+# Beast Mode Custom Module for BMAD Method
+# Install via: npx bmad-method@alpha install -> "Install local module? y" -> path to this folder
+
 id: beast-mode
 name: "Beast Mode Squad Roster"
-description: |
-  A 31-agent specialized engineering organization for high-scale development.
-  6 specialized squads covering the entire development lifecycle:
-  - Core: Essential development workflow (8 agents)
-  - Security: Security, privacy, and compliance (4 agents)
-  - Growth: Product growth and monetization (6 agents)
-  - Ops: Infrastructure and reliability (4 agents)
-  - Polish: Code quality and documentation (5 agents)
-  - AI-Eco: AI/ML feature development (4 agents)
-  Plus: 1 Orchestrator for workflow routing.
-  
-  Enterprise Features:
-  - Context Sharding for 90% token savings
-  - Party Mode for multi-agent escalation
-  - Test Automation (TEA Agent) with Playwright
-  - Brainstorming & Brownfield Discovery workflows
-  - Full BMAD v6 compatibility
-
-version: "2.1.0"
+version: "3.0.0"
 author: "Samuel Saha"
 repository: "https://github.com/SamuelSaha/bmad-beast-mode"
-type: unitary
 license: MIT
+
+# CRITICAL: This makes it a standalone installable module (not a fork)
+unitary: true
+
+description: |
+  A 31-agent specialized engineering organization for high-scale development.
+  Installs as a custom module alongside official BMAD Method.
+  
+  6 specialized squads:
+  - Core: Essential development workflow (9 agents including Brainstormer)
+  - Security: Security, privacy, and compliance (3 agents)
+  - Growth: Product growth and monetization (5 agents)
+  - Ops: Infrastructure and reliability (6 agents)
+  - Polish: Code quality and documentation (5 agents)
+  - AI-Eco: AI/ML feature development (3 agents)
 
 tags:
   - agents
@@ -32,68 +31,96 @@ tags:
   - growth
   - polish
   - ai
-  - workflows
-  - templates
-  - testing
-  - automation
-  - brainstorming
-  - brownfield
-  - sharding
+  - custom-module
 
-dependencies:
-  - bmm-bmad-method
-
-structure:
+# ============================================================================
+# EXPORTS - Maps Protocol Enforcer names to file paths
+# This is the critical section that makes the installer work
+# ============================================================================
+exports:
   agents:
-    - agents/orchestrator.md
-    - agents/core/*.md
-    - agents/security/*.md
-    - agents/growth/*.md
-    - agents/ops/*.md
-    - agents/polish/*.md
-    - agents/ai-eco/*.md
-  
+    # === CORE SQUAD ===
+    brainstormer: agents/core/brainstormer.md
+    analyst: agents/core/analyst.md
+    pm: agents/core/pm.md
+    architect: agents/core/architect.md
+    dev: agents/core/dev.md
+    qa: agents/core/qa.md
+    data-analyst: agents/core/data-analyst.md
+    ux-designer: agents/core/ux-designer.md
+    sm: agents/core/sm.md
+    
+    # === SECURITY SQUAD ===
+    sec-ops: agents/security/sec-ops.md
+    pentester: agents/security/pentester.md
+    dpo: agents/security/dpo.md
+    
+    # === GROWTH SQUAD ===
+    user-value: agents/growth/user-value.md
+    pricing: agents/growth/pricing.md
+    growth: agents/growth/growth.md
+    retention: agents/growth/retention.md
+    support: agents/growth/support.md
+    
+    # === OPS SQUAD ===
+    sre: agents/ops/sre.md
+    devops: agents/ops/devops.md
+    perf: agents/ops/perf.md
+    finops: agents/ops/finops.md
+    incident: agents/ops/incident.md
+    
+    # === POLISH SQUAD ===
+    copywriter: agents/polish/copywriter.md
+    a11y: agents/polish/a11y.md
+    i18n: agents/polish/i18n.md
+    seo: agents/polish/seo.md
+    tech-writer: agents/polish/tech-writer.md
+    
+    # === AI-ECO SQUAD ===
+    ai-eval: agents/ai-eco/ai-eval.md
+    ai-red-team: agents/ai-eco/ai-red-team.md
+    integrations: agents/ai-eco/integrations.md
+    
+    # === ORCHESTRATOR ===
+    orchestrator: agents/orchestrator.md
+    
+    # === PROTOCOL ENFORCER ALIASES ===
+    # Maps standard BMAD names to your specialized agents
+    red-team: agents/ai-eco/ai-red-team.md
+    observability: agents/ops/o11y.md
+    performance: agents/ops/perf.md
+    integration-lead: agents/ai-eco/integrations.md
+    accessibility: agents/polish/a11y.md
+    localization: agents/polish/i18n.md
+    security: agents/security/sec-ops.md
+    privacy: agents/security/dpo.md
+    value-advocate: agents/growth/user-value.md
+    commander: agents/ops/incident.md
+
   workflows:
-    - workflows/quick-fix.yaml
-    - workflows/micro-fix.yaml
-    - workflows/standard-feature.yaml
-    - workflows/enterprise-feature.yaml
-    - workflows/ai-feature.yaml
-    - workflows/brainstorm.yaml
-    - workflows/brownfield-discovery.yaml
-  
+    quick-fix: workflows/quick-fix.yaml
+    micro-fix: workflows/micro-fix.yaml
+    standard-feature: workflows/standard-feature.yaml
+    enterprise-feature: workflows/enterprise-feature.yaml
+    ai-feature: workflows/ai-feature.yaml
+    brainstorm: workflows/brainstorm.yaml
+    brownfield-discovery: workflows/brownfield-discovery.yaml
+
   templates:
-    - templates/*.tmpl.md
-  
+    project-context: templates/00-project-context.tmpl.md
+    analysis: templates/01-analysis.tmpl.md
+    technical-spec: templates/02-technical-spec.tmpl.md
+
   config:
-    - config/squads.yaml
-    - config/commands.yaml
-    - config/sharding.yaml
-    - config/party-protocol.yaml
-    - config/output-paths.yaml
-  
-  docs:
-    - docs/START-HERE.md
-    - docs/INTEGRATION_GUIDE.md
-    - docs/TRIGGER_MATRIX.md
-    - docs/sharding.md
-    - docs/overrides.md
-    - docs/brownfield-fast-lane.md
-    - docs/party-mode.md
-    - docs/workflow-vendoring.md
-  
-  scripts:
-    - scripts/integrate.sh
-    - scripts/shard.sh
-  
-  ci:
-    - .github/workflows/validate.yml
+    squads: config/squads.yaml
+    commands: config/commands.yaml
+    sharding: config/sharding.yaml
+    party-protocol: config/party-protocol.yaml
+    output-paths: config/output-paths.yaml
 
-agent_count: 31
-workflow_count: 7
-template_count: 8
-config_count: 5
-
+# ============================================================================
+# SQUAD DEFINITIONS
+# ============================================================================
 squads:
   - name: core
     count: 9
@@ -105,8 +132,8 @@ squads:
       - architect
       - dev
       - qa
-      - data
-      - ux
+      - data-analyst
+      - ux-designer
       - sm
   
   - name: security
@@ -121,7 +148,7 @@ squads:
     count: 5
     description: "Product growth and monetization specialists"
     agents:
-      - value-advocate
+      - user-value
       - pricing
       - growth
       - retention
@@ -133,9 +160,9 @@ squads:
     agents:
       - sre
       - devops
-      - o11y
+      - observability
       - finops
-      - perf
+      - performance
       - commander
   
   - name: polish
@@ -143,8 +170,8 @@ squads:
     description: "UX polish, accessibility, and documentation"
     agents:
       - copywriter
-      - a11y
-      - i18n
+      - accessibility
+      - localization
       - seo
       - tech-writer
   
@@ -154,36 +181,42 @@ squads:
     agents:
       - ai-eval
       - red-team
-      - integration
+      - integration-lead
+
+# ============================================================================
+# INSTALLATION HOOKS
+# ============================================================================
+install:
+  copy:
+    - agents/**/*.md
+    - workflows/*.yaml
+    - templates/*.tmpl.md
+    - config/*.yaml
+  
+  merge:
+    # These get merged into the project's _config/agents/ for recompilation
+    - config/squads.yaml
+    - config/commands.yaml
+
+# ============================================================================
+# METADATA
+# ============================================================================
+agent_count: 31
+workflow_count: 7
+template_count: 3
+config_count: 5
 
 enterprise_features:
   context_sharding:
     enabled: true
     config: "config/sharding.yaml"
-    description: "90% token savings for large codebases"
-  
   party_mode:
     enabled: true
     config: "config/party-protocol.yaml"
-    description: "Multi-agent escalation for deadlocks"
-  
   test_automation:
     agent: "agents/core/qa.md"
     framework: "playwright"
-    description: "TEA agent with Page Object Model"
-  
   brainstorming:
     workflow: "workflows/brainstorm.yaml"
-    description: "Creative Intelligence Suite (CIS)"
-  
   brownfield:
     workflow: "workflows/brownfield-discovery.yaml"
-    description: "Legacy codebase mapping"
-  
-  llm_bundle:
-    file: "llms-full.txt"
-    description: "Single-file context for any LLM"
-  
-  ci_validation:
-    config: ".github/workflows/validate.yml"
-    description: "Automated module validation"
