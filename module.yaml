@@ -89,16 +89,17 @@ structure:
   ci:
     - .github/workflows/validate.yml
 
-agent_count: 30
+agent_count: 31
 workflow_count: 7
 template_count: 8
 config_count: 5
 
 squads:
   - name: core
-    count: 8
+    count: 9
     description: "Essential development workflow agents"
     agents:
+      - brainstormer
       - analyst
       - pm
       - architect

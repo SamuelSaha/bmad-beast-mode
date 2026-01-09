@@ -7,6 +7,9 @@ squads:
     description: "Essential development workflow agents"
     always_active: true
     agents:
+      - id: brainstormer
+        file: agents/core/brainstormer.md
+        triggers: ["*brainstorm"]
       - id: analyst
         file: agents/core/analyst.md
         triggers: ["*analyze-problem"]

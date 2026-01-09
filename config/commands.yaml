@@ -14,10 +14,10 @@ enterprise:
     agent: qa
     description: "Create requirements traceability matrix"
   
-  # Brainstorming (CIS)
+  # Brainstorming (Divergence Engine)
   - name: "*brainstorm"
-    workflow: brainstorm
-    description: "Creative Intelligence Suite - ideation workflow"
+    agent: brainstormer
+    description: "Divergent ideation - generate options before analysis"
   
   # Brownfield Discovery
   - name: "*scan-legacy"
