@@ -1,222 +1,35 @@
-# Beast Mode Custom Module for BMAD Method
+# Beast Mode Custom Module for BMAD Method v6
 # Install via: npx bmad-method@alpha install -> "Install local module? y" -> path to this folder
 
-id: beast-mode
+code: beast-mode
 name: "Beast Mode Squad Roster"
-version: "3.0.0"
-author: "Samuel Saha"
-repository: "https://github.com/SamuelSaha/bmad-beast-mode"
-license: MIT
-
-# CRITICAL: This makes it a standalone installable module (not a fork)
+header: "Beast Mode™: High-Speed Specialized Agent Roster"
+subheader: "31 specialized agents for enterprise-grade development"
 unitary: true
 
+# No custom configuration required - uses Core settings
+# Variables from Core Config inserted:
+## user_name
+## communication_language
+## document_output_language
+## output_folder
+
+# ============================================================================
+# MODULE METADATA
+# ============================================================================
 description: |
   A 31-agent specialized engineering organization for high-scale development.
   Installs as a custom module alongside official BMAD Method.
   
   6 specialized squads:
-  - Core: Essential development workflow (9 agents including Brainstormer)
-  - Security: Security, privacy, and compliance (3 agents)
-  - Growth: Product growth and monetization (5 agents)
-  - Ops: Infrastructure and reliability (6 agents)
-  - Polish: Code quality and documentation (5 agents)
-  - AI-Eco: AI/ML feature development (3 agents)
+  - Core: Brainstormer, Analyst, PM, Architect, Dev, QA, Data, UX, SM
+  - Security: SecOps, Pentester, DPO
+  - Growth: Value Advocate, Pricing, Growth, Retention, Support
+  - Ops: SRE, DevOps, O11y, FinOps, Perf, Incident Commander
+  - Polish: Copywriter, A11y, I18n, SEO, Tech Writer
+  - AI-Eco: AI Eval, AI Red Team, Integrations
 
-tags:
-  - agents
-  - enterprise
-  - security
-  - ops
-  - growth
-  - polish
-  - ai
-  - custom-module
-
-# ============================================================================
-# EXPORTS - Maps Protocol Enforcer names to file paths
-# This is the critical section that makes the installer work
-# ============================================================================
-exports:
-  agents:
-    # === CORE SQUAD ===
-    brainstormer: agents/core/brainstormer.md
-    analyst: agents/core/analyst.md
-    pm: agents/core/pm.md
-    architect: agents/core/architect.md
-    dev: agents/core/dev.md
-    qa: agents/core/qa.md
-    data-analyst: agents/core/data-analyst.md
-    ux-designer: agents/core/ux-designer.md
-    sm: agents/core/sm.md
-    
-    # === SECURITY SQUAD ===
-    sec-ops: agents/security/sec-ops.md
-    pentester: agents/security/pentester.md
-    dpo: agents/security/dpo.md
-    
-    # === GROWTH SQUAD ===
-    user-value: agents/growth/user-value.md
-    pricing: agents/growth/pricing.md
-    growth: agents/growth/growth.md
-    retention: agents/growth/retention.md
-    support: agents/growth/support.md
-    
-    # === OPS SQUAD ===
-    sre: agents/ops/sre.md
-    devops: agents/ops/devops.md
-    perf: agents/ops/perf.md
-    finops: agents/ops/finops.md
-    incident: agents/ops/incident.md
-    
-    # === POLISH SQUAD ===
-    copywriter: agents/polish/copywriter.md
-    a11y: agents/polish/a11y.md
-    i18n: agents/polish/i18n.md
-    seo: agents/polish/seo.md
-    tech-writer: agents/polish/tech-writer.md
-    
-    # === AI-ECO SQUAD ===
-    ai-eval: agents/ai-eco/ai-eval.md
-    ai-red-team: agents/ai-eco/ai-red-team.md
-    integrations: agents/ai-eco/integrations.md
-    
-    # === ORCHESTRATOR ===
-    orchestrator: agents/orchestrator.md
-    
-    # === PROTOCOL ENFORCER ALIASES ===
-    # Maps standard BMAD names to your specialized agents
-    red-team: agents/ai-eco/ai-red-team.md
-    observability: agents/ops/o11y.md
-    performance: agents/ops/perf.md
-    integration-lead: agents/ai-eco/integrations.md
-    accessibility: agents/polish/a11y.md
-    localization: agents/polish/i18n.md
-    security: agents/security/sec-ops.md
-    privacy: agents/security/dpo.md
-    value-advocate: agents/growth/user-value.md
-    commander: agents/ops/incident.md
-
-  workflows:
-    quick-fix: workflows/quick-fix.yaml
-    micro-fix: workflows/micro-fix.yaml
-    standard-feature: workflows/standard-feature.yaml
-    enterprise-feature: workflows/enterprise-feature.yaml
-    ai-feature: workflows/ai-feature.yaml
-    brainstorm: workflows/brainstorm.yaml
-    brownfield-discovery: workflows/brownfield-discovery.yaml
-
-  templates:
-    project-context: templates/00-project-context.tmpl.md
-    analysis: templates/01-analysis.tmpl.md
-    technical-spec: templates/02-technical-spec.tmpl.md
-
-  config:
-    squads: config/squads.yaml
-    commands: config/commands.yaml
-    sharding: config/sharding.yaml
-    party-protocol: config/party-protocol.yaml
-    output-paths: config/output-paths.yaml
-
-# ============================================================================
-# SQUAD DEFINITIONS
-# ============================================================================
-squads:
-  - name: core
-    count: 9
-    description: "Essential development workflow agents"
-    agents:
-      - brainstormer
-      - analyst
-      - pm
-      - architect
-      - dev
-      - qa
-      - data-analyst
-      - ux-designer
-      - sm
-  
-  - name: security
-    count: 3
-    description: "Security, privacy, and compliance specialists"
-    agents:
-      - sec-ops
-      - pentester
-      - dpo
-  
-  - name: growth
-    count: 5
-    description: "Product growth and monetization specialists"
-    agents:
-      - user-value
-      - pricing
-      - growth
-      - retention
-      - support
-  
-  - name: ops
-    count: 6
-    description: "Infrastructure, reliability, and cost specialists"
-    agents:
-      - sre
-      - devops
-      - observability
-      - finops
-      - performance
-      - commander
-  
-  - name: polish
-    count: 5
-    description: "UX polish, accessibility, and documentation"
-    agents:
-      - copywriter
-      - accessibility
-      - localization
-      - seo
-      - tech-writer
-  
-  - name: ai-eco
-    count: 3
-    description: "AI evaluation, safety, and integration"
-    agents:
-      - ai-eval
-      - red-team
-      - integration-lead
-
-# ============================================================================
-# INSTALLATION HOOKS
-# ============================================================================
-install:
-  copy:
-    - agents/**/*.md
-    - workflows/*.yaml
-    - templates/*.tmpl.md
-    - config/*.yaml
-  
-  merge:
-    # These get merged into the project's _config/agents/ for recompilation
-    - config/squads.yaml
-    - config/commands.yaml
-
-# ============================================================================
-# METADATA
-# ============================================================================
-agent_count: 31
-workflow_count: 7
-template_count: 3
-config_count: 5
-
-enterprise_features:
-  context_sharding:
-    enabled: true
-    config: "config/sharding.yaml"
-  party_mode:
-    enabled: true
-    config: "config/party-protocol.yaml"
-  test_automation:
-    agent: "agents/core/qa.md"
-    framework: "playwright"
-  brainstorming:
-    workflow: "workflows/brainstorm.yaml"
-  brownfield:
-    workflow: "workflows/brownfield-discovery.yaml"
+version: "3.0.0"
+author: "Samuel Saha"
+repository: "https://github.com/SamuelSaha/bmad-beast-mode"
+license: MIT
