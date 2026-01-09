@@ -1,409 +1,432 @@
-# Beast Mode: Custom Agent Module for BMAD v6
+# 🔥 Beast Mode v3.1
 
-> **31 specialized agents** that install alongside the official BMAD Method.
-> No fork. No drift. Pure extension.
+> **31 Specialized AI Agents** for BMAD Method v6  
+> Install alongside official BMAD. No fork. No drift. Pure power.
 
 ---
 
-## 🚀 Quick Start (2 minutes)
+## ⚡ TL;DR (30 Seconds)
 
 ```bash
-# 1. Create a new project
-mkdir my-app && cd my-app && git init
-
-# 2. Run the BMAD installer
+# In any new project folder:
 npx bmad-method@alpha install
 
-# 3. Answer the prompts:
-#    - Select tools: Choose your IDE (Antigravity, OpenCode, etc.)
-#    - Official modules: Select BMM (BMAD Method)
-#    - "Install local custom module?" → y
-#    - Path: /Users/YOUR_USERNAME/Library/BMAD/modules/bmad-beast-mode
-
-# 4. Done! Your agents are now in:
-#    _bmad/beast-mode/agents/
+# When prompted:
+# 1. Select tools: Google Antigravity, OpenCode, etc.
+# 2. Select modules: BMM (BMAD Method) ← IMPORTANT!
+# 3. "Install local custom module?" → y
+# 4. Path: /Users/YOUR_USERNAME/Library/BMAD/modules/bmad-beast-mode
 ```
+
+**That's it.** Your 31 specialized agents are now available.
 
 ---
 
-## 📦 What's Included
+## � Critical: What Module to Install
 
-### Agents (33 total)
+| Your Goal | Install These Modules |
+|-----------|----------------------|
+| Full product dev (PRD → Architecture → Stories) | **BMM** + Beast Mode |
+| Just building agents/workflows | **BMB** + Beast Mode |
+| Quick prototyping | **BMB** + Beast Mode |
+| Game development | **BMGD** + Beast Mode |
 
-| Squad | Agents | Purpose |
-|-------|--------|---------|
-| **Core** (9) | brainstormer, analyst, pm, architect, dev, qa, data-analyst, ux-designer, sm | Essential workflow |
-| **Security** (3) | sec-ops, pentester, dpo | Security & privacy |
-| **Growth** (5) | user-value, pricing, growth, retention, support | Product growth |
-| **Ops** (6) | sre, devops, o11y, finops, perf, incident | Infrastructure |
-| **Polish** (5) | copywriter, a11y, i18n, seo, tech-writer | Quality & docs |
-| **AI-Eco** (3) | ai-eval, ai-red-team, integrations | AI/ML features |
-| **Meta** (1) | enforcer | Protocol generation |
-| **Router** (1) | orchestrator | Traffic control |
-
-### Workflows (7)
-
-| Workflow | Use Case |
-|----------|----------|
-| `quick-fix` | Bug fixes (15 min) |
-| `micro-fix` | Small changes (30 min) |
-| `standard-feature` | Normal features |
-| `enterprise-feature` | Large features |
-| `ai-feature` | AI/LLM features |
-| `brainstorm` | Divergent ideation |
-| `brownfield-discovery` | Legacy codebase mapping |
+> ⚠️ **BMM (BMAD Method)** gives you `*workflow-init`, `*brainstorm-project`, etc.  
+> Without it, you only get Beast Mode agents but not the official workflows.
 
 ---
 
-## 🔧 Installation Options
+## 📍 Where Do Files End Up?
 
-### Option A: Fresh Project (Recommended)
-
-```bash
-mkdir my-app && cd my-app && git init
-npx bmad-method@alpha install
-# Select: BMM + your custom module path
-```
-
-### Option B: Existing BMAD Project
-
-```bash
-cd my-existing-project
-npx bmad-method@alpha install
-# Choose: "Modify BMAD Installation"
-# Add your custom module
-```
-
-### Option C: Manual Update (Force Sync)
-
-If you updated your source module and need to push changes to a project:
-
-```bash
-cd ~/Desktop/your-project
-cp -R ~/Library/BMAD/modules/bmad-beast-mode/agents/ _bmad/beast-mode/agents/
-cp ~/Library/BMAD/modules/bmad-beast-mode/module.yaml _bmad/beast-mode/
-```
-
----
-
-## 🎯 Usage Patterns
-
-### Pattern 1: Protocol Enforcer (Structured Tickets)
-
-```bash
-# Start a session
-npx bmad session
-
-# Load the Enforcer
-> /load enforcer
-
-# Paste your Context Fuel
-> *enforce context: '
-Issue: Login button not working
-Current: Button renders but onClick fails
-Expected: User can click and authenticate
-Stack: React 18, NextAuth, Postgres
-'
-
-# Follow the generated protocol
-> /load analyst    # Step 1: Analysis
-> /load architect  # Step 2: Technical spec
-> /load dev        # Step 3: Implementation
-> /load qa         # Step 4: Review
-```
-
-### Pattern 2: Quick Fix (Small Bugs)
-
-```bash
-> /load analyst
-> *analyze-problem context: 'Button color wrong on dark mode'
-# Analyst outputs root cause
-
-> /load dev
-> *implement-fix
-# Dev fixes it
-
-> /load qa
-> *review-feature
-# QA validates
-```
-
-### Pattern 3: Brainstorming (Divergent Ideation)
-
-```bash
-# Option A: Use official BMAD workflow
-> /load analyst
-> *brainstorm-project
-
-# Option B: Use Beast Mode Brainstormer
-> /load brainstormer
-> *brainstorm context: 'How should we handle user onboarding?'
-```
-
----
-
-## 📁 Project Structure After Install
+After `npx bmad-method@alpha install`, your project looks like this:
 
 ```
-my-app/
-├── _bmad/
-│   ├── _config/           # BMAD core config
-│   ├── beast-mode/        # YOUR CUSTOM MODULE
-│   │   ├── agents/
-│   │   │   ├── core/      # 9 agents
-│   │   │   ├── security/  # 3 agents
-│   │   │   ├── growth/    # 5 agents
-│   │   │   ├── ops/       # 6 agents
-│   │   │   ├── polish/    # 5 agents
-│   │   │   ├── ai-eco/    # 3 agents
-│   │   │   ├── meta/      # 1 agent (enforcer)
-│   │   │   └── orchestrator.md
+my-project/
+├── _bmad/                          # BMAD installation
+│   ├── bmm/                        # Official BMAD Method (if installed)
+│   │   ├── agents/                 # Official agents
+│   │   └── workflows/              # Official workflows
+│   ├── beast-mode/                 # YOUR CUSTOM MODULE
+│   │   ├── agents/                 # Your 31 agents ← HERE
+│   │   │   ├── core/
+│   │   │   ├── security/
+│   │   │   ├── growth/
+│   │   │   ├── ops/
+│   │   │   ├── polish/
+│   │   │   ├── ai-eco/
+│   │   │   └── meta/
 │   │   ├── workflows/
 │   │   ├── templates/
 │   │   └── config/
-│   ├── bmm/               # Official BMad Method
-│   └── core/              # BMAD Core
-├── _bmad-output/
-│   ├── planning-artifacts/   # PRD, architecture, etc.
-│   └── implementation-artifacts/  # Stories, reviews
-└── docs/                  # Long-term project docs
+│   └── core/                       # BMAD Core
+├── _bmad-output/                   # Where artifacts go
+│   ├── planning-artifacts/         # PRD, architecture, etc.
+│   └── implementation-artifacts/   # Stories, code notes
+├── .antigravity/ or .opencode/     # Tool configs
+└── docs/                           # Long-term documentation
 ```
 
 ---
 
-## 🔄 Updating Without Breaking Things
+## � Verify Your Installation
 
-### Golden Rule
-> **Never edit files inside `_bmad/`.**  
-> Edit your source module, then reinstall.
-
-### Update Workflow
+After installing, run these checks:
 
 ```bash
-# 1. Edit your source module
-cd ~/Library/BMAD/modules/bmad-beast-mode
-# Make your changes to agents, workflows, etc.
+# Check Beast Mode agents exist
+ls _bmad/beast-mode/agents/
 
-# 2. Push to GitHub (optional but recommended)
-git add . && git commit -m "feat: Update analyst agent"
-git push origin main
+# Expected output:
+# ai-eco  core  growth  meta  ops  orchestrator.md  polish  security
 
-# 3. Update your project
-cd ~/Desktop/my-project
-npx bmad-method@alpha install
-# Choose: Modify → Update custom modules
+# Check a specific agent
+cat _bmad/beast-mode/agents/core/analyst.md | head -20
 ```
 
----
-
-## 🌉 Beast Bridge (V4 Compatibility)
-
-Your module includes **V4 name aliases** so the Protocol Enforcer can find agents:
-
-| V4 Name (Enforcer calls) | → Beast Mode Agent |
-|--------------------------|-------------------|
-| `security` | sec-ops |
-| `data-governance` | dpo |
-| `observability` | o11y |
-| `performance` | perf |
-| `red-team` | ai-red-team |
-| `integration-lead` | integrations |
-| `accessibility` | a11y |
-| `localization` | i18n |
-| `ux-writer` | copywriter |
-| `developer` | dev |
-| `scrum-master` | sm |
+**If `_bmad/beast-mode/` doesn't exist**, the module wasn't installed correctly. See Troubleshooting below.
 
 ---
 
-## ⚠️ Common Mistakes
+## 🎮 How to Use Beast Mode Agents
 
-### ❌ Don't: Edit `_bmad/beast-mode/agents/*.md` directly
-**Why:** Changes are lost on next install.  
-**Do:** Edit `~/Library/BMAD/modules/bmad-beast-mode/agents/*.md`, then reinstall.
-
-### ❌ Don't: Mix multiple agents in one chat
-**Why:** Context collision causes confused responses.  
-**Do:** Fresh chat per agent. Pass artifacts forward via file references.
-
-### ❌ Don't: Skip the Protocol Enforcer for complex tickets
-**Why:** Unstructured work leads to scope creep.  
-**Do:** `/load enforcer` → generate protocol → follow the phases.
-
-### ❌ Don't: Forget to install BMM if you want full methodology
-**Why:** Beast Mode is agents only—BMM provides the PRD/architecture workflows.  
-**Do:** Install BMM + Beast Mode together.
-
----
-
-## 🏗️ Adding New Agents to Beast Mode
-
-### Step 1: Create the Agent File
+### Method 1: Direct Agent Loading (Recommended)
 
 ```bash
-cd ~/Library/BMAD/modules/bmad-beast-mode
-touch agents/core/my-new-agent.md
+# Start a BMAD session
+npx bmad session
+
+# Load an agent
+> /load analyst
+
+# Use the agent's commands
+> *analyze-problem context: 'Describe your issue here'
 ```
 
-### Step 2: Define the Agent
-
-```markdown
-# BMAD-AGENT: My New Agent
-
-agent:
-  name: MyNewAgent
-  role: Description of what this agent does
-  when_to_use: When to activate this agent
-
-  commands:
-    my-command:
-      description: "What this command does"
-      steps:
-        1. First step
-        2. Second step
-```
-
-### Step 3: Register in module.yaml
-
-```yaml
-exports:
-  agents:
-    # ... existing agents ...
-    my-new-agent: agents/core/my-new-agent.md
-```
-
-### Step 4: Reinstall to Project
+### Method 2: Through Workflows
 
 ```bash
-cd ~/Desktop/my-project
-npx bmad-method@alpha install
-# Modify → Update custom modules
+# Start session
+npx bmad session
+
+# Initialize workflow (requires BMM module)
+> *workflow-init
+
+# Follow the guided process
+```
+
+### Method 3: Protocol Enforcer (Structured Tickets)
+
+```bash
+> /load enforcer
+
+> *enforce context: '
+Issue: Login button broken
+Current: Button renders but onClick fails
+Expected: User can authenticate
+Stack: React 18, NextAuth
+'
+
+# Follow the generated protocol step by step
 ```
 
 ---
 
-## 🔌 Adding New Workflows
+## 📋 Available Agents (31 + Orchestrator)
 
-### Step 1: Create the Workflow File
+### Core Squad (9 agents)
+| Agent | Command | Purpose |
+|-------|---------|---------|
+| `brainstormer` | `*brainstorm` | Divergent ideation |
+| `analyst` | `*analyze-problem` | Root cause analysis |
+| `pm` | `*create-prd` | Product requirements |
+| `architect` | `*define-contract` | Technical specification |
+| `dev` | `*implement-fix` | Code implementation |
+| `qa` | `*review-feature` | Quality validation |
+| `ux-designer` | `*define-ux` | User experience design |
+| `sm` | `*create-stories` | Story splitting |
+| `data-analyst` | `*define-metrics` | Analytics tracking |
 
-```bash
-cd ~/Library/BMAD/modules/bmad-beast-mode
-touch workflows/my-workflow.yaml
-```
+### Security Squad (3 agents)
+| Agent | Command | Purpose |
+|-------|---------|---------|
+| `sec-ops` | `*threat-model` | Security architecture |
+| `pentester` | `*security-scan` | Vulnerability testing |
+| `dpo` | `*privacy-impact` | GDPR/privacy compliance |
 
-### Step 2: Define the Workflow
+### Growth Squad (5 agents)
+| Agent | Command | Purpose |
+|-------|---------|---------|
+| `user-value` | `*value-analysis` | User value mapping |
+| `pricing` | `*pricing-model` | Monetization strategy |
+| `growth` | `*growth-experiment` | A/B testing |
+| `retention` | `*retention-analysis` | Churn prevention |
+| `support` | `*support-workflow` | Customer support |
 
-```yaml
-name: my-workflow
-description: "What this workflow does"
+### Ops Squad (6 agents)
+| Agent | Command | Purpose |
+|-------|---------|---------|
+| `sre` | `*slo-definition` | Reliability engineering |
+| `devops` | `*pipeline-design` | CI/CD automation |
+| `o11y` | `*observability-plan` | Monitoring & logging |
+| `finops` | `*cost-analysis` | Cloud cost optimization |
+| `perf` | `*performance-audit` | Performance optimization |
+| `incident` | `*incident-response` | Incident management |
 
-phases:
-  - name: analysis
-    agent: analyst
-    command: "*analyze-problem"
-    output: "01-analysis.md"
-    
-  - name: implementation
-    agent: dev
-    command: "*implement-fix"
-    output: "03-implementation.md"
-```
+### Polish Squad (5 agents)
+| Agent | Command | Purpose |
+|-------|---------|---------|
+| `copywriter` | `*ux-copy` | UX writing |
+| `a11y` | `*accessibility-audit` | WCAG compliance |
+| `i18n` | `*localization-plan` | Internationalization |
+| `seo` | `*seo-audit` | Search optimization |
+| `tech-writer` | `*documentation` | Technical docs |
 
-### Step 3: Register in module.yaml
+### AI-Eco Squad (3 agents)
+| Agent | Command | Purpose |
+|-------|---------|---------|
+| `ai-eval` | `*eval-suite` | LLM evaluation |
+| `ai-red-team` | `*adversarial-test` | Prompt injection testing |
+| `integrations` | `*integration-design` | Third-party integrations |
 
-```yaml
-exports:
-  workflows:
-    # ... existing workflows ...
-    my-workflow: workflows/my-workflow.yaml
-```
-
-### Step 4: Reinstall
-
-```bash
-cd ~/Desktop/my-project
-npx bmad-method@alpha install
-```
+### Meta
+| Agent | Command | Purpose |
+|-------|---------|---------|
+| `enforcer` | `*enforce` | Generate structured protocols |
+| `orchestrator` | `*start` | Traffic routing |
 
 ---
 
-## 📋 Context Fuel Template
+## 🔄 Updating Beast Mode
 
-When starting any ticket, provide this context:
-
-```markdown
-## Context Fuel
-
-**Issue/Request:**
-[What you want to build or fix]
-
-**Current Behavior:**
-[What's happening now]
-
-**Expected Behavior:**
-[What should happen]
-
-**Evidence:**
-- Console errors: [paste any]
-- Screenshots: [describe or attach]
-- Reproduction: [1. 2. 3.]
-
-**Tech Stack:**
-- Frontend: [React/Vue/etc]
-- Backend: [Node/Python/etc]
-- Database: [Postgres/Mongo/etc]
-- Relevant files: [list key files]
-
-**Constraints:**
-- [ ] Must not break existing functionality
-- [ ] Must be backwards compatible
-- [ ] Other: [specify]
+### Your Source Module Location
 ```
+~/Library/BMAD/modules/bmad-beast-mode/
+```
+
+### Update Flow
+
+1. **Edit your source module** (not the installed copy!)
+   ```bash
+   cd ~/Library/BMAD/modules/bmad-beast-mode
+   vim agents/core/analyst.md  # Make your changes
+   ```
+
+2. **Push to GitHub** (optional but recommended)
+   ```bash
+   git add . && git commit -m "Update analyst"
+   git push origin main
+   ```
+
+3. **Update your project** (choose one):
+
+   **Option A: Re-run installer (clean)**
+   ```bash
+   cd ~/Desktop/my-project
+   npx bmad-method@alpha install
+   # Choose: Modify BMAD Installation → Update custom modules
+   ```
+
+   **Option B: Manual copy (fast)**
+   ```bash
+   cd ~/Desktop/my-project
+   cp -R ~/Library/BMAD/modules/bmad-beast-mode/* _bmad/beast-mode/
+   ```
+
+> ⚠️ **Never edit files inside `_bmad/beast-mode/` directly!**  
+> Those changes are lost when you update.
 
 ---
 
 ## 🆘 Troubleshooting
 
-### "Can't find agent" error
-**Cause:** Module not installed or path wrong.  
-**Fix:** Re-run installer with correct path:
+### Problem: `_bmad/beast-mode/` folder doesn't exist
+
+**Cause:** Module wasn't installed or installed to different location.
+
+**Check 1:** Verify source module exists
 ```bash
-npx bmad-method@alpha install
-# Path: /Users/YOUR_USERNAME/Library/BMAD/modules/bmad-beast-mode
+ls ~/Library/BMAD/modules/bmad-beast-mode/module.yaml
+# Should show the file
 ```
 
-### "Missing docs" loops
-**Cause:** Workflow expects input files that don't exist.  
-**Fix:** Run `*workflow-init` first, or manually create the expected files in `_bmad-output/planning-artifacts/`.
+**Check 2:** Re-run installer with correct path
+```bash
+npx bmad-method@alpha install
+# When prompted for custom module path, use EXACT path:
+/Users/YOUR_USERNAME/Library/BMAD/modules/bmad-beast-mode
+```
 
-### Agents give conflicting advice
-**Cause:** Multiple agents in same chat.  
-**Fix:** Start fresh chat for each agent. Pass artifacts via file references.
-
-### Changes not reflected after edit
-**Cause:** You edited `_bmad/` instead of source module.  
-**Fix:** Edit `~/Library/BMAD/modules/bmad-beast-mode/`, then reinstall.
+**Check 3:** Look for alternative locations
+```bash
+# The installer might place it differently
+find _bmad -name "analyst.md" 2>/dev/null
+```
 
 ---
 
-## 📊 Version Info
+### Problem: "Module configured" but files not there
 
-| Property | Value |
-|----------|-------|
-| Version | 3.1.0 |
-| Agents | 33 |
-| Workflows | 7 |
-| Templates | 8 |
-| BMAD Compatibility | v6.0.0-alpha.22+ |
+**Cause:** BMAD caches module config but didn't copy files.
+
+**Fix:** Manual copy
+```bash
+mkdir -p _bmad/beast-mode
+cp -R ~/Library/BMAD/modules/bmad-beast-mode/* _bmad/beast-mode/
+```
+
+---
+
+### Problem: `/load agent` says "not found"
+
+**Cause:** Agent not in expected path.
+
+**Fix 1:** Check the exact path your tool expects
+```bash
+# For Antigravity
+cat .antigravity/agents.json
+
+# For OpenCode
+cat .opencode/config.yaml
+```
+
+**Fix 2:** Ensure agents are in the right structure
+```bash
+ls _bmad/beast-mode/agents/core/
+# Should list: analyst.md, architect.md, brainstormer.md, etc.
+```
+
+---
+
+### Problem: `*workflow-init` doesn't work
+
+**Cause:** You didn't install BMM (BMAD Method module).
+
+**Fix:** Re-run installer and select BMM
+```bash
+npx bmad-method@alpha install
+# Select: BMM: BMad Method Agile-AI Driven-Development
+```
+
+---
+
+### Problem: "Can't find input files" during workflow
+
+**Cause:** Artifacts expected in different folder.
+
+**Fix:** BMAD v6 Alpha.22 uses these paths:
+- Planning artifacts: `_bmad-output/planning-artifacts/`
+- Implementation artifacts: `_bmad-output/implementation-artifacts/`
+- Project docs: `docs/`
+
+Create the folders if needed:
+```bash
+mkdir -p _bmad-output/planning-artifacts
+mkdir -p _bmad-output/implementation-artifacts
+```
+
+---
+
+## 📊 Complete Installation Example
+
+Here's a full installation walkthrough:
+
+```bash
+# 1. Create project
+mkdir my-saas-app
+cd my-saas-app
+git init
+
+# 2. Run BMAD installer
+npx bmad-method@alpha install
+
+# 3. Answer prompts:
+#    Installation directory: (press Enter for current)
+#    Install to this directory? Y
+#    Select tools: Google Antigravity ⭐, OpenCode ⭐
+#    Install official modules? Y
+#    Select modules: BMM: BMad Method ← IMPORTANT!
+#    Install local custom module? Y
+#    Path: /Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode
+#    Continue with installation
+#    Install 1 custom module(s) now? Y
+#    What shall agents call you? Sam
+#    Preferred language? English
+#    Document output language? English
+#    Output folder? _bmad-output
+#    Accept BMM defaults? Y
+
+# 4. Verify installation
+ls _bmad/
+# Should show: bmm  beast-mode  core (or similar)
+
+ls _bmad/beast-mode/agents/core/
+# Should show: analyst.md architect.md brainstormer.md ...
+
+# 5. Start using it
+npx bmad session
+> /load analyst
+> *analyze-problem context: 'Test issue'
+```
+
+---
+
+## 🎯 Quick Reference Card
+
+| Action | Command |
+|--------|---------|
+| Start session | `npx bmad session` |
+| Load agent | `/load analyst` |
+| See menu | `*menu` |
+| Analyze problem | `*analyze-problem context: '...'` |
+| Create PRD | `*create-prd` |
+| Technical spec | `*define-contract` |
+| Implement | `*implement-fix` |
+| Review | `*review-feature` |
+| Generate protocol | `*enforce context: '...'` |
+| Check workflow status | `*workflow-status` |
+| Initialize workflow | `*workflow-init` |
+
+---
+
+## 📁 Module Contents
+
+```
+bmad-beast-mode/
+├── module.yaml          # BMAD v6 contract
+├── README.md            # This file
+├── ADDING-AGENTS.md     # How to add agents
+├── ADDING-WORKFLOWS.md  # How to add workflows
+├── agents/              # 33 agent files (292KB)
+├── workflows/           # 7 workflow files (40KB)
+├── templates/           # 8 template files (32KB)
+└── config/              # 5 config files (36KB)
+```
+
+**Total size: ~408KB**
 
 ---
 
 ## 🔗 Resources
 
-- **BMAD Method:** [github.com/bmad-code-org/BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD)
-- **Beast Mode Repo:** [github.com/SamuelSaha/bmad-beast-mode](https://github.com/SamuelSaha/bmad-beast-mode)
-- **BMAD Changelog:** [BMAD-METHOD/CHANGELOG.md](https://github.com/bmad-code-org/BMAD-METHOD/blob/main/CHANGELOG.md)
+| Resource | Link |
+|----------|------|
+| Beast Mode Repo | [github.com/SamuelSaha/bmad-beast-mode](https://github.com/SamuelSaha/bmad-beast-mode) |
+| Official BMAD | [github.com/bmad-code-org/BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD) |
+| BMAD Changelog | [CHANGELOG.md](https://github.com/bmad-code-org/BMAD-METHOD/blob/main/CHANGELOG.md) |
+| BMAD Docs | [bmad-method.org](https://bmad-method.org) |
 
 ---
 
-**Built with 🔥 Beast Mode**
+## 📝 Version History
+
+| Version | Changes |
+|---------|---------|
+| 3.1.0 | Added Protocol Enforcer, Beast Bridge V4 aliases, comprehensive docs |
+| 3.0.0 | Stripped to essentials, BMAD v6 compatible format |
+| 2.2.0 | Added Brainstormer agent |
+| 2.0.0 | Initial 31-agent roster |
+
+---
+
+**Built with 🔥 by Beast Mode**  
+**For BMAD Method v6.0.0-alpha.22+**
