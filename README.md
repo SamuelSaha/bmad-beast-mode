@@ -1484,7 +1484,29 @@ ls _bmad/beast-mode/agents/core/
 
 **Fix Options:**
 
-**Option A: Manual agents.json creation**
+**Option A: Auto-Fix Script** (Recommended) 🚀
+
+Run this one-liner from your project root:
+
+```bash
+# Download and run the fix script
+curl -sL https://raw.githubusercontent.com/SamuelSaha/bmad-beast-mode/main/scripts/fix-antigravity.sh | bash
+```
+
+Or if you have Beast Mode cloned locally:
+```bash
+~/Library/BMAD/modules/bmad-beast-mode/scripts/fix-antigravity.sh
+```
+
+The script will:
+- ✅ Check if _bmad/beast-mode exists
+- ✅ Detect if agents.json is missing or incomplete
+- ✅ Create a complete agents.json with all 34 agents
+- ✅ Tell you what to do next
+
+---
+
+**Option B: Manual agents.json creation**
 
 If `.antigravity/` folder exists but `agents.json` is missing/incomplete:
 
@@ -1532,7 +1554,7 @@ cat > .antigravity/agents.json << 'EOF'
 EOF
 ```
 
-**Option B: Use OpenCode instead of Antigravity**
+**Option C: Use OpenCode instead of Antigravity**
 
 OpenCode has better BMAD integration in Alpha. Switch tools:
 
@@ -1543,7 +1565,7 @@ npx bmad-method@alpha install
 
 Then reload OpenCode: `Cmd+Shift+P` → `Reload Window`
 
-**Option C: Wait for BMAD stable release**
+**Option D: Wait for BMAD stable release**
 
 The alpha installer has known issues. For production projects, wait for the stable v6.0.0 release.
 
