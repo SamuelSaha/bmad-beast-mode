@@ -125,6 +125,71 @@ Each agent is a specialized AI expert. Think of them as **your personal engineer
 
 ---
 
+### 🔤 Beast Mode Grammar (The 3 Symbols)
+
+Before diving in, understand the **three symbols** that control everything:
+
+#### **`@` = The WHO** (Select Agent)
+> *"Walking over to a specific person's desk."*
+
+| What It Does | Example | User Intent |
+|--------------|---------|-------------|
+| Selects which agent you're talking to | `@beast-dev` | "I want to talk to the Developer" |
+| | `@beast-architect` | "I want to talk to the Architect" |
+
+---
+
+#### **`*` = The WHAT** (Run Workflow)
+> *"Handing the employee a specific form to fill out."*
+
+| What It Does | Example | User Intent |
+|--------------|---------|-------------|
+| Triggers a pre-defined, rigorous workflow | `*create-prd` | "Don't just chat, **make** the document" |
+| Forces structured output, not conversation | `*analyze` | "Run the formal root cause protocol" |
+
+**When to use:** When you need a **deliverable** (PRD, Code, Audit, Spec) — not a chat.
+
+---
+
+#### **`/` = The SYSTEM** (IDE Commands)
+> *"Turning the lights on/off in the office."*
+
+| What It Does | Example | User Intent |
+|--------------|---------|-------------|
+| Commands for the IDE/Chat itself | `/load` | Load a file or agent |
+| | `/task` | "This is a coding task, not a chat" |
+| | `/clear` | Wipe memory |
+
+**When to use:** To control the tool, not the agent.
+
+---
+
+### 🧩 The Golden Sentence
+
+The most powerful commands combine **WHO** + **WHAT**:
+
+```
+@beast-dev *implement-fix context: "The login button is broken."
+```
+
+| Part | Meaning |
+|------|---------|
+| `@beast-dev` | "Hey Developer..." |
+| `*implement-fix` | "...run your standard Bug Fix Protocol..." |
+| `context: "..."` | "...on this specific issue." |
+
+---
+
+### ⚡ Quick Cheat Sheet
+
+| Symbol | Meaning | Example | User Intent |
+|--------|---------|---------|-------------|
+| `@` | Select Agent | `@beast-ux` | "I want to talk to the Designer" |
+| `*` | Run Workflow | `*define-ux` | "Do the Wireframe job now" |
+| `/` | System Cmd | `/help` | "How does this tool work?" |
+
+---
+
 ### Step-by-Step: Your First Agent
 
 **1. Load the agent you need**
