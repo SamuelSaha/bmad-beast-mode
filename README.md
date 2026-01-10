@@ -1416,6 +1416,117 @@ npx bmad-method@alpha install
 
 ---
 
+### ❌ "Only 1 agent installed" (Antigravity Alpha Bug)
+
+**Symptoms:**
+- Installer shows: `✔ Manifests generated: 2 workflows, 1 agents`
+- Only `beast-orch` appears, not all 34 agents
+- `.antigravity/agents.json` missing or incomplete
+
+**Why:** This is a known issue with **BMAD v6.0.0-alpha.22** Antigravity integration. The installer claims success but doesn't create all required files.
+
+**Diagnostic Steps:**
+```bash
+# 1. Check what hidden folders exist
+ls -la .*
+
+# 2. Check if agents.json exists
+cat .antigravity/agents.json 2>/dev/null || echo "File not found"
+
+# 3. Check tool manifest
+cat _bmad/_config/tool-manifest.csv 2>/dev/null || echo "File not found"
+
+# 4. Verify agents were copied
+ls _bmad/beast-mode/agents/core/
+# Should show: analyst.md, dev.md, architect.md, etc.
+```
+
+**Fix Options:**
+
+**Option A: Manual agents.json creation**
+
+If `.antigravity/` folder exists but `agents.json` is missing/incomplete:
+
+```bash
+mkdir -p .antigravity
+
+cat > .antigravity/agents.json << 'EOF'
+{
+  "agents": [
+    {"name": "beast-analyst", "path": "_bmad/beast-mode/agents/core/analyst.md"},
+    {"name": "beast-architect", "path": "_bmad/beast-mode/agents/core/architect.md"},
+    {"name": "beast-dev", "path": "_bmad/beast-mode/agents/core/dev.md"},
+    {"name": "beast-pm", "path": "_bmad/beast-mode/agents/core/pm.md"},
+    {"name": "beast-qa", "path": "_bmad/beast-mode/agents/core/qa.md"},
+    {"name": "beast-brainstormer", "path": "_bmad/beast-mode/agents/core/brainstormer.md"},
+    {"name": "beast-data", "path": "_bmad/beast-mode/agents/core/data-analyst.md"},
+    {"name": "beast-ux", "path": "_bmad/beast-mode/agents/core/ux-designer.md"},
+    {"name": "beast-sm", "path": "_bmad/beast-mode/agents/core/sm.md"},
+    {"name": "beast-sec", "path": "_bmad/beast-mode/agents/security/sec-ops.md"},
+    {"name": "beast-pentest", "path": "_bmad/beast-mode/agents/security/pentester.md"},
+    {"name": "beast-dpo", "path": "_bmad/beast-mode/agents/security/dpo.md"},
+    {"name": "beast-sre", "path": "_bmad/beast-mode/agents/ops/sre.md"},
+    {"name": "beast-devops", "path": "_bmad/beast-mode/agents/ops/devops.md"},
+    {"name": "beast-o11y", "path": "_bmad/beast-mode/agents/ops/o11y.md"},
+    {"name": "beast-finops", "path": "_bmad/beast-mode/agents/ops/finops.md"},
+    {"name": "beast-perf", "path": "_bmad/beast-mode/agents/ops/perf.md"},
+    {"name": "beast-incident", "path": "_bmad/beast-mode/agents/ops/incident.md"},
+    {"name": "beast-growth", "path": "_bmad/beast-mode/agents/growth/growth.md"},
+    {"name": "beast-pricing", "path": "_bmad/beast-mode/agents/growth/pricing.md"},
+    {"name": "beast-retention", "path": "_bmad/beast-mode/agents/growth/retention.md"},
+    {"name": "beast-support", "path": "_bmad/beast-mode/agents/growth/support.md"},
+    {"name": "beast-value", "path": "_bmad/beast-mode/agents/growth/user-value.md"},
+    {"name": "beast-copy", "path": "_bmad/beast-mode/agents/polish/copywriter.md"},
+    {"name": "beast-a11y", "path": "_bmad/beast-mode/agents/polish/a11y.md"},
+    {"name": "beast-i18n", "path": "_bmad/beast-mode/agents/polish/i18n.md"},
+    {"name": "beast-seo", "path": "_bmad/beast-mode/agents/polish/seo.md"},
+    {"name": "beast-docs", "path": "_bmad/beast-mode/agents/polish/tech-writer.md"},
+    {"name": "beast-eval", "path": "_bmad/beast-mode/agents/ai-eco/ai-eval.md"},
+    {"name": "beast-red", "path": "_bmad/beast-mode/agents/ai-eco/ai-red-team.md"},
+    {"name": "beast-integration", "path": "_bmad/beast-mode/agents/ai-eco/integrations.md"},
+    {"name": "beast-enforcer", "path": "_bmad/beast-mode/agents/meta/enforcer.md"},
+    {"name": "beast-orch", "path": "_bmad/beast-mode/agents/orchestrator.md"}
+  ]
+}
+EOF
+```
+
+**Option B: Use OpenCode instead of Antigravity**
+
+OpenCode has better BMAD integration in Alpha. Switch tools:
+
+```bash
+npx bmad-method@alpha install
+# When prompted for tools: select OpenCode (not Antigravity)
+```
+
+Then reload OpenCode: `Cmd+Shift+P` → `Reload Window`
+
+**Option C: Wait for BMAD stable release**
+
+The alpha installer has known issues. For production projects, wait for the stable v6.0.0 release.
+
+---
+
+### ❌ "Commands like `*beast-implement` don't work"
+
+**Why:** Agent markdown files define the *persona*, not executable code. The `*command` syntax triggers prompts, not shell scripts.
+
+**How it actually works:**
+```
+*implement-fix context: "Fix the login bug"
+```
+This tells the AI: "Switch to your *implement-fix* mode and process this context."
+
+It's a **prompt directive**, not a shell command.
+
+**If commands aren't recognized:**
+1. Make sure you loaded an agent first: `@beast-dev`
+2. Then run the command: `*implement-fix`
+3. If still broken, the agent file may be corrupted — reinstall Beast Mode
+
+---
+
 ## 🔗 Links & Resources
 
 | Resource | Link |
