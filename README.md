@@ -396,6 +396,47 @@ ATLAS remembers what you told them 5 minutes ago. Use it.
 ✅ **Mix methods freely**  
 Use Party Mode to decide what to build, then @ Mention workflows to build it.
 
+---
+
+### ⚠️ Avoiding the "Solo Developer Trap"
+
+**The Problem:** The AI is "too helpful" and ignores its assigned role. You ask the Orchestrator to coordinate, but it writes the code itself.
+
+**Why it happens:** LLMs default to being maximally helpful. If you don't enforce the persona, they'll do everything themselves.
+
+**How to prevent it:**
+
+**1. Use explicit role enforcement in your prompts:**
+```
+@beast-orch
+ACTIVATE DIRECTOR PERSONA.
+1. You are a Manager. DO NOT WRITE CODE.
+2. Break this task down into specialist assignments.
+3. Assign design to @beast-ux, content to @beast-copy.
+4. Wait for their output before calling @beast-dev.
+```
+
+**2. Use the Orchestrator ONLY for routing:**
+- ✅ Good: "Who should handle this task?"
+- ✅ Good: "Create a squad for this project"
+- ❌ Bad: "Fix this bug" (Orchestrator will try to fix it)
+- ❌ Bad: "Design this page" (Orchestrator will try to design it)
+
+**3. For direct execution, skip the Orchestrator:**
+```
+# If you KNOW you need the dev, call them directly:
+@beast-dev *implement-fix context: "Fix the login button"
+
+# Don't go through the Orchestrator for simple tasks
+```
+
+**4. The Orchestrator's ONLY job:**
+- Route requests → "Who handles this?"
+- Assemble squads → "Build me a team for this project"
+- Coordinate handoffs → "What's the sequence?"
+
+**If the Orchestrator starts coding:** Interrupt and say "STOP. You are DIRECTOR. You delegate. Call @beast-dev."
+
 
 ---
 
