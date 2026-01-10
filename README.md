@@ -3,8 +3,8 @@
 > **34 Principal-Level AI Agents** for BMAD Method v6  
 > Namespaced `beast-*` to avoid clash with standard BMAD. No fork. No drift. Pure power.
 
-### 📍 Core Module Path
-`Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode`
+### � Repository
+[![GitHub](https://img.shields.io/badge/GitHub-SamuelSaha%2Fbmad--beast--mode-blue?logo=github)](https://github.com/SamuelSaha/bmad-beast-mode)
 
 ---
 

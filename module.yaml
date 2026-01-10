@@ -80,9 +80,14 @@ exports:
     beast-mission-clean: workflows/mission-deep-clean.yaml
 
   templates:
+    context-fuel: templates/00-context-fuel.tmpl.md
+    done-definition: templates/00-done-definition.tmpl.md
     project-context: templates/00-project-context.tmpl.md
     analysis: templates/01-analysis.tmpl.md
+    prd: templates/01b-prd.tmpl.md
     technical-spec: templates/02-technical-spec.tmpl.md
+    qa-report: templates/04-qa-report.tmpl.md
+    ai-prompt-spec: templates/ai-01-prompt-spec.tmpl.md
 
   config:
     squads: config/squads.yaml
@@ -112,4 +117,4 @@ version: "3.2.0"
 author: "Samuel Saha"
 repository: "https://github.com/SamuelSaha/bmad-beast-mode"
 license: MIT
-agent_count: 33
+agent_count: 34
