@@ -410,6 +410,117 @@ Use Party Mode to decide what to build, then @ Mention workflows to build it.
 
 ---
 
+## 📚 Complete Quick Reference
+
+### 🛠️ Major Engineering Workflows
+
+End-to-end processes for building software, usually involving multiple steps or agents.
+
+| Workflow | Trigger Command | Goal |
+|----------|-----------------|------|
+| **Conduct Research** | `@beast-data` + `*define-metrics` | Validate problems with data/analytics before building |
+| **Create PRD** | `/beast-pm` + `*create-prd` | Define requirements, success metrics, and scope |
+| **Create Product Brief** | `/beast-pm` + `*create-brief` | Lightweight 1-page spec for small features |
+| **Create Architecture** | `/beast-architect` + `*define-contract` | Design APIs, DB schemas, and system boundaries |
+| **Create Epics & Stories** | `/beast-sm` + `*create-stories` | Break PRDs into shippable tickets with estimates |
+| **Create UX Design** | `/beast-ux` + `*define-ux` | Create user flows, wireframes, and interaction patterns |
+| **Create Tech Spec** | `@beast-architect` + `*define-spec` | Plan file-level implementation details |
+| **Implement Story** | `/beast-dev` + `*implement-fix` | Write code based on specs and acceptance criteria |
+| **Run Brainstorming** | `/beast-brainstormer` + `*brainstorm` | Generate 50+ divergent ideas for naming or solving problems |
+| **Run Code Review** | `@beast-analyst` + `*code-review` | Analysis of PRs for bugs, security, and quality |
+| **Implementation Readiness** | `/beast-enforcer` + `*enforce` | Pre-flight checklist before production deployment |
+| **Sprint Planning** | `@beast-sm` + `*create-stories` | Plan the next 1-2 weeks of work and assign stories |
+| **Test Design** | `/beast-qa` + `*review-feature` | Define Unit, Integration, and E2E testing strategies |
+| **Setup Test Framework** | `@beast-dev` + `*implement-fix` | Install and configure Jest/Playwright/CI tools |
+
+---
+
+### ⚡ Agent Commands (The Tool Belt)
+
+Specific actions you can trigger by loading a specific agent.
+
+#### Core Squad
+| Command | Agent | What It Does |
+|---------|-------|--------------|
+| `*analyze` | Analyst (ATLAS) | Root cause analysis with 5 Whys |
+| `*define-contract` | Architect (MATRIX) | System design and API contracts |
+| `*implement-fix` | Developer (FORGE) | Implement code fixes and features |
+| `*create-prd` | PM (VANTAGE) | Write product requirements |
+| `*review-feature` | QA (HUNTER) | Write test plans and find edge cases |
+| `*create-stories` | Scrum Master (TEMPO) | Manage velocity and split stories |
+| `*brainstorm` | Brainstormer (SPARK) | Ideation explosion |
+| `*define-metrics` | Data Analyst (ORACLE) | Define tracking and KPIs |
+| `*define-ux` | UX Designer (MUSE) | Wireframing and user flows |
+
+#### Security Squad
+| Command | Agent | What It Does |
+|---------|-------|--------------|
+| `*threat-model` | SecOps (AEGIS) | Security architecture review |
+| `*scan` | Pentester (BREAKER) | Vulnerability simulation |
+| `*audit` | Privacy (SENTINEL) | GDPR/Compliance check |
+
+#### Growth Squad
+| Command | Agent | What It Does |
+|---------|-------|--------------|
+| `*experiment` | Growth (APEX) | A/B test planning |
+| `*pricing` | Pricing (LEDGER) | Monetization modeling |
+| `*churn` | Retention (ANCHOR) | User retention analysis |
+| `*support` | Support (RESOLVE) | Customer success workflows |
+| `*value` | Value (COMPASS) | Value proposition mapping |
+
+#### Ops Squad
+| Command | Agent | What It Does |
+|---------|-------|--------------|
+| `*slo` | SRE (TITAN) | Reliability targets |
+| `*pipeline` | DevOps (FLOW) | CI/CD automation |
+| `*logs` | Observability (SCOPE) | Monitoring setup |
+| `*cost` | FinOps (VAULT) | Cloud cost optimization |
+| `*profile` | Performance (NITRO) | Speed/Latency tuning |
+| `*sev1` | Incident (ZERO) | Outage management |
+
+#### Polish Squad
+| Command | Agent | What It Does |
+|---------|-------|--------------|
+| `*copy` | Copywriter (SCRIBE) | UX writing and marketing copy |
+| `*a11y` | Accessibility (ACCESS) | WCAG compliance check |
+| `*localize` | Localization (TERRA) | Translation and i18n prep |
+| `*rank` | SEO (SIGNAL) | Search engine optimization |
+| `*docs` | Tech Writer (CODEX) | Documentation generation |
+
+#### AI Ecosystem
+| Command | Agent | What It Does |
+|---------|-------|--------------|
+| `*eval` | AI Evaluator (JUDGE) | LLM quality testing |
+| `*jailbreak` | Red Team (VIRUS) | AI safety and injection testing |
+| `*connect` | Integrations (NEXUS) | API and third-party setup |
+
+---
+
+### 🤝 Collaboration Protocols
+
+Modes of interaction when one agent isn't enough.
+
+| Protocol | Command | Description | Best For |
+|----------|---------|-------------|----------|
+| **Party Mode** | `*party-mode` | **Simultaneous Debate.** A facilitator selects 2-3 agents to debate a topic and reach consensus. | Strategic decisions, architecture trade-offs |
+| **Sequential Flow** | `@agent-a` then `@agent-b` | **Linear Handoff.** Manually chaining agents (PM → Architect → Dev). | Feature implementation, bug fixes |
+| **Structured Protocol** | `/beast-enforcer` + `*enforce` | **Strict Checklist.** Generates a rigid step-by-step plan for high-risk tasks. | Migrations, audits, compliance |
+
+---
+
+### ⚙️ Setup & Maintenance Actions
+
+| Action | Command / Method | Use Case |
+|--------|------------------|----------|
+| **Install (New Project)** | `npx bmad-method@alpha install` | Setting up a greenfield project |
+| **Install (Existing)** | `npx bmad-method@alpha install` | Adding agents to an existing project |
+| **Verify Install** | `ls _bmad/beast-mode/agents/` | Checking if agents are present |
+| **Reload IDE** | `Cmd+Shift+P` → `Reload Window` | Forcing OpenCode/Antigravity to recognize new agents |
+| **Update Agents** | Edit Source → `npx bmad... install` | Syncing changes from your library to your project |
+| **Build Agent** | `npx bmad-method@alpha build <agent>` | Rebuild a customized agent |
+
+---
+
 ## 🔄 Updating Your Agents
 
 ### How It Works
