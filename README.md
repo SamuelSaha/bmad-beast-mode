@@ -80,6 +80,42 @@ cat _bmad/beast-mode/agents/core/analyst.md | head -20
 
 ---
 
+## 🔧 OpenCode Agent Setup
+
+### Force Agent Refresh
+OpenCode only reads agent configs when the window starts. After installing Beast Mode:
+
+1. **Reload the Window**
+   - Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows)
+   - Type `Reload Window` and hit Enter
+
+2. **Verify Agents Load**
+   - Open the AI Chat panel
+   - Type `@beast` (don't paste a path)
+   - You should see: `@beast-analyst`, `@beast-dev`, `@beast-architect`, etc.
+
+### ❌ Agents Not Appearing?
+
+Check if OpenCode is reading the config file:
+
+```bash
+# The config file should exist at:
+cat .opencode/config.yaml
+
+# It should contain entries like:
+agents:
+  - name: beast-dev
+    promptPath: _bmad/beast-mode/agents/core/dev.md
+  - name: beast-analyst
+    promptPath: _bmad/beast-mode/agents/core/analyst.md
+```
+
+**If the file is missing:** Reinstall BMAD with `npx bmad-method@alpha install`
+
+**If the file exists:** Try the Window Reload again (`Cmd+Shift+P` → `Reload Window`)
+
+---
+
 ## 🎮 How to Use Your Agents
 
 ### The Big Picture

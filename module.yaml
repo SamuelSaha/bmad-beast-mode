@@ -72,6 +72,12 @@ exports:
     beast-ai: workflows/ai-feature.yaml
     beast-brainstorm: workflows/brainstorm.yaml
     beast-brownfield: workflows/brownfield-discovery.yaml
+    # v3.2 - New Optimization & Maintenance Workflows
+    beast-smart-refactor: workflows/smart-refactor.yaml
+    beast-bug-autopsy: workflows/bug-autopsy.yaml
+    beast-ideate-storm: workflows/ideate-storm.yaml
+    beast-mission-ship: workflows/mission-ship.yaml
+    beast-mission-clean: workflows/mission-deep-clean.yaml
 
   templates:
     project-context: templates/00-project-context.tmpl.md

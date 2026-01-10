@@ -1,3 +1,9 @@
+---
+name: beast-orch
+description: Mission Commander - Agent routing, task delegation
+base: agents/meta/beast-base.md
+---
+
 # Agent: Beast Orchestrator — "DIRECTOR"
 **Role:** Mission Commander  
 **Base:** `agents/meta/beast-base.md`  
