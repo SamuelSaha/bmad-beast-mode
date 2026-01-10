@@ -12,50 +12,73 @@
 
 ---
 
-## 🚀 Super Simple Setup
+## 🚀 Installation
 
-### Option A: Start a New Project (The Cleanest Way)
+### 📦 Step 1: Get Beast Mode
 
-1.  **Create your folder & initialize:**
-    ```bash
-    mkdir my-new-app
-    cd my-new-app
-    git init
-    ```
+Choose **one** of these methods to get the Beast Mode module:
 
-2.  **Run the installer:**
-    ```bash
-    npx bmad-method@alpha install
-    ```
+#### **Option A: Clone from GitHub** (Recommended)
+```bash
+# Create a central location for BMAD modules
+mkdir -p ~/Library/BMAD/modules
+cd ~/Library/BMAD/modules
 
-3.  **Answer the prompts:**
-    *   **Tools:** Select *Google Antigravity* & *OpenCode* (Spacebar to select).
-    *   **Modules:** Select **BMM** (The core method) + **Beast Mode**.
-    *   **Custom Module?** Type `y`.
-    *   **Path:** Paste this exact path:
-        `Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode`
+# Clone the repo
+git clone https://github.com/SamuelSaha/bmad-beast-mode.git
+
+# Update anytime with:
+# cd ~/Library/BMAD/modules/bmad-beast-mode && git pull
+```
+
+#### **Option B: Download ZIP**
+1. Go to: `https://github.com/SamuelSaha/bmad-beast-mode`
+2. Click **Code** → **Download ZIP**
+3. Extract to: `~/Library/BMAD/modules/bmad-beast-mode`
 
 ---
 
-### Option B: Add to Existing Project
+### 🛠️ Step 2: Install in Your Project
 
-1.  **Go to your project root:**
-    ```bash
-    cd my-existing-project
-    ```
+#### **New Project:**
+```bash
+mkdir my-new-app && cd my-new-app
+git init
+npx bmad-method@alpha install
+```
 
-2.  **Run the installer:**
-    ```bash
-    npx bmad-method@alpha install
-    ```
+**Answer the prompts:**
+- **Tools:** Select *Google Antigravity* & *OpenCode* (Spacebar to select)
+- **Modules:** Select **BMM** (core method)
+- **Custom Module?** Type `y`
+- **Path:** `~/Library/BMAD/modules/bmad-beast-mode`
 
-3.  **Choose "Modify BMAD Installation":**
-    *   If BMAD is already there, it will ask to update/modify. Select **Update custom modules**.
-    *   If BMAD is *not* there, follow the "New Project" steps above.
+#### **Existing Project:**
+```bash
+cd my-existing-project
+npx bmad-method@alpha install
+```
 
-4.  **When asked for Custom Module:**
-    *   Select `y`.
-    *   Paste: `Users/samuelsaha/Library/BMAD/modules/bmad-beast-mode`
+- Choose **"Modify BMAD Installation"** → **Update custom modules**
+- **Custom Module?** Type `y`
+- **Path:** `~/Library/BMAD/modules/bmad-beast-mode`
+
+---
+
+### 🔄 Step 3: Keep Updated
+
+When Beast Mode is updated on GitHub:
+
+```bash
+# 1. Pull the latest changes
+cd ~/Library/BMAD/modules/bmad-beast-mode
+git pull origin main
+
+# 2. Sync to your project
+cd your-project
+npx bmad-method@alpha install
+# Select: Modify → Update custom modules
+```
 
 **Done.** You now have access to 34+ specialized agents in your project.
 
