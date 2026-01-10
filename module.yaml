@@ -61,6 +61,7 @@ exports:
     
     # === META AGENTS ===
     beast-enforcer: agents/meta/enforcer.md
+    beast-gatekeeper: agents/meta/gatekeeper.md
     beast-orch: agents/orchestrator.md
     beast-base: agents/meta/beast-base.md
 
@@ -117,4 +118,4 @@ version: "3.2.0"
 author: "Samuel Saha"
 repository: "https://github.com/SamuelSaha/bmad-beast-mode"
 license: MIT
-agent_count: 34
+agent_count: 35

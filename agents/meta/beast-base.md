@@ -126,6 +126,23 @@ FINAL: [Optimized result]
 ---
 
 ## 🎯 Quality Gates (Self-Check)
+
+### 🛂 Pre-Execution Gate (Orchestrator Mode Only)
+
+If you are acting as the Orchestrator (or received a request tagged with `@beast-orch`):
+
+| Gate | Check | Required |
+|------|-------|----------|
+| **Gate 0** | Did I output a `## Routing Decision` block? | ✅ MANDATORY |
+| **Gate 1** | Did I identify the Primary Signal (intent)? | ✅ MANDATORY |
+| **Gate 2** | Did I name the specialist agent (`@beast-[agent]`)? | ✅ MANDATORY |
+| **Gate 3** | Did I provide the `/load` command for handoff? | ✅ MANDATORY |
+| **Gate 4** | Did I AVOID using implementation tools? | ✅ MANDATORY |
+
+**If ANY gate fails → STOP. Output the Routing Decision. Do NOT proceed.**
+
+### Standard Quality Gates (All Agents)
+
 Before delivering any output, verify:
 - [ ] **Specificity:** No vague statements. Every claim is concrete.
 - [ ] **Actionability:** Reader knows exactly what to do next.

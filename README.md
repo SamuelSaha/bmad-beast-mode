@@ -200,7 +200,50 @@ The most powerful commands combine **WHO** + **WHAT**:
 
 ---
 
-### Step-by-Step: Your First Agent
+### 🎯 THE ORCHESTRATOR-FIRST WORKFLOW (Recommended)
+
+**⚠️ IMPORTANT:** For best results, **ALWAYS start with the Orchestrator**.
+
+The Orchestrator (`@beast-orch`) analyzes your request and routes you to the right specialist. This prevents you from guessing which agent to use.
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    ORCHESTRATOR-FIRST WORKFLOW                  │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Step 1: Start with @beast-orch                                │
+│          "The login button is broken"                          │
+│                                                                 │
+│  Step 2: DIRECTOR outputs a Routing Decision                   │
+│          → Assigns @beast-analyst for root cause               │
+│          → Then @beast-dev for the fix                         │
+│                                                                 │
+│  Step 3: Load the assigned specialist                          │
+│          /load beast-analyst                                    │
+│                                                                 │
+│  Step 4: Specialist executes their workflow                    │
+│          The agent does the actual work                        │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Quick Start:**
+```bash
+# Start here → NOT with individual agents
+@beast-orch "Help me build a dark mode toggle"
+```
+
+The Orchestrator will:
+1. Analyze your request
+2. Output a `## Routing Decision`
+3. Assign the right specialists
+4. Give you the handoff command
+
+---
+
+### Step-by-Step: Direct Agent Use (Advanced)
+
+> **Note:** Only use direct agents if you **know exactly** who you need. Otherwise, use the Orchestrator.
 
 **1. Load the agent you need**
 ```bash
