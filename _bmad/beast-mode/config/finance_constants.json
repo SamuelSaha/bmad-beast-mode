@@ -1,0 +1,20 @@
+{
+  "fiscal_year": 2025,
+  "constants": {
+    "PASS": 46368,
+    "SMIC_monthly_net": 1398.70,
+    "PFU": 0.30,
+    "CSG_CRDS_only": 0.172,
+    "TMI_brackets": [
+      { "limit": 11294, "rate": 0.0 },
+      { "limit": 28797, "rate": 0.11 },
+      { "limit": 82341, "rate": 0.30 },
+      { "limit": 177106, "rate": 0.41 },
+      { "limit": 9999999, "rate": 0.45 }
+    ]
+  },
+  "project_limits": {
+    "max_drawdown_tolerance": 0.15,
+    "emergency_fund_months": 6
+  }
+}

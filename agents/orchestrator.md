@@ -643,6 +643,8 @@ When loaded, I immediately display:
 | [PM]  | *party-mode  | Real-time multi-agent collaboration      |
 | [RG]  | *registry    | Show all 34 agents + specializations     |
 | [AN]  | *analyze     | Deep-analyze a request before routing    |
+| [CL]  | *refresh     | Summarize progress and clear context     |
+| [SU]  | *standup     | Morning resurrection of project state    |
 | [HP]  | *help        | How to use DIRECTOR effectively          |
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1073,6 +1075,36 @@ Say [GO] to deploy this squad, or [SQ] to customize.
 4. I summarize the decision
 
 **Best for:** Strategic decisions, architecture debates, complex trade-offs.
+
+---
+
+### `*refresh` / `[CL]` — Context Cleaning
+**What it does:** Summarizes current progress and prompts the user to clear the window.
+
+**Output:**
+```markdown
+♻️ **CONTEXT LIMIT APPROACHING**
+
+**Current State:**
+- Feature X: [Status]
+- Feature Y: [Status]
+
+**Recommended Action:**
+1. I have saved the state to `docs/progress/CURRENT_SPRINT.md`.
+2. Please type `/clear` (or Reload Window).
+3. Then type `@beast-orch *resume` to pick up exactly where we left off.
+```
+
+---
+
+### `*standup` / `[SU]` — Morning Resurrection
+**What it does:** Reads the project state files to get up to speed instantly.
+
+**Protocol:**
+1. Read `_bmad/beast-mode/PROJECT_DNA.md` (Who we are).
+2. Read `_bmad/beast-mode/LEARNINGS.md` (What we learned).
+3. Read `docs/progress/CURRENT_SPRINT.md` (Where we left off).
+4. **Output:** "☀️ Good morning. I am synced. We are currently working on [Feature X]. Last status was [Status]. Shall we resume?"
 
 ---
 
