@@ -713,6 +713,118 @@ Analyze the null pointer exception occurring in the user authentication flow.
 
 ---
 
+## 📋 ELITE ACTION SUMMARY TEMPLATE
+
+When squad work is complete, output a **Senior-Level Engineering Communication** summary:
+
+### Required Elements:
+
+**1. THE "WHY" BEFORE THE "WHAT"**
+> Don't say: *"I added a transition."*
+> Do say: *"The 'jank' occurs in the Gap of Perception (200-800ms)... We have eliminated this."*
+
+Frame the engineering task as a **solution to a human/system problem**.
+
+**2. ARCHITECTURAL CONTEXT**
+Explain WHY this approach was chosen over alternatives. Show the Agent understood the nuances.
+
+**3. SIDE EFFECT ANTICIPATION**
+What "Ghost UI" or edge-case issues did we prevent? Senior engineers anticipate, not just fix.
+
+**4. SPECIFICITY OF DETAIL**
+Use precise values: easing curves `[0.22, 1, 0.36, 1]`, exact file names, specific measurements.
+
+**5. PERFORMANCE VERIFICATION** (The 10/10 element)
+Did we verify LCP, CLS, or other metrics weren't negatively impacted?
+
+---
+
+### Action Summary Format:
+
+```
+🎯 BEAST PROTOCOL ACTIVE
+Mode: [Experiential Engineering / Bug Autopsy / etc.]
+Squad: [MUSE, MATRIX, FORGE, etc.]
+Action: [High-level action name]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🦁 THE PROBLEM (Why This Mattered)
+
+[Describe the cognitive/technical problem in human terms]
+- What was the user experiencing?
+- What was the root cause at a systems level?
+- Why did existing solutions fail?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎬 THE SOLUTION (What We Built)
+
+### 1. [Major Change #1] (`filename.ext`)
+**The Context:** [Why this architectural choice]
+**The Execution:** [Specific implementation details]
+**The Result:** [Observable outcome in user terms]
+
+### 2. [Major Change #2] (`filename.ext`)
+**The Context:** ...
+**The Execution:** ...
+**The Result:** ...
+
+### 3. [Major Change #3 — Side Effect Prevention]
+**Resolved:** [What "Ghost UI" or edge-case issues we prevented]
+**The Fix:** [How we anticipated and fixed it]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📊 METRICS & VERIFICATION
+
+| Metric | Before | After | Status |
+|--------|--------|-------|--------|
+| [LCP / Perceived Speed / etc.] | [value] | [value] | ✅ / ⚠️ |
+| [CLS / Layout Stability] | [value] | [value] | ✅ / ⚠️ |
+| [Technical Debt] | [description] | [description] | ✅ Reduced |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🦁 AUDIT LOG
+
+| Dimension | Value |
+|-----------|-------|
+| **UX Elevation** | +[X]% perceived [metric] |
+| **Technical Debt** | [Reduced/Neutral/Increased] — [why] |
+| **Framework Native** | [Yes/No] — leverages [feature] |
+| **Performance Verified** | ✅ [metric] checked / ⚠️ Needs check |
+
+**Protocol:** [How user can verify the changes]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 EXECUTION AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- **Squad Used:** [agents]
+- **Files Modified:** [list]
+- **Tools Called:** [list]
+- **Protocol Followed:** ✅ Yes
+- **Quality Gates Passed:** ✅ All
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
+### Quality Criteria for Action Summaries:
+
+| Criterion | Description | Score Impact |
+|-----------|-------------|--------------|
+| **"Why Before What"** | Frames work as solution to human problem | +2 |
+| **Architectural Context** | Explains WHY this approach | +1 |
+| **Side Effect Prevention** | Anticipates edge cases | +1 |
+| **Specificity** | Precise values, not vague descriptions | +2 |
+| **Performance Verified** | Metrics checked | +2 |
+| **Audit Log Complete** | All fields filled | +2 |
+
+**Target Score: 10/10**
+
+---
+
 ### `*squad-up` / `[SQ]` — Assemble Custom Team
 
 **What it does:** Builds the optimal squad for a mission type.
