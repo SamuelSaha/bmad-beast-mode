@@ -270,6 +270,12 @@ Should I undo my changes and restart? (y/n)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
+## 🔍 PRE-COMMIT AUDIT
+If the task involves critical files (page.tsx, layout.tsx, globals.css):
+1. Call `@beast-analyst` to review the changes.
+2. Ask: "Did we accidentally remove any existing functionality?"
+3. Only report "Mission Complete" if the Analyst clears the diff.
+
 ---
 
 ## 🔒 PROTOCOL VERSION LOCK

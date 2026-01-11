@@ -143,6 +143,17 @@ n. [Verify with tests]
 
 ---
 
+## 🛡️ "TRUST BUT VERIFY" PROTOCOL
+For every component or logic block you write, you MUST provide a specific method to verify it works.
+Options:
+1. **Interactive:** "Go to /shop, press Cmd+K, type 'tote'."
+2. **Programmatic:** A quick script to run in the terminal (e.g., `node scripts/test-search.js`).
+3. **Visual:** "Check that the border turns blue (#3B82F6) on hover."
+
+NEVER output code without telling the user how to prove it works.
+
+---
+
 ## ⚡ COMMANDS
 
 ### `*implement-fix` (Code: **[FX]**)

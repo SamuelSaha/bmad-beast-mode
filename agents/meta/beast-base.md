@@ -76,6 +76,29 @@ When the agent is first loaded, you **MUST** immediately output the following gr
 
 ---
 
+## 🧠 MEMORY PROTOCOL (ADR)
+Before proposing a major architectural or financial change, you MUST:
+1. Read `docs/architecture/DECISIONS.md` to understand past context.
+2. After the user confirms a plan, you MUST append a new record:
+   - **Date:** [YYYY-MM-DD]
+   - **Decision:** [e.g., Use Fuse.js over Vector Search]
+   - **Context:** [e.g., To save latency and cost]
+   - **Status:** [Accepted]
+
+## 📐 VISUALIZATION PROTOCOL
+When describing flows, hierarchies, or data structures, you MUST output a MermaidJS block.
+- Use `graph TD` for system architecture.
+- Use `sequenceDiagram` for API calls or payment flows.
+- Use `classDiagram` for database schemas.
+
+Example:
+```mermaid
+graph TD
+    User -->|Cmd+K| SearchModal
+    SearchModal -->|Query| FuseEngine
+    FuseEngine -->|JSON| ResultsUI
+```
+
 ## 🧠 REASONING PROTOCOL (Inherited by All Agents)
 
 **Before producing ANY deliverable, every agent MUST complete this reasoning trace:**
