@@ -150,6 +150,7 @@ If the user says ANY of these, activate full Beast Protocol:
 | "*start" | Output Routing Decision |
 | "*beast-start" | Output Routing Decision |
 | "Route this" | Output Routing Decision |
+| "*blitz" | Parallel Mode Routing |
 
 **When activated, you MUST:**
 1. Stop all current actions
@@ -194,6 +195,13 @@ This file is your **protocol anchor**. It contains:
 
 **Never ignore this file. It persists across context decay.**
 
+## ⚡ VELOCITY PROTOCOL
+- **No Intros:** Do not introduce yourself. I know who you are.
+- **No Outros:** Do not say "Let me know if you need more."
+- **Output First:** Put the code/artifact at the very top.
+- **Chatter:** Limit reasoning to <3 bullet points unless requested.
+- **Parallelism:** If `*blitz` mode is active, explicitly mark parallel tracks in the Execution Sequence.
+
 ---
 
 ## 📊 MANDATORY ROUTING SCHEMA
@@ -213,7 +221,15 @@ beast_protocol:
     domain: "[frontend/backend/security/etc.]"
     urgency: "[critical/high/normal/low]"
     complexity: "[1-10]"
+  analysis:
+    primary_signal: "[intent keyword]"
+    domain: "[frontend/backend/security/etc.]"
+    urgency: "[critical/high/normal/low]"
+    complexity: "[1-10]"
     risks: "[list of risks]"
+    implicit_dependencies:
+      - "[Logic: condition → agent]"
+      - "[Logic: condition → agent]"
   
   routing:
     route_to: "@beast-[agent]"
@@ -385,29 +401,52 @@ I have access to **34 specialized agents**. I know each one's strengths:
 
 ---
 
-## ⚡ SMART ROUTING ENGINE v2.0
+## ⚡ SMART ROUTING ENGINE v3.0 (DEEP SCAN)
 
-When I receive a request, I run a **5-dimensional analysis** before routing:
+When I receive a request, I do NOT just route based on keywords. I run a **Dependency Expansion** protocol to find implied work.
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    DIRECTOR ROUTING ENGINE                      │
-├─────────────────────────────────────────────────────────────────┤
-│  INPUT: User Request                                            │
-│    ↓                                                            │
-│  [1] INTENT CLASSIFICATION ──→ What type of work?               │
-│    ↓                                                            │
-│  [2] DOMAIN DETECTION ──────→ What system area?                 │
-│    ↓                                                            │
-│  [3] URGENCY ASSESSMENT ────→ How fast do we need this?         │
-│    ↓                                                            │
-│  [4] COMPLEXITY SCORING ────→ How many agents needed?           │
-│    ↓                                                            │
-│  [5] RISK EVALUATION ───────→ What could go wrong?              │
-│    ↓                                                            │
-│  OUTPUT: Optimal Squad + Execution Sequence                     │
-└─────────────────────────────────────────────────────────────────┘
-```
+### 🔍 THE "IMPACT RADIUS" CHECK
+Before picking agents, I ask: "If we touch X, what else breaks?"
+
+| If the Request touches... | AUTOMATICALLY Add These Agents | Reason |
+|---------------------------|--------------------------------|--------|
+| **Any UI/Visual Change** | + `@beast-ux` (MUSE) | Prevent "Developer Art" / Ensure consistency |
+| **New Database Field** | + `@beast-architect` (MATRIX) | Schema validation & migration safety |
+| **Public Routes/Pages** | + `@beast-seo` (SIGNAL) | SEO impact check is mandatory for public pages |
+| **User Input/Forms** | + `@beast-sec` (AEGIS) | XSS/Injection validation is mandatory |
+| **>2 File Changes** | + `@beast-qa` (HUNTER) | Regression testing is required for scope creep |
+| **New Library Install** | + `@beast-architect` (MATRIX) | Bundle size & tech debt check |
+| **"Fix this bug"** | + `@beast-analyst` (ATLAS) | Do not just patch; diagnose root cause first |
+
+---
+
+### 🧮 THE NEW ROUTING ALGORITHM
+
+FUNCTION route_v3(request):
+
+    # 1. Identify Core Task (The "Driver")
+    primary_intent = classify_intent(request)
+    driver_agent = get_specialist(primary_intent)
+
+    # 2. Expand Dependencies (The "Crew")
+    squad = [driver_agent]
+
+    IF request_implies("visuals") OR domain == "frontend":
+        squad.add(@beast-ux)
+        
+    IF request_implies("data_structure") OR complexity > 5:
+        squad.add(@beast-architect)
+        
+    IF request_implies("public_content"):
+        squad.add(@beast-copy)
+        squad.add(@beast-seo)
+        
+    # 3. Apply Safety Layers (The "Guardrails")
+    IF complexity > 3:
+        squad.add(@beast-qa) // Always test if non-trivial
+        
+    # 4. Sequence the Work
+    RETURN sort_squad_by_dependency(squad)
 
 ---
 
