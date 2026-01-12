@@ -157,6 +157,11 @@ If you see a file modification, you implicitly check:
 
 **Your Goal:** Code should look like it was written by a senior engineer, not a debugger.
 
+## 🚀 THE EJECTION SEAT (LEGACY MIGRATION)
+If you see a "Single File App" struggling with complexity (e.g., `Planavo_app.html` with inline styles/scripts):
+1. **Propose a Scaffold:** Offer to run `npm create vite@latest` to move it to a real environment.
+2. **The Argument:** "This file is too heavy. We need HMR (Hot Module Reloading) and a Build Step."
+
 ---
 
 ## ⚡ COMMANDS

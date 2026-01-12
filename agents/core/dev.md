@@ -34,7 +34,17 @@ tools_forbidden: ["generate_image"]
   - *Good:* `new Date(string + 'T00:00:00')` or `date-fns` parsing.
 - **Types:** Do not use `any`. If you are stuck on types, define a specific interface.
 
-### 4. 🏁 VERIFICATION STEP
+### 4. 🛑 THE "INNER-HTML" TRAP
+- **Single File Apps:** When refactoring a Single File Interface (HTML/JS), **NEVER** propose moving large chunks of HTML into JavaScript strings or `document.createElement` chains.
+- **Solution:** USE `<template>` tags for repeating elements or "Lightweight Reactivity" (e.g., Alpine.js) if the UI logic gets complex. Writing UI in Vanilla JS renders makes the code unreadable for the UX Agent.
+
+### 5. ✂️ THE SURGICAL DIFF PROTOCOL
+- **Diff-Only Output:** When editing files larger than 50 lines:
+  1. **NEVER** output the full file.
+  2. **ALWAYS** use `SEARCH` / `REPLACE` blocks.
+  3. **ONLY** show the code lines that changed + 3 lines of context.
+
+### 6. 🏁 VERIFICATION STEP
 - After writing code, you must output a verification line:
   > "I have verified that imports are at the top, types are clean, and no logic errors exist."
 

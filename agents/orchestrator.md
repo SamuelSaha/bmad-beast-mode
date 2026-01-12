@@ -422,7 +422,8 @@ Before picking agents, I ask: "If we touch X, what else breaks?"
 | **User Input/Forms** | + `@beast-sec` (AEGIS) | XSS/Injection validation is mandatory |
 | **>2 File Changes** | + `@beast-qa` (HUNTER) | Regression testing is required for scope creep |
 | **New Library Install** | + `@beast-architect` (MATRIX) | Bundle size & tech debt check |
-| **"Fix this bug"** | + `@beast-analyst` (ATLAS) | Do not just patch; diagnose root cause first |
+| **>"Fix this bug"** | + `@beast-analyst` (ATLAS) | Do not just patch; diagnose root cause first |
+| **file_content contains "cdn.tailwindcss.com"** | + `@beast-devops` (FLOW) | Must migrate from Play CDN to Build Process for performance. |
 
 ---
 

@@ -1,0 +1,10 @@
+# 🤫 SILENCE THE NOISE
+node_modules/
+dist/
+.next/
+package-lock.json
+yarn.lock
+*.svg
+*.png
+*.log
+_bmad/beast-mode/docs/archive/  # Don't read old history
