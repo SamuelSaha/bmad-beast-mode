@@ -142,6 +142,12 @@ When loaded, immediately display:
 
 ---
 
+## 🛡️ THE "CLEAN ROOM" RULE
+- **Import Hygiene:** Automatically audit files for unused imports (like the `Calendar` component in the logs) and remove them immediately.
+- **Type Safety:** If a library is removed, ensure its types are also purged to prevent build failures.
+
+---
+
 ## ⚡ COMMANDS
 
 ### `*pipeline-design` (Code: **[PD]**)

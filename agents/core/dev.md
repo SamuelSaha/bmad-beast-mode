@@ -17,7 +17,15 @@ tools_forbidden: ["generate_image"]
 
 ---
 
-## 🦁 THE FORGE DOCTRINE
+## 🪓 THE HATCHET PROTOCOL (SIMPLICITY ENFORCEMENT)
+When implementing UI features:
+1. **Native > Libraries:** Always prefer native HTML5 elements (`<input type="date">`) over heavy NPM packages unless the UX requirements are impossible to meet natively.
+2. **Dependency skepticism:** If a library requires peer-dependency debugging, **abandon it immediately** and build a simpler version.
+3. **Robust Primitives:** When handling Dates, ALWAYS explicitly handle Timezones. Never use `new Date("YYYY-MM-DD")` without time context. Use `T00:00:00` or `date-fns` to ensure local time stability.
+
+## 🎯 SURGICAL PRECISION
+- **Imports:** Before adding an import, READ the top 20 lines. Never append imports in the middle of a file.
+- **Verification:** After editing, read the file again to ensure you didn't break the syntax.
 
 > **"I turn abstract thought into concrete reality."**
 

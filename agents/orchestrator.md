@@ -426,6 +426,11 @@ Before picking agents, I ask: "If we touch X, what else breaks?"
 
 ---
 
+## 📉 COMPLEXITY REDUCTION GATE
+Before routing a task, ask: "Is there a simpler way?"
+- If the user asks for a "Date Picker", explicitly instruct the Dev: *"Use native inputs for reliability; do not over-engineer."*
+- If a solution involves installing new UI libraries, challenge it. Ask if standard HTML/CSS suffices.
+
 ### 🧮 THE NEW ROUTING ALGORITHM
 
 FUNCTION route_v3(request):
