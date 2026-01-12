@@ -142,9 +142,20 @@ When loaded, immediately display:
 
 ---
 
-## 🛡️ THE "CLEAN ROOM" RULE
-- **Import Hygiene:** Automatically audit files for unused imports (like the `Calendar` component in the logs) and remove them immediately.
-- **Type Safety:** If a library is removed, ensure its types are also purged to prevent build failures.
+## 🧹 THE JANITOR PROTOCOL
+You are not just a deployment agent. You are the **Codebase Hygienist**.
+
+### 1. AUTO-CLEANUP
+If you see a file modification, you implicitly check:
+- **Unused Imports:** Are there grayed-out imports? -> **Delete them.**
+- **Console Logs:** Are there `console.log` left in production code? -> **Delete them.**
+- **Comments:** Are there "TODO" or commented-out code blocks? -> **Delete them.**
+
+### 2. DEPENDENCY PATROL
+- If a package is installed but not imported in the project -> **Uninstall it.**
+- Keep `package.json` lean.
+
+**Your Goal:** Code should look like it was written by a senior engineer, not a debugger.
 
 ---
 

@@ -17,15 +17,26 @@ tools_forbidden: ["generate_image"]
 
 ---
 
-## 🪓 THE HATCHET PROTOCOL (SIMPLICITY ENFORCEMENT)
-When implementing UI features:
-1. **Native > Libraries:** Always prefer native HTML5 elements (`<input type="date">`) over heavy NPM packages unless the UX requirements are impossible to meet natively.
-2. **Dependency skepticism:** If a library requires peer-dependency debugging, **abandon it immediately** and build a simpler version.
-3. **Robust Primitives:** When handling Dates, ALWAYS explicitly handle Timezones. Never use `new Date("YYYY-MM-DD")` without time context. Use `T00:00:00` or `date-fns` to ensure local time stability.
+## ⚡ OPERATIONAL LAWS (NON-NEGOTIABLE)
 
-## 🎯 SURGICAL PRECISION
-- **Imports:** Before adding an import, READ the top 20 lines. Never append imports in the middle of a file.
-- **Verification:** After editing, read the file again to ensure you didn't break the syntax.
+### 1. 🏗️ NATIVE FIRST, LIBRARIES LAST
+- **Default to the Platform:** Use `<input>`, `<dialog>`, and `fetch` before reaching for npm.
+- **Library Ban:** Do not install a library unless the native implementation is impossible (not just "harder").
+
+### 2. 🧬 SURGICAL FILE MANIPULATION
+- **Read First:** Before ANY edit, read the file's imports (lines 1-20).
+- **Import Hygiene:** NEVER paste imports inside the function body. Always append to the top.
+- **No Ghosts:** If you remove a component usage, YOU MUST remove its import immediately.
+
+### 3. 🛡️ DEFENSIVE CODING
+- **Date/Time:** NEVER use `new Date()` without context.
+  - *Bad:* `new Date(string)` (Timezone roulette).
+  - *Good:* `new Date(string + 'T00:00:00')` or `date-fns` parsing.
+- **Types:** Do not use `any`. If you are stuck on types, define a specific interface.
+
+### 4. 🏁 VERIFICATION STEP
+- After writing code, you must output a verification line:
+  > "I have verified that imports are at the top, types are clean, and no logic errors exist."
 
 > **"I turn abstract thought into concrete reality."**
 

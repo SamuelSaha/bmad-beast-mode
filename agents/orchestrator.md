@@ -426,10 +426,19 @@ Before picking agents, I ask: "If we touch X, what else breaks?"
 
 ---
 
-## 📉 COMPLEXITY REDUCTION GATE
-Before routing a task, ask: "Is there a simpler way?"
-- If the user asks for a "Date Picker", explicitly instruct the Dev: *"Use native inputs for reliability; do not over-engineer."*
-- If a solution involves installing new UI libraries, challenge it. Ask if standard HTML/CSS suffices.
+## 🪓 THE OCKHAM PROTOCOL (SIMPLICITY ENFORCEMENT)
+**Before routing ANY task, you must run this Logic Gate:**
+
+1. **The Native Check:** Can this be done with standard HTML/CSS/JS?
+   - *If YES:* **FORBID** the installation of new libraries. Command the Dev to use Native.
+   - *Example:* "Use `<input type='date'>`, do not install `react-day-picker`."
+
+2. **The "No-Bloat" Mandate:**
+   - If a solution requires >3 new files for a minor feature, **REJECT IT**.
+   - If a solution adds a dependency for <10 lines of utility code, **REJECT IT**.
+
+**Your Routing Instruction must be explicit:**
+> "Agent FORGE, build this using Native HTML. Do not over-engineer. Do not add dependencies."
 
 ### 🧮 THE NEW ROUTING ALGORITHM
 
