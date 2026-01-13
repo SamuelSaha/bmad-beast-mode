@@ -491,11 +491,113 @@ Every agent prompt should contain these sections:
 
 ---
 
+## 🎯 ZERO-DEFECT PROTOCOL (MANDATORY)
+
+> **THE RULE:** No work is complete until it is VERIFIED WORKING. 
+> **PARTIAL DELIVERY IS FAILURE.**
+
+### 🚨 Before Declaring ANY Task Complete:
+
+**You MUST prove the work is done. Not "should work" — DOES work.**
+
+```
+╔══════════════════════════════════════════════════════════════════╗
+║                   🎯 ZERO-DEFECT CHECKLIST                       ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  Before outputting "Complete" or "Done", verify ALL:             ║
+║                                                                  ║
+║  [ ] BUILD PASSES      → `npm run build` exits 0                ║
+║  [ ] LINT PASSES       → `npm run lint` exits 0                 ║
+║  [ ] TESTS PASS        → `npm run test` exits 0                 ║
+║  [ ] NO TYPE ERRORS    → TypeScript compiles clean              ║
+║  [ ] VERIFIED VISUALLY → You checked it works (browser/output)  ║
+║  [ ] COMPLETE CODE     → No TODO, FIXME, or placeholder         ║
+║  [ ] IMPORTS CLEAN     → No unused imports                      ║
+║  [ ] EDGE CASES        → Null, empty, error states handled      ║
+║                                                                  ║
+║  ⚠️ IF ANY CHECK FAILS → FIX IT BEFORE DECLARING DONE          ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+```
+
+### 🔴 Automatic Failure Triggers
+
+**You have FAILED the Zero-Defect Protocol if:**
+
+1. **User finds a bug you should have caught** → You didn't test
+2. **Build fails after your changes** → You didn't verify
+3. **Feature is incomplete** → You delivered partial work
+4. **"It should work"** → You GUESSED instead of VERIFIED
+5. **Missing error handling** → You only tested happy path
+
+### ✅ The Verification Ritual
+
+**At the END of every code task, you MUST:**
+
+1. **Run build/lint/test** (turbo commands in workflow)
+2. **Provide verification command** (how USER can prove it works)
+3. **State explicitly:** "Verified: Build ✅ Lint ✅ Tests ✅"
+4. **If something fails:** Fix it BEFORE reporting completion
+
+**Never say:**
+- ❌ "This should work"
+- ❌ "You may need to..."
+- ❌ "Let me know if there are issues"
+
+**Always say:**
+- ✅ "Verified working. Build passes. Here's how to confirm: [command]"
+- ✅ "Tested: [what you tested]. Result: [what you observed]"
+
+### 🏁 The Definition of Done
+
+A task is ONLY done when:
+
+| Criterion | Evidence Required |
+|-----------|-------------------|
+| **Compiles** | `npm run build` exit 0 |
+| **Lints** | `npm run lint` exit 0 |
+| **Tests** | `npm run test` exit 0 (or new tests written) |
+| **Functions** | You verified the feature works as specified |
+| **Complete** | No placeholders, no partial code, no "TODO" |
+| **Clean** | Unused imports removed, no console.logs |
+
+### ⚡ Quick Verification Commands
+
+```bash
+# The Holy Trinity (run before ANY completion)
+npm run build && npm run lint && npm run test
+
+# If tests don't exist, at minimum:
+npm run build && npm run lint && npm run typecheck
+```
+
+### 🛡️ The "Show Your Work" Mandate
+
+**Every code delivery MUST include:**
+
+```markdown
+## ✅ VERIFICATION REPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+**Build:** ✅ Passed | ❌ Failed (reason)
+**Lint:** ✅ Passed | ❌ Failed (reason)  
+**Tests:** ✅ Passed | ❌ Failed (reason)
+**Visual Check:** [What you verified]
+
+**How to Confirm:**
+```bash
+[Command user can run to verify]
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
 ## 🔒 PROTOCOL VERSION
 
 ```
 Protocol: Beast Mode Apex
-Version: 4.0.0
-Last Updated: 2026-01-11
+Version: 4.6.0
+Last Updated: 2026-01-13
 Compatibility: All Beast Mode agents
 ```

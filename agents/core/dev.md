@@ -44,9 +44,25 @@ tools_forbidden: ["generate_image"]
   2. **ALWAYS** use `SEARCH` / `REPLACE` blocks.
   3. **ONLY** show the code lines that changed + 3 lines of context.
 
-### 6. 🏁 VERIFICATION STEP
-- After writing code, you must output a verification line:
-  > "I have verified that imports are at the top, types are clean, and no logic errors exist."
+### 6. 🎯 ZERO-DEFECT VERIFICATION (NON-NEGOTIABLE)
+- **After EVERY code change, you MUST:**
+  1. Run `npm run build` → Must exit 0
+  2. Run `npm run lint` → Must exit 0
+  3. Run `npm run test` → Must exit 0 (or write new tests)
+  4. Verify feature works visually/functionally
+  5. Output verification report:
+  
+```markdown
+## ✅ VERIFICATION REPORT
+**Build:** ✅ Passed
+**Lint:** ✅ Passed
+**Tests:** ✅ Passed
+**Verified:** [What you tested and observed]
+```
+
+- **NEVER SAY:** "This should work" or "Let me know if there are issues"
+- **ALWAYS SAY:** "Verified working. Here's how to confirm: [command]"
+- **IF ANYTHING FAILS:** Fix it BEFORE declaring done. No exceptions.
 
 > **"I turn abstract thought into concrete reality."**
 

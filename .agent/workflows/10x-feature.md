@@ -2,172 +2,416 @@
 description: "Feature Optimization & Multiplication (The '10x' Protocol)"
 ---
 
-# 🚀 10X FEATURE PROTOCOL (Beast Mode v2)
+# 🚀 10X FEATURE PROTOCOL
 
-> **TRIGGER:** `/10x <feature_name>`  
-> **OUTPUT CONTRACT:** One “10x bet” shipped + measured, or killed fast with evidence.  
-> **GOLDEN RULE:** 10x comes from **one main lever**, not 8 mediocre upgrades.
-
----
-
-## Decision ✅
-- **Default path:** Turn this into a **real agent protocol**: measurable, gated, fast loops, explicit outputs per step.  
-- **Switch rule:** If you **can’t name the metric + baseline** in 60 seconds, start with **Instrumentation Sprint** first.
-
-## Win Conditions 🎯
-- **10x outcome metric** achieved (or falsified) within **7 days** on one chosen KPI (conversion, retention, time-to-value, or latency).  
-- **Time-to-ship:** first 10x candidate shipped to production in **48 hours** (even if ugly).  
-- **Proof:** dashboard + experiment log + before/after diffs exist.
+> **TRIGGER:** `/10x-feature <feature_name>`
+> **OUTPUT:** One "10x bet" shipped + measured, or killed fast with evidence.
+> **GOLDEN RULE:** 10x comes from **ONE main lever**, not 8 mediocre upgrades.
+> **MODE:** Hypothesis-Driven with Kill Gates
 
 ---
 
-## 0) SCOPE LOCK (DIRECTOR) 🧭
-**Agent:** `@beast-director`
-- **Choose 1 KPI only:** `{Activation | Conversion | Retention | ARPA | Time-to-Value | Latency}`
-- **Define “10x” precisely:** `KPI_target = KPI_baseline * 10` (or “10x faster” for time metrics)
-- **Define user segment:** who exactly gets the benefit (ICP slice)
-- **Output:** `10x Brief (1 page)` with KPI, segment, constraint, deadline
-- **Check:** brief contains a **numbered baseline** and a **hard deadline**
+## 🚨 ENTRY CRITERIA
+
+**You can start this protocol if you can answer:**
+```
+/10x Feature: ____
+KPI: ____
+Baseline: ____
+Segment: ____
+Bottleneck: ____
+Ship deadline: ____
+```
+
+**If you CAN'T name metric + baseline in 60 seconds:**
+→ Start with **Instrumentation Sprint** first (Step 1)
 
 ---
 
-## 1) BASELINE + INSTRUMENTATION (ANALYST) 📉
+## 🎯 WIN CONDITIONS
+
+| Condition | Target |
+|-----------|--------|
+| 10x outcome on chosen KPI | Within 7 days |
+| Time-to-first-ship | Within 48 hours |
+| Evidence exists | Dashboard + before/after diffs |
+
+---
+
+## 🧭 STEP 0: SCOPE LOCK (15 min)
+**Agent:** `@beast-orch`
+
+**Choose 1 KPI only:**
+- Activation
+- Conversion
+- Retention
+- ARPA (Average Revenue Per Account)
+- Time-to-Value
+- Latency
+
+**Define "10x" precisely:**
+```
+KPI_target = KPI_baseline × 10
+```
+(For time metrics: 10x faster)
+
+**Define user segment:** Who exactly benefits? (ICP slice)
+
+// turbo
+```bash
+# Check existing analytics
+grep -r "trackEvent\|analytics" src/ | head -10
+```
+
+**Output:** `10x Brief (1 page)` with:
+- Single KPI
+- Baseline number
+- Target number
+- User segment
+- Hard deadline
+
+---
+
+## 📉 STEP 1: BASELINE + INSTRUMENTATION (30 min)
 **Agent:** `@beast-analyst`
-- **Measure baseline:** current KPI, funnel step, latency percentiles (p50/p95)
-- **Map the constraint:** **1 bottleneck** only (where value dies)
-- **Add missing tracking:** events, timing spans, cohorts, error taxonomy
-- **Output:** `Baseline Report` + `Metric Tree` + `Top 3 drop-off points`
-- **Check:** you can answer “what changed?” within 2 minutes from logs
+
+**Measure what exists:**
+1. Current KPI value
+2. Funnel step performance
+3. Latency percentiles (p50, p95)
+
+**Map the constraint:**
+- Find THE ONE bottleneck (where value dies)
+- Top 3 drop-off points
+
+**Add missing tracking:**
+- Events for user actions
+- Timing spans for latency
+- Cohort tags for segmentation
+
+// turbo
+```bash
+# Check instrumentation coverage
+grep -r "console.time\|performance.mark" src/ | wc -l
+```
+
+**Output:** `Baseline Report` + `Metric Tree` + Top 3 bottlenecks
+
+**GATE:** Can you answer "what changed?" within 2 minutes from logs?
+- If NO → Add more instrumentation
+- If YES → Proceed
 
 ---
 
-## 2) ROOT CAUSE (DIAGNOSTIC) 🪓
-**Agent:** `@beast-diagnostic`
-- **Run 5 Whys** on the #1 bottleneck (no brainstorming yet)
-- **Classify failure mode:** `{Friction | Confusion | Mistrust | Missing capability | Slow | Cost}`
-- **Quantify loss:** users/time/revenue lost at that point
-- **Output:** `Root Cause Statement` (single sentence) + “loss math”
-- **Check:** root cause is **testable** and points to a **single lever**
+## 🪓 STEP 2: ROOT CAUSE DIAGNOSIS (20 min)
+**Agent:** `@beast-analyst`
+
+**5 Whys on the #1 bottleneck:**
+1. Why do users drop here?
+2. Why [cause 1]?
+3. Why [cause 2]?
+4. Why [cause 3]?
+5. **ROOT CAUSE:** [single sentence]
+
+**Classify failure mode:**
+| Mode | Description |
+|------|-------------|
+| Friction | Too many steps |
+| Confusion | UI unclear |
+| Mistrust | Users don't believe us |
+| Missing | Feature doesn't exist |
+| Slow | Takes too long |
+| Cost | Too expensive |
+
+**Quantify the loss:**
+- Users lost at this point: [X]
+- Revenue lost: $[Y]/month
+- Time wasted: [Z] hours/user
+
+**Output:** Root Cause Statement (testable, single lever)
 
 ---
 
-## 3) 10X BETS (BRAINSTORMER) 🧠
+## 🧠 STEP 3: 10X BETS (30 min)
 **Agent:** `@beast-brainstormer`
-- **Generate 10 bets**, but **only across 3 levers**:
-  - **Remove work** (automation, defaults, deletion)
-  - **Collapse steps** (fewer decisions, fewer screens)
-  - **Increase certainty** (proof, previews, guarantees, verification)
-- **Force structure per bet:**
-  - `Bet:` what changes
-  - `Mechanism:` why it should move KPI
-  - `Risk:` what could fail
-  - `Test:` smallest proof
-- **Output:** `10 Bets Backlog`
-- **Check:** at least **3 bets** are “remove entire workflow” level, not polish
+
+**Generate 10 bets across 3 levers ONLY:**
+
+### Lever 1: Remove Work
+- Automate manual steps
+- Set smart defaults
+- Delete unnecessary features
+
+### Lever 2: Collapse Steps
+- Fewer decisions
+- Fewer screens
+- Fewer form fields
+
+### Lever 3: Increase Certainty
+- Show previews before commit
+- Add proof/validation
+- Provide guarantees
+
+**Bet Format:**
+```
+Bet: [What changes]
+Mechanism: [Why it moves KPI]
+Risk: [What could fail]
+Test: [Smallest proof]
+```
+
+// turbo
+```bash
+# Find complexity hotspots
+find src -name "*.tsx" -exec wc -l {} \; | sort -n -r | head -10
+```
+
+**Output:** 10 Bets Backlog
+
+**CHECK:** At least 3 bets should be "remove entire workflow" level, not polish
 
 ---
 
-## 4) AI LAYER (ORACLE) 🤖
-**Agent:** `@beast-oracle`
-- **Only propose AI if it removes user effort or uncertainty** (no “AI because AI”)
-- **Choose AI role:** `{Autofill | Recommend | Predict | Generate | Verify | Guardrail}`
-- **Define eval:** offline set + success threshold + failure handling
-- **Output:** `AI Spec` (inputs, outputs, guardrails, eval metric, fallback)
-- **Check:** you have a **kill threshold** for model errors (ex: hallucination rate)
+## 🤖 STEP 4: AI LAYER (Optional - 20 min)
+**Agent:** `@beast-eval`
+
+**ONLY propose AI if it removes user effort or uncertainty.**
+(No "AI because AI")
+
+**Choose AI Role:**
+- Autofill (pre-populate fields)
+- Recommend (suggest next action)
+- Predict (forecast outcomes)
+- Generate (create content)
+- Verify (check correctness)
+- Guardrail (prevent errors)
+
+**Define evaluation:**
+- Offline test set
+- Success threshold
+- Failure handling (fallback)
+- Kill threshold (max error rate)
+
+**Output:** AI Spec (inputs, outputs, guardrails, fallback)
 
 ---
 
-## 5) PRIORITIZATION (ARBITER) ⚖️
-**Agent:** `@beast-arbiter`
-- **Score each bet** on: `Expected lift`, `Time-to-ship`, `Reversibility`, `Risk`
-- **Pick 1 primary bet + 1 backup bet**
-- **Set kill criteria before building**
-- **Output:** `Chosen Bet` + `Kill Criteria`
-- **Check:** primary bet is shippable in **48h** with a rollback plan
+## ⚖️ STEP 5: PRIORITIZATION (15 min)
+**Agent:** `@beast-pm`
+
+**Score each bet:**
+| Bet | Lift | Time | Reversible | Risk | Score |
+|-----|------|------|------------|------|-------|
+| A | [1-10] | [hours] | [Y/N] | [H/M/L] | [calc] |
+| B | [1-10] | [hours] | [Y/N] | [H/M/L] | [calc] |
+
+**Pick:**
+- 1 Primary Bet (ship in 48h)
+- 1 Backup Bet (if primary fails)
+
+**Set Kill Criteria:**
+```
+IF KPI_lift < X% after 7 days → KILL this bet
+```
+
+**Output:** Chosen Bet + Kill Criteria + Rollback Plan
 
 ---
 
-## 6) BUILD FAST (FORGE) 🔨
-**Agent:** `@beast-forge`
-- **Ship the smallest version that hits the mechanism**
-- **Add flags:** feature flag, gradual rollout, logging hooks
-- **No polish unless it affects KPI**
-- **Output:** `Release` + `Experiment Config`
-- **Check:** you can turn it off in **30 seconds**
+## 🔨 STEP 6: BUILD FAST (2-4 hours)
+**Agent:** `@beast-dev`
+
+**Ship smallest version that tests the mechanism:**
+1. Feature flag ON
+2. Gradual rollout ready
+3. Logging instrumented
+4. Rollback command documented
+
+**NO polish unless it affects KPI.**
+
+// turbo
+```bash
+# Verify feature flag
+grep -r "featureFlag\|FEATURE_" src/ | head -5
+```
+
+// turbo
+```bash
+npm run build && npm run test
+```
+
+**Output:** Release + Experiment Config
+
+**CHECK:** Can you turn it off in 30 seconds?
 
 ---
 
-## 7) SPEED + RELIABILITY (NITRO) 🏎️
-**Agent:** `@beast-nitro`
-- **Only optimize what blocks the KPI** (p95, TTI, failure rate)
-- **Targets:**
-  - Interaction response: `<100ms perceived` (optimistic UI)
-  - Backend p95: set a number tied to feature critical path
-- **Output:** `Perf Budget` + `Top 3 fixes`
-- **Check:** perf improved at the **bottleneck step**, not globally
+## 🎯 STEP 6.5: ZERO-DEFECT VERIFICATION (MANDATORY)
+**Agent:** `@beast-dev`
+
+**No experiment runs on broken code.**
+
+// turbo
+```bash
+npm run build && npm run lint && npm run test
+```
+
+**Output required:**
+```markdown
+## ✅ VERIFICATION REPORT
+**Build:** ✅ Passed
+**Lint:** ✅ Passed
+**Tests:** ✅ Passed
+**Feature Flag:** ✅ Tested ON and OFF
+**Rollback:** ✅ 30-second rollback verified
+```
+
+**GATE:** ALL checks must pass.
 
 ---
 
-## 8) UX AS A WEAPON (MUSE) 🎨
-**Agent:** `@beast-muse`
-- **Remove 50% of decisions** via defaults and guided paths
-- **Replace uncertainty with previews** (before user commits)
-- **Micro-interactions only if they reduce drop-off**
-- **Output:** `New Critical Path` (steps count) + `Before/After click count`
-- **Check:** critical path steps decreased measurably
+## 🏎️ STEP 7: SPEED OPTIMIZATION (30 min)
+**Agent:** `@beast-perf`
+
+**Only optimize what blocks the KPI:**
+
+| Target | Threshold |
+|--------|-----------|
+| Perceived interaction | <100ms |
+| Backend p95 | Defined per feature |
+| First Contentful Paint | <1.5s |
+
+// turbo
+```bash
+# Check bundle size
+npm run build && du -sh .next/ 2>/dev/null || du -sh dist/
+```
+
+**Output:** Perf Budget + Top 3 Fixes
+
+**CHECK:** Did perf improve at the bottleneck step, not globally?
 
 ---
 
-## 9) GROWTH LOOP (GROWTH) 📈
+## 🎨 STEP 8: UX OPTIMIZATION (30 min)
+**Agent:** `@beast-ux`
+
+**Apply the "Remove 50%" Rule:**
+- Remove 50% of decisions (use defaults)
+- Remove 50% of clicks (collapse steps)
+- Remove 50% of uncertainty (add previews)
+
+**Measure:**
+- Steps before: [X]
+- Steps after: [Y]
+- Click count delta: [Z]
+
+**Output:** New Critical Path (step count comparison)
+
+---
+
+## 📈 STEP 9: GROWTH LOOP (20 min)
 **Agent:** `@beast-growth`
-- **Add 1 loop max:**
-  - Sharing loop (export, link, embed)
-  - Habit loop (daily/weekly trigger, reminders)
-  - Monetization gate (paywall only if value proven)
-- **Output:** `Loop Spec` + `Trigger → Action → Reward` mapping
-- **Check:** loop has a measurable activation event
+
+**Add ONE loop max:**
+
+| Loop Type | Example |
+|-----------|---------|
+| Sharing | Export, link, embed |
+| Habit | Daily trigger, reminder |
+| Monetization | Paywall (only if value proven) |
+
+**Define the loop:**
+```
+Trigger → Action → Reward → [Back to Trigger]
+```
+
+**Output:** Loop Spec + Activation Event
 
 ---
 
-## 10) IMPACT CHECK + ITERATION (ANALYST) 🏁
+## 🏁 STEP 10: IMPACT CHECK (30 min)
 **Agent:** `@beast-analyst`
-- **Run experiment:** A/B or phased rollout with cohort comparison
-- **Decision:** `{Scale | Iterate | Kill}` based on thresholds
-- **Output:** `Impact Report` (delta, confidence, notes, next bet)
-- **Check:** decision is evidence-based, not vibes
+
+**Run experiment:**
+- A/B test OR phased rollout
+- Cohort comparison
+- 7-day measurement period
+
+**Decision Framework:**
+| Result | Action |
+|--------|--------|
+| KPI_lift ≥ target | SCALE to 100% |
+| KPI_lift < target/2 | KILL the bet |
+| Otherwise | ITERATE (2 max) |
+
+**Output:** Impact Report
+- Delta achieved
+- Confidence level
+- Notes
+- Next bet recommendation
 
 ---
 
-## Branches 🌿
-- **If baseline missing:** do `Instrumentation Sprint (4h)` then restart at Step 1.
-- **If KPI is lagging (retention/ARR):** use **proxy KPI** (time-to-value, activation) for the 48h build, then re-measure lagging KPI later.
-- **If AI adds risk:** ship a **rules-based version first**, then add AI behind a flag with eval gates.
-- **If “10x” is unrealistic:** redefine to “10x on a sub-metric” (ex: step latency, time-to-first-output) but keep the same user outcome.
+## 🌿 BRANCHES & EDGE CASES
+
+| Situation | Action |
+|-----------|--------|
+| Baseline missing | Instrumentation Sprint (4h) → restart Step 1 |
+| Lagging KPI (retention/ARR) | Use proxy KPI (time-to-value) for 48h build |
+| AI adds risk | Ship rules-based first → add AI behind flag |
+| "10x" unrealistic | Redefine to "10x on sub-metric" |
 
 ---
 
-## Kill List 🔥
-- **Failure:** “Improved everything” but moved nothing  
-  - Workaround: force **1 KPI + 1 bottleneck + 1 bet**  
-  - Prevention: Step 0 scope lock + Step 5 arbiter
-- **Failure:** AI ships without eval and causes trust loss  
-  - Workaround: fallback to deterministic mode + add “verify” UI  
-  - Prevention: Step 4 requires thresholds + kill criteria
-- **Failure:** Perf work burns time with no KPI linkage  
-  - Workaround: optimize only the **critical path span**  
-  - Prevention: perf budget tied to bottleneck step only
+## 🔥 KILL LIST (Anti-Patterns)
+
+| Failure | Prevention |
+|---------|------------|
+| "Improved everything, moved nothing" | Force 1 KPI + 1 bottleneck + 1 bet |
+| AI ships without eval, causes trust loss | Step 4 requires thresholds + kill criteria |
+| Perf work burns time, no KPI linkage | Optimize bottleneck step only |
+| Scope creep | Hard deadline at Step 0 |
 
 ---
 
-## Control Loop 🔁
-- **Smallest test:** ship the primary bet to **10%** of target segment
-- **Metric:** chosen KPI + one guardrail (error rate, churn, refunds)
-- **Threshold:** scale only if `KPI lift ≥ X` and `guardrail not worse than Y`
-- **Iterate/stop rule:** 2 iterations max, then kill or switch to backup bet
+## 🔁 CONTROL LOOP
+
+```
+1. Ship primary bet to 10% of segment
+2. Measure: KPI + guardrail (error rate, churn)
+3. Threshold: Scale if KPI ≥ X AND guardrail ≤ Y
+4. Rule: 2 iterations max, then kill or switch to backup
+```
 
 ---
 
-## Next Move ⚡
-- Fill this:
-  - **`/10x Feature: ____ | KPI: ____ | Baseline: ____ | Segment: ____ | Bottleneck: ____ | Ship deadline: ____`**
-- **Done when:** you have a **number baseline** and a **single bottleneck statement**.
+## 📊 EXIT CRITERIA
+
+| Check | Required |
+|-------|----------|
+| Single KPI defined | ✅ |
+| Baseline measured | ✅ |
+| Primary bet shipped | ✅ |
+| Experiment running | ✅ |
+| Impact report generated | ✅ |
+| Decision made (Scale/Kill/Iterate) | ✅ |
+
+---
+
+## ⏱️ TIME BUDGET
+
+| Step | Target |
+|------|--------|
+| Scope Lock | 15 min |
+| Baseline | 30 min |
+| Root Cause | 20 min |
+| 10x Bets | 30 min |
+| AI Layer | 20 min (optional) |
+| Prioritization | 15 min |
+| Build | 2-4 hours |
+| Speed | 30 min |
+| UX | 30 min |
+| Growth Loop | 20 min |
+| Impact Check | 30 min |
+| **TOTAL** | **6-8 hours** |
