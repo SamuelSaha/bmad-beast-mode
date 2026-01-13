@@ -6,62 +6,60 @@ description: "Large-Scale Feature Implementation (The 'Enterprise' Protocol)"
 
 > **TRIGGER:** `/epic`
 > **GOAL:** Ship a complex, multi-sprint feature (e.g., Auth System, Dashboard, Payment Integration).
-> **SQUAD:** Director, PM, Architect, UX, Dev, QA, Sec, SRE
+> **SQUAD:** Director, PM, Architect, UX, Dev, QA, Sec, SRE, Tech Writer, Support
 > **DURATION:** Multi-Step Execution
 
 ---
 
-## 🧭 STEP 1: THE STRATEGY CHECK (VANTAGE)
-**Agent:** `@beast-pm`
-1. **PRD Creation:** Run `*create-prd`.
-2. **Scope Lock:** Define P0 MVP vs P1/P2.
-3. **Risks:** Identify "Unknown Unknowns."
-4. **Verdict:** [GO / NO-GO]
+## 🧭 STEP 1: THE STRATEGY CHECK (PM & ANALYST)
+**Agents:** `@beast-pm`, `@beast-analyst`
+1. **Validation:** Run "The MVP Razor." Is this essential?
+2. **Data Check:** Analyst verifies the "Why" with data.
+3. **Verdict:** [GO / NO-GO]
 
-## 🏛️ STEP 2: SYSTEM ARCHITECTURE (MATRIX)
-**Agent:** `@beast-architect`
-1. **RFC Draft:** Write "Request for Comments" technical spec.
-2. **Data Model:** Define Schema changes (SQL).
-3. **API Design:** Define REST/GraphQL contract.
-4. **Security Review:** Verify with `@beast-sec` (Auth/RBAC).
-5. **Artifact:** `architecture-decision-record.md`
+## 🏛️ STEP 2: SYSTEM ARCHITECTURE (ARCHITECT & SEC)
+**Agents:** `@beast-architect`, `@beast-sec`
+1. **RFC:** Draft technical spec with "Threat Modeling" (STRIDE).
+2. **Schema:** Define SQL constraints and RLS policies.
+3. **API:** Define OpenAPI spec (Swagger).
+4. **Sign-off:** Security must approve design before code.
+5. **Artifact:** `RFC-001-[Feature].md`
 
-## 🎨 STEP 3: DESIGN SYSTEM (MUSE)
-**Agent:** `@beast-ux`
-1. **User Flows:** Map happy/unhappy paths.
-2. **Mockups:** High-fidelity specs with Tailwind.
-3. **States:** Design Loading, Error, and Empty states.
-4. **Access:** WCAG check with `@beast-a11y`.
+## 🎨 STEP 3: DESIGN SYSTEM (UX, A11Y, COPY)
+**Agents:** `@beast-ux`, `@beast-a11y`, `@beast-copy`
+1. **Flows:** Map "Unhappy Paths" (Errors, Loading, Empty).
+2. **Polish:** Review copy ("Hemingway Protocol") and A11y ("WCAG Wall").
+3. **Artifact:** High-fidelity spec with Accessibility annotations.
 
-## 🏗️ STEP 4: SCAFFOLDING (FORGE)
+## 🏗️ STEP 4: SCAFFOLDING & MOCKS (DEV)
 **Agent:** `@beast-dev`
-1. **Setup:** Create routes, types, and DB migrations.
-2. **Mock APIs:** Build endpoints returning static data.
-3. **Connect:** Wire up Frontend to Mock Backend.
+1. **Skeleton:** Create routes, types, and empty components.
+2. **Mock Server:** MSW (Mock Service Worker) handlers for API.
+3. **Check:** Can we navigate the UI with fake data?
 
-## 🔨 STEP 5: CORE IMPLEMENTATION (FORGE)
-**Agent:** `@beast-dev`
+## 🔨 STEP 5: CORE IMPLEMENTATION (DEV & PERF)
+**Agents:** `@beast-dev`, `@beast-perf`
 *Iterative Loop:*
-1. **Business Logic:** Implement Service Layer.
-2. **UI Implementation:** Build Components.
-3. **Integration:** Connect UI to real API.
-4. **Unit Tests:** >80% coverage on util functions.
+1. **Backend:** Implement Service Layer + Unit Tests.
+2. **Frontend:** Implement UI + Integration Tests.
+3. **Perf Check:** Verify bundle size impact & query latency.
+4. **Constraint:** "No blocking main thread > 50ms."
 
-## 🛡️ STEP 6: SECURITY & PERFORMANCE (AEGIS & NITRO)
-**Agents:** `@beast-sec`, `@beast-perf`
-1. **Penetration:** Try to bypass Auth/RLS.
-2. **Load Test:** Verify DB query performance (N+1 check).
-3. **Bundle Audit:** Ensure no massive dependencies added.
+## 🧪 STEP 6: DESTRUCTIVE QA (QA & SRE)
+**Agents:** `@beast-qa`, `@beast-sre`
+1. **Chaos:** Simulate network failure, 500 errors, slow APIs.
+2. **Load:** Stress test endpoints (k6 or artillery).
+3. **Mobile:** Verify on 320px width device.
 
-## 🧪 STEP 7: END-TO-END QA (HUNTER)
-**Agent:** `@beast-qa`
-1. **Integration Test:** Cypress/Playwright flows.
-2. **Edge Cases:** Network failure, weird inputs.
-3. **Mobile Audit:** Verify responsiveness.
+## 📚 STEP 7: DOCUMENTATION & SUPPORT (WRITER & SUPPORT)
+**Agents:** `@beast-tech-writer`, `@beast-support`
+1. **Docs:** Write User Guide & API Reference.
+2. **FAQs:** Pre-write "Canned Responses" for support team.
+3. **Training:** Brief the support agent on "Known Issues."
 
-## 🏁 STEP 8: FEATURE FLAG ROLLOUT (TITAN)
+## 🏁 STEP 8: FEATURE FLAG ROLLOUT (SRE)
 **Agent:** `@beast-sre`
 1. **Flag:** Wrap feature in LaunchDarkly/Env Var.
-2. **Deploy:** Ship to Prod (Hidden).
-3. **Verify:** Smoke test in Prod.
-4. **Enable:** Gradual rollout (10% -> 100%).
+2. **Canary:** Deploy to 5% of traffic.
+3. **Monitor:** Watch logs for "Burn Rate" spike.
+4. **Expand:** 5% -> 50% -> 100%.
