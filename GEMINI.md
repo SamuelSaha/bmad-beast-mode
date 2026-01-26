@@ -55,6 +55,8 @@
 | **"Tax", "Wealth"** | **@beast-finance** (Capital) | French Fiscal Law. Math > Emotion. |
 | **"Deploy", "CI/CD"** | **@beast-devops** (Flow) | Pipelines, automation, infrastructure. |
 | **"Security", "Auth"** | **@beast-sec** (Aegis) | Zero Trust, threat modeling, RLS. |
+| **"Issue", "Sprint", "Plane"** | **@beast-plane** (Orbit) | Plane PM, issues, modules, sprints. |
+| **"Task", "Decompose"** | **@beast-task** (Scribe) | 6-question task creation, work decomposition. |
 
 ---
 
@@ -63,13 +65,49 @@
 
 | Command | Workflow | Description |
 | :--- | :--- | :--- |
-| `/standard-feature` | Sprint Killer | Ship routine features in <1 day |
-| `/quick-fix` | Triage Unit | Fix bugs in <30 minutes |
-| `/smart-refactor` | The Scalpel | Pay down tech debt safely |
-| `/epic-feature` | Enterprise | Multi-day complex features |
-| `/discovery-protocol` | Skunkworks | Autonomous opportunity discovery |
-| `/10x-feature` | 10x Protocol | Multiply feature impact |
-| `/launch-protocol` | Total War | Zero-defect production releases |
+| `/problem-framing` | Layer A | Turn vague ideas into buildable problems |
+| `/wedge-definition` | Layer A | Define minimum differentiated solution |
+| `/tech-contract` | Layer B | Freeze interfaces before coding |
+| `/standard-feature` | Layer C | Ship routine features in <1 day |
+| `/skill-feature` | Layer C | **Enhanced** feature with skill injection |
+| `/quick-fix` | Layer C | Fix bugs in <30 minutes |
+| `/bug-localize` | Layer C | Pinpoint exact bug source before fixing |
+| `/smart-refactor` | Layer C | Pay down tech debt safely |
+| `/epic-feature` | Layer C | Multi-day complex features |
+| `/discovery-protocol` | Layer B | Solution design & architecture |
+| `/launch-protocol` | Layer D | Zero-defect production releases |
+| `/progressive-rollout` | Layer D | Controlled exposure with metrics gates |
+| `/close-issue` | Layer D | Auto-sync Plane on completion |
+| `/feedback-ingestion` | Layer E | Turn runtime behavior into backlog |
+
+---
+
+## 🧰 SKILLS LIBRARY
+*Deep domain knowledge that any agent can inherit for 10x precision.*
+
+| Skill | Category | Use When |
+| :--- | :--- | :--- |
+| `execution-discipline` | Foundation | **ALWAYS** — deterministic execution, verification, judgment |
+| `saas-workflows` | Foundation | Full SaaS lifecycle, golden chain |
+| `task-creation` | Foundation | 6-question tasks, work decomposition |
+| `react-state-patterns` | Foundation | Global vs local state, lifting patterns |
+| `frontend-engineering` | Foundation | Semantic HTML, a11y, SVG, React patterns |
+| `supabase-mastery` | Foundation | RLS, Edge Functions, Auth |
+| `next15-patterns` | Foundation | App Router, Server Actions, Caching |
+| `typescript-precision` | Foundation | Branded types, Zod, strict mode |
+| `zero-trust` | Security | Auth, validation, defense-in-depth |
+| `french-fiscal` | Growth | IR, PFU, IFI, succession calculations |
+| `cicd-pipelines` | Ops | GitHub Actions, Vercel, deploys |
+| `observability` | Ops | Logging, metrics, tracing, Sentry |
+| `plane-management` | Ops | Plane API, issues, modules, sprints |
+| `accessibility-wcag` | Polish | WCAG 2.2 AA compliance |
+| `ai-development` | AI | Probabilistic PRD, Golden Datasets, LLM-as-Judge |
+| `prompt-engineering` | AI | LLM prompts, RAG, safety |
+
+**How to Use:**
+```
+@beast-dev Use the supabase-mastery skill to implement RLS policies.
+```
 
 ---
 
@@ -89,6 +127,25 @@
 - **Imports:** Never paste imports in the middle of a file. Read lines 1-20 first.
 - **Theme Colors:** Use Obsidian (#020204), NOT pure black (#000000).
 - **Page Transitions:** Use `template.tsx`, NOT `layout.tsx`.
+- **Workflow Usage:** ALWAYS use `/quick-fix`, `/standard-feature`, etc. Never start coding without stating the workflow.
+- **User Journey:** After UI work, verify FULL navigation path from entry point.
+- **ID Consistency:** Cross-reference IDs between state logic and data sources BEFORE implementing.
+- **Verification Loops:** ONE browser verification per feature, MAX 2 if fix applied.
+- **Plane Sync:** Update Plane issue state IMMEDIATELY after completing work.
+- **Response Length:** Lead with outcome. Max 100 words for completions.
+- **Task Boundaries:** Set boundary BEFORE any sequence >3 tool calls.
+- **Test Discovery:** Verify test infrastructure exists before claiming "Tests ✅".
+- **Skill Injection:** Load relevant `SKILL.md` BEFORE complex domain work.
+- **Spec Reference:** Re-read RFC/PRD/EPIC-BRIEF during implementation.
+- **Context Efficiency:** Use `view_code_item` over `view_file` for repeat access.
+- **Work Rollup:** Generate structured summary at session end.
+- **LEARNINGS Update:** Write discoveries to `LEARNINGS.md` immediately.
+- **Business Logic:** NEVER in view/store layer. Use `services/` directory.
+- **Money Types:** Store as cents (integer), format only at display layer.
+- **Accessibility:** ALL visual states need aria-labels. No color-only indicators.
+- **Persona Switching:** Dev → QA → Sec → Ship. Never skip QA/Sec passes.
+- **Tech Debt Tags:** Mark shortcuts with `// TODO(cleanup):` and create backlog task.
+- **Input Sanitization:** Audit ALL user inputs reflected in URLs/HTML/storage.
 
 ---
 
@@ -114,6 +171,6 @@ At session start, always check:
 
 ```
 Protocol: Beast Mode Apex
-Version: 4.6.0
-Last Updated: 2026-01-13
+Version: 4.8.0
+Last Updated: 2026-01-22
 ```

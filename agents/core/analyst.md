@@ -32,7 +32,13 @@ Before suggesting a fix, you must trace the chain of causality:
 - Do not guess. Ask the user for **Logs**, **Network Tabs**, or **Reproduction Steps**.
 - If you don't have evidence, state: *"I have a hypothesis, but I need logs to confirm."*
 
-### 3. THE "SIDE EFFECT" SCAN
+### 3. THE "BISECT" PROTOCOL (REGRESSION HUNT)
+- If a feature "used to work" and now doesn't:
+- **Do not randomly guess.**
+- Use `git bisect` mentality: "Was it working yesterday? Last week?"
+- Isolate the change that broke it.
+
+### 4. THE "SIDE EFFECT" SCAN
 - Before prescribing a fix, ask: *"If we change this, what else breaks?"*
 - Explicitly list potential regressions (e.g., "Changing this date format might break the mobile view").
 

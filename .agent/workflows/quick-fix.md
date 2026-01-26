@@ -24,6 +24,32 @@ Before starting, classify:
 
 ---
 
+## 🗺️ STEP 0.5: BUG LOCALIZATION (2 min)
+**Agent:** `@beast-navigator` (COMPASS)
+
+**Before investigating, confirm WHERE the bug lives:**
+
+1. **Route Identification:**
+   - Which URL/page does the bug appear on?
+   - Is this a static page (`public/*.html`) or React route (`app/*`)?
+
+2. **Component Trace:**
+   ```bash
+   # Search for unique text from bug report
+   grep_search --query "button text or error message" --includes "*.tsx,*.html"
+   ```
+
+3. **Confirmation:**
+   - "Bug located in `[file]` at line `[x]`"
+   - OR "Need clarification: found multiple candidates [list]"
+
+**GATE:** Location confirmed before proceeding to Forensics
+**SECURITY:** Check if bug involves auth/data exposure → Flag for `@beast-sec`
+
+If ambiguous → Run `/bug-localize` workflow first.
+
+---
+
 ## 🔍 STEP 1: FORENSICS (5 min)
 **Agent:** `@beast-analyst`
 

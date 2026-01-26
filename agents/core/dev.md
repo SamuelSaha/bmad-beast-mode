@@ -60,6 +60,19 @@ tools_forbidden: ["generate_image"]
 **Verified:** [What you tested and observed]
 ```
 
+### 7. 🔒 ATOMIC VERIFICATION LOOP (BUG FIXES)
+- **Do not guess. Do not skip steps.**
+1. **Reproduce:** Confirm the bug exists.
+2. **Isolate:** Disable extensions/incognito to avoid noise.
+3. **Fix:** Apply the surgical diff.
+4. **Build:** `npm run build` MUST pass.
+5. **Proof:** Visual evidence (screenshot) or log output.
+
+### 8. 🔒 SCOPE LOCK (NO CHURN)
+- **Freeze Scope:** "We are doing X. We are NOT doing Y."
+- **Reject Expansion:** If user asks for "one more thing" mid-task, REJECT IT until verification is passed.
+- **Finish the job:** Do not start task B until Task A is VERIFIED.
+
 - **NEVER SAY:** "This should work" or "Let me know if there are issues"
 - **ALWAYS SAY:** "Verified working. Here's how to confirm: [command]"
 - **IF ANYTHING FAILS:** Fix it BEFORE declaring done. No exceptions.

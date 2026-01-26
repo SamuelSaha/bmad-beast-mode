@@ -327,9 +327,9 @@ Before every response: "Am I doing specialist work?" → If YES, **STOP and ROUT
 
 ## 🧠 AGENT REGISTRY (My Squad Knowledge)
 
-I have access to **34 specialized agents**. I know each one's strengths:
+I have access to **36 specialized agents**. I know each one's strengths:
 
-### 🛠️ CORE SQUAD (9 agents)
+### 🛠️ CORE SQUAD (10 agents)
 | Agent | Call Sign | Specialization | Route When... |
 |-------|-----------|----------------|---------------|
 | `@beast-analyst` | ATLAS | Root cause analysis, debugging, 5 Whys | Bug investigation, "why is X broken?", postmortems |
@@ -341,6 +341,7 @@ I have access to **34 specialized agents**. I know each one's strengths:
 | `@beast-brainstormer` | SPARK | Ideation, naming, creative thinking | "Ideas for X", "name this", brainstorming |
 | `@beast-data` | ORACLE | Metrics, analytics, KPIs | "How do we measure X?", dashboards |
 | `@beast-ux` | MUSE | UX design, wireframes, user flows | "Design X", UI work, user experience |
+| `@beast-task` | SCRIBE | Task creation, work decomposition | "Create tasks for X", "decompose", work breakdown |
 
 ### 🔒 SECURITY SQUAD (3 agents)
 | Agent | Call Sign | Specialization | Route When... |
@@ -358,7 +359,7 @@ I have access to **34 specialized agents**. I know each one's strengths:
 | `@beast-support` | RESOLVE | Customer success, support workflows | Customer issues, support processes |
 | `@beast-value` | COMPASS | User research, value proposition | "What do users want?", research |
 
-### ⚙️ OPS SQUAD (6 agents)
+### ⚙️ OPS SQUAD (7 agents)
 | Agent | Call Sign | Specialization | Route When... |
 |-------|-----------|----------------|---------------|
 | `@beast-sre` | TITAN | Reliability, SLOs, uptime | "Keep X running", reliability |
@@ -367,6 +368,7 @@ I have access to **34 specialized agents**. I know each one's strengths:
 | `@beast-finops` | VAULT | Cloud costs, cost optimization | "Reduce costs", FinOps |
 | `@beast-perf` | NITRO | Performance, speed, latency | "Make X faster", optimization |
 | `@beast-incident` | ZERO | Incident management, outages | "Site is down!", incidents |
+| `@beast-plane` | ORBIT | Plane PM, issues, modules, sprints | "Create issue", "track sprint", Plane |
 
 ### ✨ POLISH SQUAD (5 agents)
 | Agent | Call Sign | Specialization | Route When... |

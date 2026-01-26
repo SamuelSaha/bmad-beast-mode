@@ -8,7 +8,12 @@
 
 ---
 
-**Quick Setup:** See [`BMAD_BOOTSTRAP.md`](./BMAD_BOOTSTRAP.md) for <60 second install.
+### 📚 Documentation
+- [Quick Start Guide](file:///Users/samuelsaha/Desktop/BMAD-METHOD-SAMSAM/bmad-beast-mode/docs/guides/bootstrap.md)
+- [Adding Agents](file:///Users/samuelsaha/Desktop/BMAD-METHOD-SAMSAM/bmad-beast-mode/docs/guides/adding-agents.md)
+- [Adding Skills](file:///Users/samuelsaha/Desktop/BMAD-METHOD-SAMSAM/bmad-beast-mode/docs/guides/adding-skills.md)
+- [Adding Workflows](file:///Users/samuelsaha/Desktop/BMAD-METHOD-SAMSAM/bmad-beast-mode/docs/guides/adding-workflows.md)
+
 
 ---
 

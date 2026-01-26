@@ -26,19 +26,19 @@ exports:
     beast-data: agents/core/data-analyst.md
     beast-ux: agents/core/ux-designer.md
     beast-sm: agents/core/sm.md
-    
+
     # === SECURITY SQUAD (3 agents) ===
     beast-sec: agents/security/sec-ops.md
     beast-pentest: agents/security/pentester.md
     beast-dpo: agents/security/dpo.md
-    
+
     # === GROWTH SQUAD (5 agents) ===
     beast-value: agents/growth/user-value.md
     beast-pricing: agents/growth/pricing.md
     beast-growth: agents/growth/growth.md
     beast-retention: agents/growth/retention.md
     beast-support: agents/growth/support.md
-    
+
     # === OPS SQUAD (6 agents) ===
     beast-sre: agents/ops/sre.md
     beast-devops: agents/ops/devops.md
@@ -46,19 +46,19 @@ exports:
     beast-finops: agents/ops/finops.md
     beast-perf: agents/ops/perf.md
     beast-incident: agents/ops/incident.md
-    
+
     # === POLISH SQUAD (5 agents) ===
     beast-copy: agents/polish/copywriter.md
     beast-a11y: agents/polish/a11y.md
     beast-i18n: agents/polish/i18n.md
     beast-seo: agents/polish/seo.md
     beast-docs: agents/polish/tech-writer.md
-    
+
     # === AI-ECO SQUAD (3 agents) ===
     beast-eval: agents/ai-eco/ai-eval.md
     beast-red: agents/ai-eco/ai-red-team.md
     beast-integration: agents/ai-eco/integrations.md
-    
+
     # === META AGENTS ===
     beast-enforcer: agents/meta/enforcer.md
     beast-gatekeeper: agents/meta/gatekeeper.md
@@ -97,19 +97,44 @@ exports:
     party-protocol: config/party-protocol.yaml
     output-paths: config/output-paths.yaml
 
+  # ============================================================================
+  # SKILLS - Deep domain knowledge + scripts that any agent can inherit
+  # ============================================================================
+  skills:
+    # Foundation Skills (Cross-Cutting)
+    supabase-mastery: skills/foundation/supabase-mastery/SKILL.md
+    next15-patterns: skills/foundation/next15-patterns/SKILL.md
+    typescript-precision: skills/foundation/typescript-precision/SKILL.md
+
+    # Security Skills
+    zero-trust: skills/security/zero-trust/SKILL.md
+
+    # Growth Skills
+    french-fiscal: skills/growth/french-fiscal/SKILL.md
+
+    # Ops Skills
+    cicd-pipelines: skills/ops/cicd-pipelines/SKILL.md
+    observability: skills/ops/observability/SKILL.md
+
+    # Polish Skills
+    accessibility-wcag: skills/polish/accessibility-wcag/SKILL.md
+
+    # AI Skills
+    prompt-engineering: skills/ai/prompt-engineering/SKILL.md
+
 # ============================================================================
 # MODULE METADATA
 # ============================================================================
 description: |
   Top 1% Industry Authority agents with Principal/Staff-level expertise.
-  
+
   Key Features:
   - All agents inherit from beast-base.md (cognitive architecture)
   - Namespaced with "beast-" prefix to avoid BMAD clash
   - First Principles thinking baked into every agent
   - Reflexion loop for self-critique before output
   - Hard constraints: No fluff, no hallucinations
-  
+
   Usage:
   - Standard BMAD: /load analyst
   - Beast Mode: /load beast-analyst
