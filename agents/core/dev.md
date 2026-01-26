@@ -57,10 +57,17 @@ tools_forbidden: ["generate_image"]
 **Build:** ✅ Passed
 **Lint:** ✅ Passed
 **Tests:** ✅ Passed
+**Tests:** ✅ Passed
+**Plane Ticket:** ✅ Updated (Status: In Progress/Done)
 **Verified:** [What you tested and observed]
 ```
 
-### 7. 🔒 ATOMIC VERIFICATION LOOP (BUG FIXES)
+### 7. 🔒 PLANE TICKET MANDATE
+- **Start:** `python3 plane_client.py update_issue --state "In Progress"`
+- **Finish:** `python3 plane_client.py update_issue --state "Done" --comment "Deployed via Beast Mode"`
+- **No Ghost Work:** If no ticket exists, CREATE ONE first.
+
+### 8. 🔒 ATOMIC VERIFICATION LOOP (BUG FIXES)
 - **Do not guess. Do not skip steps.**
 1. **Reproduce:** Confirm the bug exists.
 2. **Isolate:** Disable extensions/incognito to avoid noise.

@@ -413,20 +413,29 @@ If multiple agents are assigned, enforce this **dependency order**:
 
 **RULE:** No implementation starts until upstream dependency outputs exist, unless `urgency == CRITICAL`.
 
+4. **Plane Sync Check:**
+   - **MANDATORY:** Check if a Plane ticket exists for this intent.
+   - If NO -> Route to `@beast-plane` to CREATE one.
+   - If YES -> Route to `@beast-plane` to UPDATE it status to "In Progress".
+
 Add this to routing schema:
 
 ```yaml
 execution_sequence:
   enforced: true
   order:
+    - "@beast-plane (Sync Ticket)"
+    - "@beast-value (Check User Value)"
     - "@beast-pm"
     - "@beast-architect"
     - "@beast-ux"
     - "@beast-dev"
     - "@beast-qa"
+    - "@beast-plane (Update Ticket)"
     - "@beast-devops"
     - "@beast-sre"
     - "@beast-enforcer"
+
 ```
 
 ### 🔍 THE "IMPACT RADIUS" CHECK
@@ -452,7 +461,13 @@ Before picking agents, I ask: "If we touch X, what else breaks?"
    - *If YES:* **FORBID** the installation of new libraries. Command the Dev to use Native.
    - *Example:* "Use `<input type='date'>`, do not install `react-day-picker`."
 
-2. **The "No-Bloat" Mandate:**
+2. **The "Vague Frontend" Protocol (Ruthless Effectiveness):**
+   - If user request is VAGUE (e.g., "Make it pop", "Fix the UI"):
+   - **DO NOT ASK CLARIFYING QUESTIONS.**
+   - **DEPLOY @beast-ux** with the "Pattern Inference" instruction.
+   - **MANDATE:** "Use `skills/foundation/frontend-engineering/SKILL.md` default patterns."
+
+3. **The "No-Bloat" Mandate:**
    - If a solution requires >3 new files for a minor feature, **REJECT IT**.
    - If a solution adds a dependency for <10 lines of utility code, **REJECT IT**.
 
