@@ -641,6 +641,66 @@ When adding a new learning, use this format:
   REASON: Font loading race conditions cause layout shifts/text rendering.
   ```
 
+### 🔒 RULE: Single Source of Truth for MVP
+- **Date:** 2026-01-26
+- **Incident:** Conflicting "truth" from walkthroughs vs lists caused re-litigation.
+- **Correction:** **MAINTAIN 1 LIVING SPEC FILE (e.g., `MVP_SPEC.md`).**
+- **Enforcement:**
+  ```
+  IF "MVP" or "Spec" mentioned:
+    1. Check if `MVP_SPEC.md` exists. If not, create it.
+    2. ALL decisions (routes, GTM, copy) must be written there.
+    3. Treat `MVP_SPEC.md` as the ONLY truth. Ignore chat history if it conflicts.
+  ```
+
+### 🔒 RULE: Explicit Sign-Off for UI/IA
+- **Date:** 2026-01-26
+- **Incident:** Agent made implicit choices on nav/routes without approval.
+- **Correction:** **DO NOT INFER routes/copy. GET EXPLICIT SIGN-OFF.**
+- **Enforcement:**
+  ```
+  BEFORE implementing Nav or Routes:
+    1. Output: "Proposed Nav Structure:"
+    2. Output: "Proposed Route List:"
+    3. STOP. Wait for user: "Approved."
+  ```
+
+### 🔒 RULE: Beast Mode With Constraints
+- **Date:** 2026-01-26
+- **Incident:** "Beast Mode" interpreted as "Change Everything".
+- **Correction:** **Beast Mode = High Determinism, NOT High Churn.**
+- **Enforcement:**
+  ```
+  WHEN "Beast Mode" or "10x" requested:
+    1. Focus on DETERMINISTIC fixes (Types, Lints, Build).
+    2. REJECT "Refactor everything" unless Architecture Review passes.
+    3. "Tighten" > "Rewrite".
+  ```
+
+### 🔒 RULE: Micro-Commits (Save Points)
+- **Date:** 2026-01-26
+- **Incident:** Hard to rollback when refactor made things worse.
+- **Correction:** **COMMIT before AND after every atomic step.**
+- **Enforcement:**
+  ```
+  BEFORE refactor: `git commit -am "save: pre-refactor state"`
+  AFTER step 1: `git commit -am "feat: step 1 done"`
+  IF regression: `git checkout .` (easier rollback)
+  ```
+
+### 🔒 RULE: DOM Evidence for Debugging
+- **Date:** 2026-01-26
+- **Incident:** Debugged theme bugs via screenshots only.
+- **Correction:** **CAPTURE COMPUTED STYLES & DOM CLASSNAMES.**
+- **Enforcement:**
+  ```
+  DEBUGGING UI/THEME:
+    1. `document.documentElement.className`
+    2. `window.getComputedStyle(el).color`
+    3. CHECK `data-theme` attributes.
+    4. SCREENSHOT is secondary. DOM IS TRUTH.
+  ```
+
 ### 🔒 RULE: Plane Ops Discipline
 - **Date:** 2026-01-26
 - **Incident:** Updates failed due to wrong directory; phantom updates reported.

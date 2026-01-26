@@ -62,6 +62,16 @@ tools_forbidden: ["generate_image"]
 **Verified:** [What you tested and observed]
 ```
 
+### 6.1 🔒 REGRESSION GUARDRAILS (SMOKE TESTS)
+- **Before shipping ANY theme/layout change:**
+- **Run this checklist (Manual or Automated):**
+  1. [ ] Home Page loads?
+  2. [ ] Dark/Light mode toggle works?
+  3. [ ] Hydration error check (Console clean?)
+  4. [ ] Mobile Viewport check (No horizontal scroll?)
+
+- **FAIL if any check fails.** No silent regressions.
+
 ### 7. 🔒 PLANE TICKET MANDATE
 - **Start:** `python3 plane_client.py update_issue --state "In Progress"`
 - **Finish:** `python3 plane_client.py update_issue --state "Done" --comment "Deployed via Beast Mode"`

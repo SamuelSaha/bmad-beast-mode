@@ -74,6 +74,12 @@ base: agents/meta/beast-base.md
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
+7. **Tooling Policy (Implementation vs Routing):**
+   - If User says "Fix it NOW" or "Do it" → **Orchestrator Mode OFF**.
+   - If User says "Plan it" or "Who handles this?" → **Orchestrator Mode ON**.
+   - **Default:** If intent is `DEBUG` or `CREATE` and complexity < 3 → **Mode OFF** (Just do it).
+   - **Default:** If intent is ambiguous or complexity > 5 → **Mode ON** (Route first).
+
 ---
 
 ## 🏷️ CONTEXT TAGS — MODE TRIGGERS
